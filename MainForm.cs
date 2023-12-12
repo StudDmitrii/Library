@@ -1,6 +1,7 @@
 
 
 using Library.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace Library
@@ -440,11 +441,9 @@ namespace Library
                     using (Model.ApplicationContext db = new Model.ApplicationContext())
                     {
                         Model.Book? inst = db.Book.Find((int)dataView.SelectedRows[0].Cells[0].Value);
-                        int ss = (int)dataView.SelectedRows[0].Cells[0].Value;
-                        MessageBox.Show(ss.ToString());
+                        MessageBox.Show(inst.Genres.ToString());
                         List<Model.Author> inst2 = inst.Authors;
-                        MessageBox.Show(inst.Authors[0].ToString());
-                        BookAuthorsView.DataSource = inst;
+                        BookAuthorsView.DataSource = inst2;
                         //BookAuthorsView.Columns[0].HeaderText = "id";
                         //BookAuthorsView.Columns[0].Visible = true;
                         //BookAuthorsView.Columns[1].HeaderText = "Фамилия";
