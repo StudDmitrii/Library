@@ -2,8 +2,6 @@
 
 using Library.Model;
 using System.Data;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Policy;
 
 namespace Library
 {
@@ -17,11 +15,11 @@ namespace Library
 
         public main_form(string formLabelIn = "Выдача", WinEnum? sourceIn = WinEnum.Entries, bool fromAddForm = false)
         {
-            
+
             InitializeComponent();
 
             formLabel = formLabelIn;
-            source= sourceIn;
+            source = sourceIn;
             this.fromAddForm = fromAddForm;
 
             formLabel = formLabelIn;
@@ -150,7 +148,7 @@ namespace Library
                     dataView.Columns[4].HeaderText = "Отчество";
                 }
                 catch { }
-                
+
             }
         }
 
@@ -165,9 +163,9 @@ namespace Library
                         Id = p.Id,
                         Name = p.Name,
                         PublicationDate = p.PublicationDate,
-                        Publisher = p.Publisher,
-                        Authors = p.Authors,
-                        Genres = p.Genres
+                        Publisher = p.Publisher.Name,
+                        Authors = p.Authors[0].Name1 + " " + p.Authors[0].Name2 + " " + p.Authors[0].Name3,
+                        Genres = p.Genres[0].Name
                     }).ToList();
                     dataView.DataSource = items;
                     //dataView.Columns[0].Visible = false;
@@ -252,7 +250,7 @@ namespace Library
             authorName3.Text = Functions.PrepareName(authorName3.Text);
 
             string? error = Functions.CheckNewAuthor(authorName.Text, authorName2.Text, authorName3.Text);
-            AuthorError.Text =  error ?? "";
+            AuthorError.Text = error ?? "";
             if (error != null) return;
 
             window.Enabled = !window.Enabled;
@@ -283,16 +281,16 @@ namespace Library
         {
             //if (window.SelectedTab == window.TabPages[6])
             //{
-                using (Model.ApplicationContext db = new Model.ApplicationContext())
-                {
-                    var items = db.Position.Select(p =>
-                    p.Name.ToString()).ToList();
-                    LibrarianPosition.DataSource = items;
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items = db.Position.Select(p =>
+                p.Name.ToString()).ToList();
+                LibrarianPosition.DataSource = items;
 
-                    var items2 = db.Position.Select(p =>
-                    p.Name.ToString()).ToList();
-                    BookPublisher.DataSource = items2;
-                }
+                var items2 = db.Publisher.Select(p =>
+                p.Name.ToString()).ToList();
+                BookPublisher.DataSource = items2;
+            }
             //}
         }
 
@@ -314,9 +312,13 @@ namespace Library
                 //owner.LibrarianPosition.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
                 foreach (DataGridViewRow row in dataView.SelectedRows)
                 {
-                    string[] r = new string[2];
-                    r[0] = row.Cells[0].Value.ToString();
-                    r[1] = row.Cells[1].Value.ToString();
+                    string[] r = new string[dataView.ColumnCount];
+                    for (int i = 0; i < dataView.ColumnCount; i++)
+                    {
+                        r[i] = dataView.SelectedRows[0].Cells[i].Value.ToString();
+                    }
+                    //r[0] = row.Cells[0].Value.ToString();
+                    //r[1] = row.cells[1].value.tostring();
                     this.returnRows.Add(r);
                 }
                 this.DialogResult = DialogResult.OK;
@@ -431,6 +433,12 @@ namespace Library
                     window.SelectTab("AddGenreWin");
                     break;
                 case WinEnum.Books:
+                    BookName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    BookDate.Value = (DateTime)dataView.SelectedRows[0].Cells[2].Value;
+                    LibrarianName2.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
+                    LibrarianName3.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();dfdf
+                    window.SelectTab("AddLibrarianWin");
+                    LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     break;
                 case WinEnum.Users:
                     UserName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
@@ -475,7 +483,7 @@ namespace Library
                             {
                                 Model.Publisher? newInst = db.Publisher.Find(i);
                                 if (newInst != null) db.Publisher.Remove(newInst);
-                            } 
+                            }
                             break;
                         }
                     case WinEnum.Genres:
@@ -694,10 +702,11 @@ namespace Library
             if (rows == null) return;
             BookAuthorsView.ColumnCount = 4;
             BookAuthorsView.Columns[0].HeaderText = "id";
+            BookAuthorsView.Columns[0].Visible = true;
             BookAuthorsView.Columns[1].HeaderText = "Фамилия";
-            //BookAuthorsView.Columns[2].HeaderText = "Имя";
-            //BookAuthorsView.Columns[3].HeaderText = "Отчество";
-            BookAuthorsView.Rows.Add(rows[0][0], rows[0][1]);
+            BookAuthorsView.Columns[2].HeaderText = "Имя";
+            BookAuthorsView.Columns[3].HeaderText = "Отчество";
+            BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
         }
 
         private void BookAuthorDelete_Click(object sender, EventArgs e)
@@ -712,10 +721,11 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Genres, true, this);
             if (rows == null) return;
-            DataGridViewRow dr = new DataGridViewRow();
-            dr.Cells[0].Value = rows[0][0];
-            dr.Cells[1].Value = rows[0][1];
-            BookGenresView.Rows.Add(dr);
+            BookGenresView.ColumnCount = 2;
+            BookGenresView.Columns[0].HeaderText = "id";
+            BookGenresView.Columns[0].Visible = true;
+            BookGenresView.Columns[1].HeaderText = "Наименование";
+            BookGenresView.Rows.Add(rows[0][0], rows[0][1]);
         }
 
         private void BookGenreDelete_Click(object sender, EventArgs e)
@@ -728,13 +738,59 @@ namespace Library
 
         private void BookOKBut_Click(object sender, EventArgs e)
         {
+            window.Enabled = !window.Enabled;
 
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                Model.Book? newInst = db.Book.Find(rowSource[0]);
+                var val = (Publisher)db.Publisher.Where(p => p.Name == BookPublisher.SelectedValue.ToString()).ToList()[0];
+                Author[] val2 = new Author[BookAuthorsView.RowCount];
+                for (int i = 0; i < val2.Length; i++)
+                {
+                    string aa = BookAuthorsView.Rows[i].Cells[1].Value.ToString();
+                    string bb = BookAuthorsView.Rows[i].Cells[2].Value.ToString();
+                    string cc = BookAuthorsView.Rows[i].Cells[3].Value.ToString();
+                    Author dd = (Author)db.Author.Where(p => p.Name2 == bb && p.Name1 == aa && p.Name3 == cc).ToList()[0];
+                    val2[i] = dd;
+                }
+                Genre[] val3 = new Genre[BookGenresView.RowCount];
+                for (int i = 0; i < val3.Length; i++)
+                {
+                    val3[i] = (Genre)db.Genre.Where(p => p.Name == BookGenresView.Rows[i].Cells[1].Value.ToString()).ToList()[0];
+                }
+
+                if (newInst != null)
+                {
+                    newInst.Name = BookName.Text;
+                    newInst.PublicationDate = BookDate.Value;
+                    newInst.Publisher = val;
+                    newInst.Authors = val2.ToList();
+                    newInst.Genres = val3.ToList();
+                }
+                else
+                {
+                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
+                    db.Book.Add(newInst);
+                }
+                db.SaveChanges();
+                SetView(source);
+            }
+            BookCancelBut_Click(sender, e);
+
+            window.Enabled = !window.Enabled;
         }
 
         private void BookCancelBut_Click(object sender, EventArgs e)
         {
-            ClearInputs(AddLibrarianGroup);
+            ClearInputs(AddBookGroup);
             BackToView();
+        }
+
+        private void BookPublisherAdd_Click(object sender, EventArgs e)
+        {
+            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Publishers, true, this);
+            if (rows == null) return;
+            BookPublisher.SelectedItem = rows[0][1];
         }
     }
 }

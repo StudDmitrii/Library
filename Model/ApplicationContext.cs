@@ -21,7 +21,8 @@ namespace Library.Model
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=library;Username=postgres;Password=1234");
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=library;Username=postgres;Password=1234");
         }
     }
 }
