@@ -435,10 +435,22 @@ namespace Library
                 case WinEnum.Books:
                     BookName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     BookDate.Value = (DateTime)dataView.SelectedRows[0].Cells[2].Value;
-                    LibrarianName2.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
-                    LibrarianName3.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();dfdf
-                    window.SelectTab("AddLibrarianWin");
-                    LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    window.SelectTab("AddBookWin");
+                    BookPublisher.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    using (Model.ApplicationContext db = new Model.ApplicationContext())
+                    {
+                        Model.Book? inst = db.Book.Find((int)dataView.SelectedRows[0].Cells[0].Value);
+                        int ss = (int)dataView.SelectedRows[0].Cells[0].Value;
+                        MessageBox.Show(ss.ToString());
+                        List<Model.Author> inst2 = inst.Authors;
+                        MessageBox.Show(inst.Authors[0].ToString());
+                        BookAuthorsView.DataSource = inst;
+                        //BookAuthorsView.Columns[0].HeaderText = "id";
+                        //BookAuthorsView.Columns[0].Visible = true;
+                        //BookAuthorsView.Columns[1].HeaderText = "Фамилия";
+                        //BookAuthorsView.Columns[2].HeaderText = "Имя";
+                        //BookAuthorsView.Columns[3].HeaderText = "Отчество";
+                    }
                     break;
                 case WinEnum.Users:
                     UserName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
