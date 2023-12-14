@@ -440,15 +440,18 @@ namespace Library
                     BookPublisher.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     using (Model.ApplicationContext db = new Model.ApplicationContext())
                     {
-                        Model.Book? inst = db.Book.Find((int)dataView.SelectedRows[0].Cells[0].Value);
-                        MessageBox.Show(inst.Genres.ToString());
-                        List<Model.Author> inst2 = inst.Authors;
-                        BookAuthorsView.DataSource = inst2;
-                        //BookAuthorsView.Columns[0].HeaderText = "id";
-                        //BookAuthorsView.Columns[0].Visible = true;
-                        //BookAuthorsView.Columns[1].HeaderText = "Фамилия";
-                        //BookAuthorsView.Columns[2].HeaderText = "Имя";
-                        //BookAuthorsView.Columns[3].HeaderText = "Отчество";
+                        int instId = (int)dataView.SelectedRows[0].Cells[0].Value;
+                        Model.Book inst = db.Book.Include("Authors").Include("Genres").First(p => p.Id == instId);
+                        BookAuthorsView.DataSource = inst.Authors;
+                        BookAuthorsView.Columns[0].HeaderText = "id";
+                        BookAuthorsView.Columns[0].Visible = true;
+                        BookAuthorsView.Columns[1].HeaderText = "Фамилия";
+                        BookAuthorsView.Columns[2].HeaderText = "Имя";
+                        BookAuthorsView.Columns[3].HeaderText = "Отчество";
+                        BookGenresView.DataSource = inst.Genres;
+                        BookGenresView.Columns[0].HeaderText = "id";
+                        BookGenresView.Columns[0].Visible = true;
+                        BookGenresView.Columns[1].HeaderText = "Наименование";
                     }
                     break;
                 case WinEnum.Users:
