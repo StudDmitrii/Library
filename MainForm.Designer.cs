@@ -135,6 +135,15 @@
             label19 = new Label();
             AddEntryWin = new TabPage();
             groupBox1 = new GroupBox();
+            button2 = new Button();
+            button4 = new Button();
+            button1 = new Button();
+            comboBox3 = new ComboBox();
+            label21 = new Label();
+            dateTimePicker3 = new DateTimePicker();
+            label27 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label25 = new Label();
             button3 = new Button();
             comboBox2 = new ComboBox();
             label22 = new Label();
@@ -152,15 +161,6 @@
             clear_search_but = new Button();
             search_bar = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            dateTimePicker2 = new DateTimePicker();
-            label25 = new Label();
-            dateTimePicker3 = new DateTimePicker();
-            label27 = new Label();
-            button1 = new Button();
-            comboBox3 = new ComboBox();
-            label21 = new Label();
-            button2 = new Button();
-            button4 = new Button();
             menuStrip1.SuspendLayout();
             control_panel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -794,7 +794,7 @@
             // 
             UserContact.Location = new Point(6, 175);
             UserContact.Name = "UserContact";
-            UserContact.Size = new Size(191, 23);
+            UserContact.Size = new Size(291, 23);
             UserContact.TabIndex = 9;
             // 
             // UserError
@@ -1268,6 +1268,84 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Добавление";
             // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button2.Location = new Point(543, 404);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 34;
+            button2.Text = "Отмена";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button4.Location = new Point(462, 404);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 33;
+            button4.Text = "ОК";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(513, 90);
+            button1.Name = "button1";
+            button1.Size = new Size(24, 23);
+            button1.TabIndex = 32;
+            button1.Text = "...";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(6, 90);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(501, 23);
+            comboBox3.TabIndex = 31;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(6, 72);
+            label21.Name = "label21";
+            label21.Size = new Size(39, 15);
+            label21.TabIndex = 30;
+            label21.Text = "Книга";
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Location = new Point(6, 222);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(191, 23);
+            dateTimePicker3.TabIndex = 29;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(6, 204);
+            label27.Name = "label27";
+            label27.Size = new Size(154, 15);
+            label27.TabIndex = 28;
+            label27.Text = "Фактическая дата возврата";
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(6, 134);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(191, 23);
+            dateTimePicker2.TabIndex = 27;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(6, 116);
+            label25.Name = "label25";
+            label25.Size = new Size(76, 15);
+            label25.TabIndex = 26;
+            label25.Text = "Дата выдачи";
+            // 
             // button3
             // 
             button3.Location = new Point(379, 265);
@@ -1429,84 +1507,6 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(6, 134);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(191, 23);
-            dateTimePicker2.TabIndex = 27;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(6, 116);
-            label25.Name = "label25";
-            label25.Size = new Size(76, 15);
-            label25.TabIndex = 26;
-            label25.Text = "Дата выдачи";
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Location = new Point(6, 222);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(191, 23);
-            dateTimePicker3.TabIndex = 29;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Location = new Point(6, 204);
-            label27.Name = "label27";
-            label27.Size = new Size(154, 15);
-            label27.TabIndex = 28;
-            label27.Text = "Фактическая дата возврата";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(513, 90);
-            button1.Name = "button1";
-            button1.Size = new Size(24, 23);
-            button1.TabIndex = 32;
-            button1.Text = "...";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(6, 90);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(501, 23);
-            comboBox3.TabIndex = 31;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(6, 72);
-            label21.Name = "label21";
-            label21.Size = new Size(39, 15);
-            label21.TabIndex = 30;
-            label21.Text = "Книга";
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.Location = new Point(543, 404);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 34;
-            button2.Text = "Отмена";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button4.Location = new Point(462, 404);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 33;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
             // 
             // main_form
             // 
