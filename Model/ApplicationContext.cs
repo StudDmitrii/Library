@@ -14,6 +14,7 @@ namespace Library.Model
         //public DbSet<Worker> Librarian { get; set; }
         public DbSet<Worker> Worker { get; set; }
         public DbSet<Book> Book { get; set; }
+        public DbSet<Entry> Entry { get; set; }
         public ApplicationContext()
         {
             //Database.EnsureDeleted();

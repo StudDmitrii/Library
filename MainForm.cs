@@ -55,6 +55,7 @@ namespace Library
                     displayLibrarians();
                     break;
                 case WinEnum.Entries:
+                    displayEntries();
                     break;
             }
             try
@@ -182,6 +183,37 @@ namespace Library
             }
         }
 
+        public void displayEntries()
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                try
+                {
+                    var items = db.Entry.Select(p => new
+                    {
+                        Id = p.Id,
+                        User = p.User.Name1.ToString()[0] + "." + p.User.Name2.ToString()[0] + "." + p.User.Name3 + "." + p.User.Contact,
+                        Book = p.Book.Name,
+                        TakeDate = p.TakeDate,
+                        PlanReturnDate = p.PlanReturnDate,
+                        FactReturnDate = p.FactReturnDate,
+                        Worker = p.Worker.Name1.ToString()[0] + "." + p.Worker.Name2.ToString()[0] + "." + p.Worker.Name3,
+                        
+                    }).ToList();
+                    dataView.DataSource = items;
+                    //dataView.Columns[0].Visible = false;
+                    dataView.Columns[1].HeaderText = "Читательский билет";
+                    dataView.Columns[2].HeaderText = "Книга";
+                    dataView.Columns[3].HeaderText = "Дата выдачи";
+                    dataView.Columns[4].HeaderText = "Планированная дата возврата";
+                    dataView.Columns[5].HeaderText = "Фактическая дата возврата";
+                    dataView.Columns[6].HeaderText = "Ответственный";
+                }
+                catch { }
+
+            }
+        }
+
         private void add_but_Click(object sender, EventArgs e)
         {
             rowSource = new List<int>
@@ -212,6 +244,7 @@ namespace Library
                     window.SelectTab("AddLibrarianWin");
                     break;
                 case WinEnum.Entries:
+                    window.SelectTab("AddEntryWin");
                     break;
             }
             control_panel.Enabled = !control_panel.Enabled;
@@ -457,6 +490,9 @@ namespace Library
                     break;
                 case WinEnum.Users:
                     UserName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    UserName2.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    UserName3.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
+                    UserContact.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();
                     window.SelectTab("AddUserWin");
                     break;
                 case WinEnum.Positions:
