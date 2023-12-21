@@ -124,6 +124,7 @@ namespace Library
                 dataView.Columns[1].HeaderText = "Фамилия";
                 dataView.Columns[2].HeaderText = "Имя";
                 dataView.Columns[3].HeaderText = "Отчество";
+                dataView.Columns[4].HeaderText = "Контактные данные";
             }
         }
 
@@ -641,10 +642,11 @@ namespace Library
                     newInst.Name1 = UserName.Text;
                     newInst.Name2 = UserName2.Text;
                     newInst.Name3 = UserName3.Text;
+                    newInst.Contact = UserContact.Text;
                 }
                 else
                 {
-                    newInst = new Model.User { Name1 = UserName.Text, Name2 = UserName2.Text, Name3 = UserName3.Text };
+                    newInst = new Model.User { Name1 = UserName.Text, Name2 = UserName2.Text, Name3 = UserName3.Text, Contact = UserContact.Text };
                     db.User.Add(newInst);
                 }
                 db.SaveChanges();

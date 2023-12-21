@@ -88,6 +88,8 @@
             label8 = new Label();
             AddUserWin = new TabPage();
             AddUserGroup = new GroupBox();
+            label16 = new Label();
+            UserContact = new TextBox();
             UserError = new Label();
             label10 = new Label();
             UserCancelBut = new Button();
@@ -131,12 +133,34 @@
             BookOKBut = new Button();
             label18 = new Label();
             label19 = new Label();
+            AddEntryWin = new TabPage();
+            groupBox1 = new GroupBox();
+            button3 = new Button();
+            comboBox2 = new ComboBox();
+            label22 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            button5 = new Button();
+            comboBox1 = new ComboBox();
+            label23 = new Label();
+            label24 = new Label();
+            button6 = new Button();
+            button7 = new Button();
+            label26 = new Label();
             label = new Label();
             search_panel = new TableLayoutPanel();
             search_but = new Button();
             clear_search_but = new Button();
             search_bar = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            dateTimePicker2 = new DateTimePicker();
+            label25 = new Label();
+            dateTimePicker3 = new DateTimePicker();
+            label27 = new Label();
+            button1 = new Button();
+            comboBox3 = new ComboBox();
+            label21 = new Label();
+            button2 = new Button();
+            button4 = new Button();
             menuStrip1.SuspendLayout();
             control_panel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -159,6 +183,8 @@
             AddBookGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BookGenresView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BookAuthorsView).BeginInit();
+            AddEntryWin.SuspendLayout();
+            groupBox1.SuspendLayout();
             search_panel.SuspendLayout();
             SuspendLayout();
             // 
@@ -168,99 +194,98 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, dictSelect, отчётыToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(896, 30);
+            menuStrip1.Size = new Size(784, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(59, 24);
+            файлToolStripMenuItem.Size = new Size(48, 20);
             файлToolStripMenuItem.Text = "Файл";
             // 
             // dictSelect
             // 
             dictSelect.DropDownItems.AddRange(new ToolStripItem[] { выдачаToolStripMenuItem, toolStripMenuItem2, читателиToolStripMenuItem, книгаToolStripMenuItem, авторToolStripMenuItem, toolStripMenuItem1, работникиToolStripMenuItem, должностиToolStripMenuItem, toolStripMenuItem3, издательстваToolStripMenuItem, жанрыToolStripMenuItem });
             dictSelect.Name = "dictSelect";
-            dictSelect.Size = new Size(117, 24);
+            dictSelect.Size = new Size(94, 20);
             dictSelect.Text = "Справочники";
             // 
             // выдачаToolStripMenuItem
             // 
             выдачаToolStripMenuItem.Name = "выдачаToolStripMenuItem";
-            выдачаToolStripMenuItem.Size = new Size(185, 26);
+            выдачаToolStripMenuItem.Size = new Size(193, 22);
             выдачаToolStripMenuItem.Text = "Выдача";
             выдачаToolStripMenuItem.Click += выдачаToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(182, 6);
+            toolStripMenuItem2.Size = new Size(190, 6);
             // 
             // читателиToolStripMenuItem
             // 
             читателиToolStripMenuItem.Name = "читателиToolStripMenuItem";
-            читателиToolStripMenuItem.Size = new Size(185, 26);
-            читателиToolStripMenuItem.Text = "Читатели";
+            читателиToolStripMenuItem.Size = new Size(193, 22);
+            читателиToolStripMenuItem.Text = "Читательские билеты";
             читателиToolStripMenuItem.Click += читателиToolStripMenuItem_Click;
             // 
             // книгаToolStripMenuItem
             // 
             книгаToolStripMenuItem.Name = "книгаToolStripMenuItem";
-            книгаToolStripMenuItem.Size = new Size(185, 26);
+            книгаToolStripMenuItem.Size = new Size(193, 22);
             книгаToolStripMenuItem.Text = "Книги";
             книгаToolStripMenuItem.Click += книгаToolStripMenuItem_Click;
             // 
             // авторToolStripMenuItem
             // 
             авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new Size(185, 26);
+            авторToolStripMenuItem.Size = new Size(193, 22);
             авторToolStripMenuItem.Text = "Авторы";
             авторToolStripMenuItem.Click += авторToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(182, 6);
+            toolStripMenuItem1.Size = new Size(190, 6);
             // 
             // работникиToolStripMenuItem
             // 
             работникиToolStripMenuItem.Name = "работникиToolStripMenuItem";
-            работникиToolStripMenuItem.Size = new Size(185, 26);
+            работникиToolStripMenuItem.Size = new Size(193, 22);
             работникиToolStripMenuItem.Text = "Работники";
             работникиToolStripMenuItem.Click += работникиToolStripMenuItem_Click;
             // 
             // должностиToolStripMenuItem
             // 
             должностиToolStripMenuItem.Name = "должностиToolStripMenuItem";
-            должностиToolStripMenuItem.Size = new Size(185, 26);
+            должностиToolStripMenuItem.Size = new Size(193, 22);
             должностиToolStripMenuItem.Text = "Должности";
             должностиToolStripMenuItem.Click += должностиToolStripMenuItem_Click;
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(182, 6);
+            toolStripMenuItem3.Size = new Size(190, 6);
             // 
             // издательстваToolStripMenuItem
             // 
             издательстваToolStripMenuItem.Name = "издательстваToolStripMenuItem";
-            издательстваToolStripMenuItem.Size = new Size(185, 26);
+            издательстваToolStripMenuItem.Size = new Size(193, 22);
             издательстваToolStripMenuItem.Text = "Издательства";
             издательстваToolStripMenuItem.Click += издательстваToolStripMenuItem_Click;
             // 
             // жанрыToolStripMenuItem
             // 
             жанрыToolStripMenuItem.Name = "жанрыToolStripMenuItem";
-            жанрыToolStripMenuItem.Size = new Size(185, 26);
+            жанрыToolStripMenuItem.Size = new Size(193, 22);
             жанрыToolStripMenuItem.Text = "Жанры";
             жанрыToolStripMenuItem.Click += жанрыToolStripMenuItem_Click;
             // 
             // отчётыToolStripMenuItem
             // 
             отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            отчётыToolStripMenuItem.Size = new Size(73, 24);
+            отчётыToolStripMenuItem.Size = new Size(60, 20);
             отчётыToolStripMenuItem.Text = "Отчёты";
             // 
             // control_panel
@@ -271,25 +296,24 @@
             control_panel.Controls.Add(edit_but, 0, 1);
             control_panel.Controls.Add(del_but, 0, 3);
             control_panel.Dock = DockStyle.Fill;
-            control_panel.Location = new Point(750, 93);
-            control_panel.Margin = new Padding(3, 13, 3, 4);
+            control_panel.Location = new Point(657, 70);
+            control_panel.Margin = new Padding(3, 10, 3, 3);
             control_panel.Name = "control_panel";
             control_panel.RowCount = 5;
             control_panel.RowStyles.Add(new RowStyle());
             control_panel.RowStyles.Add(new RowStyle());
-            control_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            control_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             control_panel.RowStyles.Add(new RowStyle());
-            control_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            control_panel.Size = new Size(143, 632);
+            control_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            control_panel.Size = new Size(124, 474);
             control_panel.TabIndex = 4;
             // 
             // add_but
             // 
             add_but.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            add_but.Location = new Point(3, 4);
-            add_but.Margin = new Padding(3, 4, 3, 4);
+            add_but.Location = new Point(3, 3);
             add_but.Name = "add_but";
-            add_but.Size = new Size(137, 31);
+            add_but.Size = new Size(120, 23);
             add_but.TabIndex = 0;
             add_but.Text = "Добавить";
             add_but.UseVisualStyleBackColor = true;
@@ -298,10 +322,9 @@
             // edit_but
             // 
             edit_but.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            edit_but.Location = new Point(3, 43);
-            edit_but.Margin = new Padding(3, 4, 3, 4);
+            edit_but.Location = new Point(3, 32);
             edit_but.Name = "edit_but";
-            edit_but.Size = new Size(137, 31);
+            edit_but.Size = new Size(120, 23);
             edit_but.TabIndex = 1;
             edit_but.Text = "Изменить";
             edit_but.UseVisualStyleBackColor = true;
@@ -310,10 +333,9 @@
             // del_but
             // 
             del_but.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            del_but.Location = new Point(3, 122);
-            del_but.Margin = new Padding(3, 4, 3, 4);
+            del_but.Location = new Point(3, 91);
             del_but.Name = "del_but";
-            del_but.Size = new Size(137, 31);
+            del_but.Size = new Size(120, 23);
             del_but.TabIndex = 2;
             del_but.Text = "Удалить";
             del_but.UseVisualStyleBackColor = true;
@@ -323,20 +345,19 @@
             // 
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 149F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130F));
             tableLayoutPanel1.Controls.Add(control_panel, 1, 2);
             tableLayoutPanel1.Controls.Add(window, 0, 2);
             tableLayoutPanel1.Controls.Add(label, 0, 0);
             tableLayoutPanel1.Controls.Add(search_panel, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 30);
-            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel1.Location = new Point(0, 24);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(896, 707);
+            tableLayoutPanel1.Size = new Size(784, 535);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // window
@@ -350,21 +371,22 @@
             window.Controls.Add(AddUserWin);
             window.Controls.Add(AddLibrarianWin);
             window.Controls.Add(AddBookWin);
-            window.Location = new Point(11, 93);
-            window.Margin = new Padding(11, 13, 0, 13);
+            window.Controls.Add(AddEntryWin);
+            window.Location = new Point(10, 70);
+            window.Margin = new Padding(10, 10, 0, 10);
             window.Name = "window";
             window.Padding = new Point(0, 0);
             window.SelectedIndex = 0;
-            window.Size = new Size(736, 623);
+            window.Size = new Size(644, 467);
             window.TabIndex = 7;
             // 
             // MainWin
             // 
             MainWin.Controls.Add(dataView);
-            MainWin.Location = new Point(4, 29);
+            MainWin.Location = new Point(4, 24);
             MainWin.Margin = new Padding(0);
             MainWin.Name = "MainWin";
-            MainWin.Size = new Size(728, 590);
+            MainWin.Size = new Size(636, 439);
             MainWin.TabIndex = 0;
             MainWin.Text = "Main";
             MainWin.UseVisualStyleBackColor = true;
@@ -385,7 +407,7 @@
             dataView.RowHeadersWidth = 51;
             dataView.RowTemplate.Height = 25;
             dataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataView.Size = new Size(727, 585);
+            dataView.Size = new Size(636, 439);
             dataView.TabIndex = 0;
             dataView.CellDoubleClick += dataView_CellDoubleClick;
             dataView.SelectionChanged += dataView_SelectionChanged;
@@ -393,11 +415,10 @@
             // AddAuthorWin
             // 
             AddAuthorWin.Controls.Add(AddAuthorGroup);
-            AddAuthorWin.Location = new Point(4, 29);
-            AddAuthorWin.Margin = new Padding(3, 4, 3, 4);
+            AddAuthorWin.Location = new Point(4, 24);
             AddAuthorWin.Name = "AddAuthorWin";
-            AddAuthorWin.Padding = new Padding(3, 4, 3, 4);
-            AddAuthorWin.Size = new Size(728, 590);
+            AddAuthorWin.Padding = new Padding(3);
+            AddAuthorWin.Size = new Size(636, 439);
             AddAuthorWin.TabIndex = 1;
             AddAuthorWin.Text = "Author";
             AddAuthorWin.UseVisualStyleBackColor = true;
@@ -414,11 +435,9 @@
             AddAuthorGroup.Controls.Add(authorName2);
             AddAuthorGroup.Controls.Add(authorName3);
             AddAuthorGroup.Controls.Add(label2);
-            AddAuthorGroup.Location = new Point(7, 4);
-            AddAuthorGroup.Margin = new Padding(3, 4, 3, 4);
+            AddAuthorGroup.Location = new Point(6, 3);
             AddAuthorGroup.Name = "AddAuthorGroup";
-            AddAuthorGroup.Padding = new Padding(3, 4, 3, 4);
-            AddAuthorGroup.Size = new Size(715, 293);
+            AddAuthorGroup.Size = new Size(626, 220);
             AddAuthorGroup.TabIndex = 8;
             AddAuthorGroup.TabStop = false;
             AddAuthorGroup.Text = "Добавление";
@@ -427,26 +446,25 @@
             // 
             AuthorError.AutoSize = true;
             AuthorError.ForeColor = Color.Red;
-            AuthorError.Location = new Point(7, 221);
+            AuthorError.Location = new Point(6, 166);
             AuthorError.Name = "AuthorError";
-            AuthorError.Size = new Size(0, 20);
+            AuthorError.Size = new Size(0, 15);
             AuthorError.TabIndex = 8;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(7, 151);
+            label3.Location = new Point(6, 113);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(58, 15);
             label3.TabIndex = 5;
             label3.Text = "Отчество";
             // 
             // AuthorCancelBut
             // 
-            AuthorCancelBut.Location = new Point(623, 255);
-            AuthorCancelBut.Margin = new Padding(3, 4, 3, 4);
+            AuthorCancelBut.Location = new Point(545, 191);
             AuthorCancelBut.Name = "AuthorCancelBut";
-            AuthorCancelBut.Size = new Size(86, 31);
+            AuthorCancelBut.Size = new Size(75, 23);
             AuthorCancelBut.TabIndex = 7;
             AuthorCancelBut.Text = "Отмена";
             AuthorCancelBut.UseVisualStyleBackColor = true;
@@ -454,18 +472,16 @@
             // 
             // authorName
             // 
-            authorName.Location = new Point(7, 57);
-            authorName.Margin = new Padding(3, 4, 3, 4);
+            authorName.Location = new Point(6, 43);
             authorName.Name = "authorName";
-            authorName.Size = new Size(218, 27);
+            authorName.Size = new Size(191, 23);
             authorName.TabIndex = 0;
             // 
             // AuthorOKBut
             // 
-            AuthorOKBut.Location = new Point(530, 255);
-            AuthorOKBut.Margin = new Padding(3, 4, 3, 4);
+            AuthorOKBut.Location = new Point(464, 191);
             AuthorOKBut.Name = "AuthorOKBut";
-            AuthorOKBut.Size = new Size(86, 31);
+            AuthorOKBut.Size = new Size(75, 23);
             AuthorOKBut.TabIndex = 6;
             AuthorOKBut.Text = "ОК";
             AuthorOKBut.UseVisualStyleBackColor = true;
@@ -474,44 +490,41 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(7, 33);
+            label1.Location = new Point(6, 25);
             label1.Name = "label1";
-            label1.Size = new Size(45, 20);
+            label1.Size = new Size(36, 15);
             label1.TabIndex = 1;
             label1.Text = "Имя*";
             // 
             // authorName2
             // 
-            authorName2.Location = new Point(7, 116);
-            authorName2.Margin = new Padding(3, 4, 3, 4);
+            authorName2.Location = new Point(6, 87);
             authorName2.Name = "authorName2";
-            authorName2.Size = new Size(218, 27);
+            authorName2.Size = new Size(191, 23);
             authorName2.TabIndex = 2;
             // 
             // authorName3
             // 
-            authorName3.Location = new Point(7, 175);
-            authorName3.Margin = new Padding(3, 4, 3, 4);
+            authorName3.Location = new Point(6, 131);
             authorName3.Name = "authorName3";
-            authorName3.Size = new Size(218, 27);
+            authorName3.Size = new Size(191, 23);
             authorName3.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(7, 92);
+            label2.Location = new Point(6, 69);
             label2.Name = "label2";
-            label2.Size = new Size(79, 20);
+            label2.Size = new Size(63, 15);
             label2.TabIndex = 3;
             label2.Text = "Фамилия*";
             // 
             // AddPublisherWin
             // 
             AddPublisherWin.Controls.Add(AddPublisherGroup);
-            AddPublisherWin.Location = new Point(4, 29);
-            AddPublisherWin.Margin = new Padding(3, 4, 3, 4);
+            AddPublisherWin.Location = new Point(4, 24);
             AddPublisherWin.Name = "AddPublisherWin";
-            AddPublisherWin.Size = new Size(728, 590);
+            AddPublisherWin.Size = new Size(636, 439);
             AddPublisherWin.TabIndex = 2;
             AddPublisherWin.Text = "Publisher";
             AddPublisherWin.UseVisualStyleBackColor = true;
@@ -526,11 +539,9 @@
             AddPublisherGroup.Controls.Add(label6);
             AddPublisherGroup.Controls.Add(PublisherAddress);
             AddPublisherGroup.Controls.Add(label7);
-            AddPublisherGroup.Location = new Point(7, 4);
-            AddPublisherGroup.Margin = new Padding(3, 4, 3, 4);
+            AddPublisherGroup.Location = new Point(6, 3);
             AddPublisherGroup.Name = "AddPublisherGroup";
-            AddPublisherGroup.Padding = new Padding(3, 4, 3, 4);
-            AddPublisherGroup.Size = new Size(715, 293);
+            AddPublisherGroup.Size = new Size(626, 220);
             AddPublisherGroup.TabIndex = 9;
             AddPublisherGroup.TabStop = false;
             AddPublisherGroup.Text = "Добавление";
@@ -539,17 +550,16 @@
             // 
             PublisherError.AutoSize = true;
             PublisherError.ForeColor = Color.Red;
-            PublisherError.Location = new Point(7, 221);
+            PublisherError.Location = new Point(6, 166);
             PublisherError.Name = "PublisherError";
-            PublisherError.Size = new Size(0, 20);
+            PublisherError.Size = new Size(0, 15);
             PublisherError.TabIndex = 8;
             // 
             // PublisherCancelBut
             // 
-            PublisherCancelBut.Location = new Point(623, 255);
-            PublisherCancelBut.Margin = new Padding(3, 4, 3, 4);
+            PublisherCancelBut.Location = new Point(545, 191);
             PublisherCancelBut.Name = "PublisherCancelBut";
-            PublisherCancelBut.Size = new Size(86, 31);
+            PublisherCancelBut.Size = new Size(75, 23);
             PublisherCancelBut.TabIndex = 7;
             PublisherCancelBut.Text = "Отмена";
             PublisherCancelBut.UseVisualStyleBackColor = true;
@@ -557,18 +567,16 @@
             // 
             // PublisherName
             // 
-            PublisherName.Location = new Point(7, 57);
-            PublisherName.Margin = new Padding(3, 4, 3, 4);
+            PublisherName.Location = new Point(6, 43);
             PublisherName.Name = "PublisherName";
-            PublisherName.Size = new Size(266, 27);
+            PublisherName.Size = new Size(233, 23);
             PublisherName.TabIndex = 0;
             // 
             // PublisherOKBut
             // 
-            PublisherOKBut.Location = new Point(530, 255);
-            PublisherOKBut.Margin = new Padding(3, 4, 3, 4);
+            PublisherOKBut.Location = new Point(464, 191);
             PublisherOKBut.Name = "PublisherOKBut";
-            PublisherOKBut.Size = new Size(86, 31);
+            PublisherOKBut.Size = new Size(75, 23);
             PublisherOKBut.TabIndex = 6;
             PublisherOKBut.Text = "ОК";
             PublisherOKBut.UseVisualStyleBackColor = true;
@@ -577,37 +585,35 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(7, 33);
+            label6.Location = new Point(6, 25);
             label6.Name = "label6";
-            label6.Size = new Size(122, 20);
+            label6.Size = new Size(95, 15);
             label6.TabIndex = 1;
             label6.Text = "Наименование*";
             // 
             // PublisherAddress
             // 
-            PublisherAddress.Location = new Point(7, 116);
-            PublisherAddress.Margin = new Padding(3, 4, 3, 4);
+            PublisherAddress.Location = new Point(6, 87);
             PublisherAddress.Name = "PublisherAddress";
-            PublisherAddress.Size = new Size(431, 27);
+            PublisherAddress.Size = new Size(378, 23);
             PublisherAddress.TabIndex = 2;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(7, 92);
+            label7.Location = new Point(6, 69);
             label7.Name = "label7";
-            label7.Size = new Size(57, 20);
+            label7.Size = new Size(45, 15);
             label7.TabIndex = 3;
             label7.Text = "Адрес*";
             // 
             // AddGenreWin
             // 
             AddGenreWin.Controls.Add(AddGenreGroup);
-            AddGenreWin.Location = new Point(4, 29);
-            AddGenreWin.Margin = new Padding(3, 4, 3, 4);
+            AddGenreWin.Location = new Point(4, 24);
             AddGenreWin.Name = "AddGenreWin";
-            AddGenreWin.Padding = new Padding(3, 4, 3, 4);
-            AddGenreWin.Size = new Size(728, 590);
+            AddGenreWin.Padding = new Padding(3);
+            AddGenreWin.Size = new Size(636, 439);
             AddGenreWin.TabIndex = 3;
             AddGenreWin.Text = "Genres";
             AddGenreWin.UseVisualStyleBackColor = true;
@@ -620,11 +626,9 @@
             AddGenreGroup.Controls.Add(GenreName);
             AddGenreGroup.Controls.Add(GenreOKBut);
             AddGenreGroup.Controls.Add(label5);
-            AddGenreGroup.Location = new Point(7, 4);
-            AddGenreGroup.Margin = new Padding(3, 4, 3, 4);
+            AddGenreGroup.Location = new Point(6, 3);
             AddGenreGroup.Name = "AddGenreGroup";
-            AddGenreGroup.Padding = new Padding(3, 4, 3, 4);
-            AddGenreGroup.Size = new Size(715, 293);
+            AddGenreGroup.Size = new Size(626, 220);
             AddGenreGroup.TabIndex = 10;
             AddGenreGroup.TabStop = false;
             AddGenreGroup.Text = "Добавление";
@@ -633,17 +637,16 @@
             // 
             GenreError.AutoSize = true;
             GenreError.ForeColor = Color.Red;
-            GenreError.Location = new Point(7, 221);
+            GenreError.Location = new Point(6, 166);
             GenreError.Name = "GenreError";
-            GenreError.Size = new Size(0, 20);
+            GenreError.Size = new Size(0, 15);
             GenreError.TabIndex = 8;
             // 
             // GenreCancelBut
             // 
-            GenreCancelBut.Location = new Point(623, 255);
-            GenreCancelBut.Margin = new Padding(3, 4, 3, 4);
+            GenreCancelBut.Location = new Point(545, 191);
             GenreCancelBut.Name = "GenreCancelBut";
-            GenreCancelBut.Size = new Size(86, 31);
+            GenreCancelBut.Size = new Size(75, 23);
             GenreCancelBut.TabIndex = 7;
             GenreCancelBut.Text = "Отмена";
             GenreCancelBut.UseVisualStyleBackColor = true;
@@ -651,18 +654,16 @@
             // 
             // GenreName
             // 
-            GenreName.Location = new Point(7, 57);
-            GenreName.Margin = new Padding(3, 4, 3, 4);
+            GenreName.Location = new Point(6, 43);
             GenreName.Name = "GenreName";
-            GenreName.Size = new Size(175, 27);
+            GenreName.Size = new Size(154, 23);
             GenreName.TabIndex = 0;
             // 
             // GenreOKBut
             // 
-            GenreOKBut.Location = new Point(530, 255);
-            GenreOKBut.Margin = new Padding(3, 4, 3, 4);
+            GenreOKBut.Location = new Point(464, 191);
             GenreOKBut.Name = "GenreOKBut";
-            GenreOKBut.Size = new Size(86, 31);
+            GenreOKBut.Size = new Size(75, 23);
             GenreOKBut.TabIndex = 6;
             GenreOKBut.Text = "ОК";
             GenreOKBut.UseVisualStyleBackColor = true;
@@ -671,20 +672,19 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(7, 33);
+            label5.Location = new Point(6, 25);
             label5.Name = "label5";
-            label5.Size = new Size(122, 20);
+            label5.Size = new Size(95, 15);
             label5.TabIndex = 1;
             label5.Text = "Наименование*";
             // 
             // AddPositionWin
             // 
             AddPositionWin.Controls.Add(AddPositionGroup);
-            AddPositionWin.Location = new Point(4, 29);
-            AddPositionWin.Margin = new Padding(3, 4, 3, 4);
+            AddPositionWin.Location = new Point(4, 24);
             AddPositionWin.Name = "AddPositionWin";
-            AddPositionWin.Padding = new Padding(3, 4, 3, 4);
-            AddPositionWin.Size = new Size(728, 590);
+            AddPositionWin.Padding = new Padding(3);
+            AddPositionWin.Size = new Size(636, 439);
             AddPositionWin.TabIndex = 4;
             AddPositionWin.Text = "Positions";
             AddPositionWin.UseVisualStyleBackColor = true;
@@ -697,11 +697,9 @@
             AddPositionGroup.Controls.Add(PositionName);
             AddPositionGroup.Controls.Add(PositionOKBut);
             AddPositionGroup.Controls.Add(label8);
-            AddPositionGroup.Location = new Point(7, 4);
-            AddPositionGroup.Margin = new Padding(3, 4, 3, 4);
+            AddPositionGroup.Location = new Point(6, 3);
             AddPositionGroup.Name = "AddPositionGroup";
-            AddPositionGroup.Padding = new Padding(3, 4, 3, 4);
-            AddPositionGroup.Size = new Size(715, 293);
+            AddPositionGroup.Size = new Size(626, 220);
             AddPositionGroup.TabIndex = 11;
             AddPositionGroup.TabStop = false;
             AddPositionGroup.Text = "Добавление";
@@ -710,17 +708,16 @@
             // 
             PositionError.AutoSize = true;
             PositionError.ForeColor = Color.Red;
-            PositionError.Location = new Point(7, 221);
+            PositionError.Location = new Point(6, 166);
             PositionError.Name = "PositionError";
-            PositionError.Size = new Size(0, 20);
+            PositionError.Size = new Size(0, 15);
             PositionError.TabIndex = 8;
             // 
             // PositionCancelBut
             // 
-            PositionCancelBut.Location = new Point(623, 255);
-            PositionCancelBut.Margin = new Padding(3, 4, 3, 4);
+            PositionCancelBut.Location = new Point(545, 191);
             PositionCancelBut.Name = "PositionCancelBut";
-            PositionCancelBut.Size = new Size(86, 31);
+            PositionCancelBut.Size = new Size(75, 23);
             PositionCancelBut.TabIndex = 7;
             PositionCancelBut.Text = "Отмена";
             PositionCancelBut.UseVisualStyleBackColor = true;
@@ -728,18 +725,16 @@
             // 
             // PositionName
             // 
-            PositionName.Location = new Point(7, 57);
-            PositionName.Margin = new Padding(3, 4, 3, 4);
+            PositionName.Location = new Point(6, 43);
             PositionName.Name = "PositionName";
-            PositionName.Size = new Size(266, 27);
+            PositionName.Size = new Size(233, 23);
             PositionName.TabIndex = 0;
             // 
             // PositionOKBut
             // 
-            PositionOKBut.Location = new Point(530, 255);
-            PositionOKBut.Margin = new Padding(3, 4, 3, 4);
+            PositionOKBut.Location = new Point(464, 191);
             PositionOKBut.Name = "PositionOKBut";
-            PositionOKBut.Size = new Size(86, 31);
+            PositionOKBut.Size = new Size(75, 23);
             PositionOKBut.TabIndex = 6;
             PositionOKBut.Text = "ОК";
             PositionOKBut.UseVisualStyleBackColor = true;
@@ -748,20 +743,19 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(7, 33);
+            label8.Location = new Point(6, 25);
             label8.Name = "label8";
-            label8.Size = new Size(122, 20);
+            label8.Size = new Size(95, 15);
             label8.TabIndex = 1;
             label8.Text = "Наименование*";
             // 
             // AddUserWin
             // 
             AddUserWin.Controls.Add(AddUserGroup);
-            AddUserWin.Location = new Point(4, 29);
-            AddUserWin.Margin = new Padding(3, 4, 3, 4);
+            AddUserWin.Location = new Point(4, 24);
             AddUserWin.Name = "AddUserWin";
-            AddUserWin.Padding = new Padding(3, 4, 3, 4);
-            AddUserWin.Size = new Size(728, 590);
+            AddUserWin.Padding = new Padding(3);
+            AddUserWin.Size = new Size(636, 439);
             AddUserWin.TabIndex = 5;
             AddUserWin.Text = "Users";
             AddUserWin.UseVisualStyleBackColor = true;
@@ -769,6 +763,8 @@
             // AddUserGroup
             // 
             AddUserGroup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddUserGroup.Controls.Add(label16);
+            AddUserGroup.Controls.Add(UserContact);
             AddUserGroup.Controls.Add(UserError);
             AddUserGroup.Controls.Add(label10);
             AddUserGroup.Controls.Add(UserCancelBut);
@@ -778,40 +774,53 @@
             AddUserGroup.Controls.Add(UserName2);
             AddUserGroup.Controls.Add(UserName3);
             AddUserGroup.Controls.Add(label12);
-            AddUserGroup.Location = new Point(7, 4);
-            AddUserGroup.Margin = new Padding(3, 4, 3, 4);
+            AddUserGroup.Location = new Point(6, 3);
             AddUserGroup.Name = "AddUserGroup";
-            AddUserGroup.Padding = new Padding(3, 4, 3, 4);
-            AddUserGroup.Size = new Size(715, 293);
+            AddUserGroup.Size = new Size(626, 251);
             AddUserGroup.TabIndex = 9;
             AddUserGroup.TabStop = false;
             AddUserGroup.Text = "Добавление";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(6, 157);
+            label16.Name = "label16";
+            label16.Size = new Size(116, 15);
+            label16.TabIndex = 10;
+            label16.Text = "Контактные данные";
+            // 
+            // UserContact
+            // 
+            UserContact.Location = new Point(6, 175);
+            UserContact.Name = "UserContact";
+            UserContact.Size = new Size(191, 23);
+            UserContact.TabIndex = 9;
             // 
             // UserError
             // 
             UserError.AutoSize = true;
             UserError.ForeColor = Color.Red;
-            UserError.Location = new Point(7, 221);
+            UserError.Location = new Point(6, 226);
             UserError.Name = "UserError";
-            UserError.Size = new Size(41, 20);
+            UserError.Size = new Size(32, 15);
             UserError.TabIndex = 8;
             UserError.Text = "error";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(7, 151);
+            label10.Location = new Point(6, 113);
             label10.Name = "label10";
-            label10.Size = new Size(72, 20);
+            label10.Size = new Size(58, 15);
             label10.TabIndex = 5;
             label10.Text = "Отчество";
             // 
             // UserCancelBut
             // 
-            UserCancelBut.Location = new Point(623, 255);
-            UserCancelBut.Margin = new Padding(3, 4, 3, 4);
+            UserCancelBut.Location = new Point(545, 222);
             UserCancelBut.Name = "UserCancelBut";
-            UserCancelBut.Size = new Size(86, 31);
+            UserCancelBut.Size = new Size(75, 23);
             UserCancelBut.TabIndex = 7;
             UserCancelBut.Text = "Отмена";
             UserCancelBut.UseVisualStyleBackColor = true;
@@ -819,18 +828,16 @@
             // 
             // UserName
             // 
-            UserName.Location = new Point(7, 57);
-            UserName.Margin = new Padding(3, 4, 3, 4);
+            UserName.Location = new Point(6, 43);
             UserName.Name = "UserName";
-            UserName.Size = new Size(218, 27);
+            UserName.Size = new Size(191, 23);
             UserName.TabIndex = 0;
             // 
             // UserOKBut
             // 
-            UserOKBut.Location = new Point(530, 255);
-            UserOKBut.Margin = new Padding(3, 4, 3, 4);
+            UserOKBut.Location = new Point(464, 222);
             UserOKBut.Name = "UserOKBut";
-            UserOKBut.Size = new Size(86, 31);
+            UserOKBut.Size = new Size(75, 23);
             UserOKBut.TabIndex = 6;
             UserOKBut.Text = "ОК";
             UserOKBut.UseVisualStyleBackColor = true;
@@ -839,45 +846,42 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(7, 33);
+            label11.Location = new Point(6, 25);
             label11.Name = "label11";
-            label11.Size = new Size(45, 20);
+            label11.Size = new Size(36, 15);
             label11.TabIndex = 1;
             label11.Text = "Имя*";
             // 
             // UserName2
             // 
-            UserName2.Location = new Point(7, 116);
-            UserName2.Margin = new Padding(3, 4, 3, 4);
+            UserName2.Location = new Point(6, 87);
             UserName2.Name = "UserName2";
-            UserName2.Size = new Size(218, 27);
+            UserName2.Size = new Size(191, 23);
             UserName2.TabIndex = 2;
             // 
             // UserName3
             // 
-            UserName3.Location = new Point(7, 175);
-            UserName3.Margin = new Padding(3, 4, 3, 4);
+            UserName3.Location = new Point(6, 131);
             UserName3.Name = "UserName3";
-            UserName3.Size = new Size(218, 27);
+            UserName3.Size = new Size(191, 23);
             UserName3.TabIndex = 4;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(7, 92);
+            label12.Location = new Point(6, 69);
             label12.Name = "label12";
-            label12.Size = new Size(79, 20);
+            label12.Size = new Size(63, 15);
             label12.TabIndex = 3;
             label12.Text = "Фамилия*";
             // 
             // AddLibrarianWin
             // 
             AddLibrarianWin.Controls.Add(AddLibrarianGroup);
-            AddLibrarianWin.Location = new Point(4, 29);
-            AddLibrarianWin.Margin = new Padding(3, 4, 3, 4);
+            AddLibrarianWin.Location = new Point(4, 24);
             AddLibrarianWin.Name = "AddLibrarianWin";
-            AddLibrarianWin.Padding = new Padding(3, 4, 3, 4);
-            AddLibrarianWin.Size = new Size(728, 590);
+            AddLibrarianWin.Padding = new Padding(3);
+            AddLibrarianWin.Size = new Size(636, 439);
             AddLibrarianWin.TabIndex = 6;
             AddLibrarianWin.Text = "Librarians";
             AddLibrarianWin.UseVisualStyleBackColor = true;
@@ -897,21 +901,18 @@
             AddLibrarianGroup.Controls.Add(LibrarianName2);
             AddLibrarianGroup.Controls.Add(LibrarianName3);
             AddLibrarianGroup.Controls.Add(label14);
-            AddLibrarianGroup.Location = new Point(7, 4);
-            AddLibrarianGroup.Margin = new Padding(3, 4, 3, 4);
+            AddLibrarianGroup.Location = new Point(6, 3);
             AddLibrarianGroup.Name = "AddLibrarianGroup";
-            AddLibrarianGroup.Padding = new Padding(3, 4, 3, 4);
-            AddLibrarianGroup.Size = new Size(715, 379);
+            AddLibrarianGroup.Size = new Size(626, 284);
             AddLibrarianGroup.TabIndex = 10;
             AddLibrarianGroup.TabStop = false;
             AddLibrarianGroup.Text = "Добавление";
             // 
             // goToPositions
             // 
-            goToPositions.Location = new Point(278, 233);
-            goToPositions.Margin = new Padding(3, 4, 3, 4);
+            goToPositions.Location = new Point(243, 175);
             goToPositions.Name = "goToPositions";
-            goToPositions.Size = new Size(27, 31);
+            goToPositions.Size = new Size(24, 23);
             goToPositions.TabIndex = 12;
             goToPositions.Text = "...";
             goToPositions.UseVisualStyleBackColor = true;
@@ -920,18 +921,17 @@
             // LibrarianPosition
             // 
             LibrarianPosition.FormattingEnabled = true;
-            LibrarianPosition.Location = new Point(7, 233);
-            LibrarianPosition.Margin = new Padding(3, 4, 3, 4);
+            LibrarianPosition.Location = new Point(6, 175);
             LibrarianPosition.Name = "LibrarianPosition";
-            LibrarianPosition.Size = new Size(263, 28);
+            LibrarianPosition.Size = new Size(231, 23);
             LibrarianPosition.TabIndex = 11;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(7, 209);
+            label15.Location = new Point(6, 157);
             label15.Name = "label15";
-            label15.Size = new Size(86, 20);
+            label15.Size = new Size(69, 15);
             label15.TabIndex = 10;
             label15.Text = "Должность";
             // 
@@ -939,27 +939,26 @@
             // 
             LibrarianError.AutoSize = true;
             LibrarianError.ForeColor = Color.Red;
-            LibrarianError.Location = new Point(7, 313);
+            LibrarianError.Location = new Point(6, 235);
             LibrarianError.Name = "LibrarianError";
-            LibrarianError.Size = new Size(41, 20);
+            LibrarianError.Size = new Size(32, 15);
             LibrarianError.TabIndex = 8;
             LibrarianError.Text = "error";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(7, 151);
+            label9.Location = new Point(6, 113);
             label9.Name = "label9";
-            label9.Size = new Size(72, 20);
+            label9.Size = new Size(58, 15);
             label9.TabIndex = 5;
             label9.Text = "Отчество";
             // 
             // LibrarianCancelBut
             // 
-            LibrarianCancelBut.Location = new Point(623, 340);
-            LibrarianCancelBut.Margin = new Padding(3, 4, 3, 4);
+            LibrarianCancelBut.Location = new Point(545, 255);
             LibrarianCancelBut.Name = "LibrarianCancelBut";
-            LibrarianCancelBut.Size = new Size(86, 31);
+            LibrarianCancelBut.Size = new Size(75, 23);
             LibrarianCancelBut.TabIndex = 7;
             LibrarianCancelBut.Text = "Отмена";
             LibrarianCancelBut.UseVisualStyleBackColor = true;
@@ -967,18 +966,16 @@
             // 
             // LibrarianName
             // 
-            LibrarianName.Location = new Point(7, 57);
-            LibrarianName.Margin = new Padding(3, 4, 3, 4);
+            LibrarianName.Location = new Point(6, 43);
             LibrarianName.Name = "LibrarianName";
-            LibrarianName.Size = new Size(218, 27);
+            LibrarianName.Size = new Size(191, 23);
             LibrarianName.TabIndex = 0;
             // 
             // LibrarianOKBut
             // 
-            LibrarianOKBut.Location = new Point(530, 340);
-            LibrarianOKBut.Margin = new Padding(3, 4, 3, 4);
+            LibrarianOKBut.Location = new Point(464, 255);
             LibrarianOKBut.Name = "LibrarianOKBut";
-            LibrarianOKBut.Size = new Size(86, 31);
+            LibrarianOKBut.Size = new Size(75, 23);
             LibrarianOKBut.TabIndex = 6;
             LibrarianOKBut.Text = "ОК";
             LibrarianOKBut.UseVisualStyleBackColor = true;
@@ -987,44 +984,41 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(7, 33);
+            label13.Location = new Point(6, 25);
             label13.Name = "label13";
-            label13.Size = new Size(45, 20);
+            label13.Size = new Size(36, 15);
             label13.TabIndex = 1;
             label13.Text = "Имя*";
             // 
             // LibrarianName2
             // 
-            LibrarianName2.Location = new Point(7, 116);
-            LibrarianName2.Margin = new Padding(3, 4, 3, 4);
+            LibrarianName2.Location = new Point(6, 87);
             LibrarianName2.Name = "LibrarianName2";
-            LibrarianName2.Size = new Size(218, 27);
+            LibrarianName2.Size = new Size(191, 23);
             LibrarianName2.TabIndex = 2;
             // 
             // LibrarianName3
             // 
-            LibrarianName3.Location = new Point(7, 175);
-            LibrarianName3.Margin = new Padding(3, 4, 3, 4);
+            LibrarianName3.Location = new Point(6, 131);
             LibrarianName3.Name = "LibrarianName3";
-            LibrarianName3.Size = new Size(218, 27);
+            LibrarianName3.Size = new Size(191, 23);
             LibrarianName3.TabIndex = 4;
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(7, 92);
+            label14.Location = new Point(6, 69);
             label14.Name = "label14";
-            label14.Size = new Size(79, 20);
+            label14.Size = new Size(63, 15);
             label14.TabIndex = 3;
             label14.Text = "Фамилия*";
             // 
             // AddBookWin
             // 
             AddBookWin.Controls.Add(AddBookGroup);
-            AddBookWin.Location = new Point(4, 29);
-            AddBookWin.Margin = new Padding(3, 4, 3, 4);
+            AddBookWin.Location = new Point(4, 24);
             AddBookWin.Name = "AddBookWin";
-            AddBookWin.Size = new Size(728, 590);
+            AddBookWin.Size = new Size(636, 439);
             AddBookWin.TabIndex = 7;
             AddBookWin.Text = "Books";
             AddBookWin.UseVisualStyleBackColor = true;
@@ -1050,11 +1044,9 @@
             AddBookGroup.Controls.Add(BookOKBut);
             AddBookGroup.Controls.Add(label18);
             AddBookGroup.Controls.Add(label19);
-            AddBookGroup.Location = new Point(7, 4);
-            AddBookGroup.Margin = new Padding(3, 4, 3, 4);
+            AddBookGroup.Location = new Point(6, 3);
             AddBookGroup.Name = "AddBookGroup";
-            AddBookGroup.Padding = new Padding(3, 4, 3, 4);
-            AddBookGroup.Size = new Size(715, 577);
+            AddBookGroup.Size = new Size(626, 433);
             AddBookGroup.TabIndex = 11;
             AddBookGroup.TabStop = false;
             AddBookGroup.Text = "Добавление";
@@ -1064,22 +1056,20 @@
             BookGenresView.AllowUserToAddRows = false;
             BookGenresView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             BookGenresView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            BookGenresView.Location = new Point(7, 363);
-            BookGenresView.Margin = new Padding(3, 4, 3, 4);
+            BookGenresView.Location = new Point(6, 272);
             BookGenresView.Name = "BookGenresView";
             BookGenresView.ReadOnly = true;
             BookGenresView.RowHeadersWidth = 51;
             BookGenresView.RowTemplate.Height = 25;
             BookGenresView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            BookGenresView.Size = new Size(221, 101);
+            BookGenresView.Size = new Size(193, 76);
             BookGenresView.TabIndex = 22;
             // 
             // BookGenreDelete
             // 
-            BookGenreDelete.Location = new Point(234, 413);
-            BookGenreDelete.Margin = new Padding(3, 4, 3, 4);
+            BookGenreDelete.Location = new Point(205, 310);
             BookGenreDelete.Name = "BookGenreDelete";
-            BookGenreDelete.Size = new Size(37, 43);
+            BookGenreDelete.Size = new Size(32, 32);
             BookGenreDelete.TabIndex = 21;
             BookGenreDelete.Text = "-";
             BookGenreDelete.UseVisualStyleBackColor = true;
@@ -1087,10 +1077,9 @@
             // 
             // BookGenreAdd
             // 
-            BookGenreAdd.Location = new Point(234, 363);
-            BookGenreAdd.Margin = new Padding(3, 4, 3, 4);
+            BookGenreAdd.Location = new Point(205, 272);
             BookGenreAdd.Name = "BookGenreAdd";
-            BookGenreAdd.Size = new Size(37, 43);
+            BookGenreAdd.Size = new Size(32, 32);
             BookGenreAdd.TabIndex = 20;
             BookGenreAdd.Text = "+";
             BookGenreAdd.UseVisualStyleBackColor = true;
@@ -1099,18 +1088,17 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(7, 339);
+            label20.Location = new Point(6, 254);
             label20.Name = "label20";
-            label20.Size = new Size(59, 20);
+            label20.Size = new Size(47, 15);
             label20.TabIndex = 18;
             label20.Text = "Жанры";
             // 
             // BookAuthorDelete
             // 
-            BookAuthorDelete.Location = new Point(450, 284);
-            BookAuthorDelete.Margin = new Padding(3, 4, 3, 4);
+            BookAuthorDelete.Location = new Point(394, 213);
             BookAuthorDelete.Name = "BookAuthorDelete";
-            BookAuthorDelete.Size = new Size(37, 43);
+            BookAuthorDelete.Size = new Size(32, 32);
             BookAuthorDelete.TabIndex = 17;
             BookAuthorDelete.Text = "-";
             BookAuthorDelete.UseVisualStyleBackColor = true;
@@ -1118,10 +1106,9 @@
             // 
             // BookAuthorAdd
             // 
-            BookAuthorAdd.Location = new Point(450, 233);
-            BookAuthorAdd.Margin = new Padding(3, 4, 3, 4);
+            BookAuthorAdd.Location = new Point(394, 175);
             BookAuthorAdd.Name = "BookAuthorAdd";
-            BookAuthorAdd.Size = new Size(37, 43);
+            BookAuthorAdd.Size = new Size(32, 32);
             BookAuthorAdd.TabIndex = 16;
             BookAuthorAdd.Text = "+";
             BookAuthorAdd.UseVisualStyleBackColor = true;
@@ -1132,39 +1119,36 @@
             BookAuthorsView.AllowUserToAddRows = false;
             BookAuthorsView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             BookAuthorsView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            BookAuthorsView.Location = new Point(7, 233);
-            BookAuthorsView.Margin = new Padding(3, 4, 3, 4);
+            BookAuthorsView.Location = new Point(6, 175);
             BookAuthorsView.Name = "BookAuthorsView";
             BookAuthorsView.ReadOnly = true;
             BookAuthorsView.RowHeadersWidth = 51;
             BookAuthorsView.RowTemplate.Height = 25;
             BookAuthorsView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            BookAuthorsView.Size = new Size(437, 101);
+            BookAuthorsView.Size = new Size(382, 76);
             BookAuthorsView.TabIndex = 15;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(7, 209);
+            label17.Location = new Point(6, 157);
             label17.Name = "label17";
-            label17.Size = new Size(62, 20);
+            label17.Size = new Size(49, 15);
             label17.TabIndex = 14;
             label17.Text = "Авторы";
             // 
             // BookDate
             // 
-            BookDate.Location = new Point(7, 116);
-            BookDate.Margin = new Padding(3, 4, 3, 4);
+            BookDate.Location = new Point(6, 87);
             BookDate.Name = "BookDate";
-            BookDate.Size = new Size(218, 27);
+            BookDate.Size = new Size(191, 23);
             BookDate.TabIndex = 13;
             // 
             // BookPublisherAdd
             // 
-            BookPublisherAdd.Location = new Point(278, 175);
-            BookPublisherAdd.Margin = new Padding(3, 4, 3, 4);
+            BookPublisherAdd.Location = new Point(243, 131);
             BookPublisherAdd.Name = "BookPublisherAdd";
-            BookPublisherAdd.Size = new Size(27, 31);
+            BookPublisherAdd.Size = new Size(24, 23);
             BookPublisherAdd.TabIndex = 12;
             BookPublisherAdd.Text = "...";
             BookPublisherAdd.UseVisualStyleBackColor = true;
@@ -1173,18 +1157,17 @@
             // BookPublisher
             // 
             BookPublisher.FormattingEnabled = true;
-            BookPublisher.Location = new Point(7, 175);
-            BookPublisher.Margin = new Padding(3, 4, 3, 4);
+            BookPublisher.Location = new Point(6, 131);
             BookPublisher.Name = "BookPublisher";
-            BookPublisher.Size = new Size(263, 28);
+            BookPublisher.Size = new Size(231, 23);
             BookPublisher.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(7, 151);
+            label4.Location = new Point(6, 113);
             label4.Name = "label4";
-            label4.Size = new Size(103, 20);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 10;
             label4.Text = "Издательство";
             // 
@@ -1192,19 +1175,18 @@
             // 
             BookError.AutoSize = true;
             BookError.ForeColor = Color.Red;
-            BookError.Location = new Point(7, 544);
+            BookError.Location = new Point(6, 408);
             BookError.Name = "BookError";
-            BookError.Size = new Size(41, 20);
+            BookError.Size = new Size(32, 15);
             BookError.TabIndex = 8;
             BookError.Text = "error";
             // 
             // BookCancelBut
             // 
             BookCancelBut.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            BookCancelBut.Location = new Point(623, 539);
-            BookCancelBut.Margin = new Padding(3, 4, 3, 4);
+            BookCancelBut.Location = new Point(545, 404);
             BookCancelBut.Name = "BookCancelBut";
-            BookCancelBut.Size = new Size(86, 31);
+            BookCancelBut.Size = new Size(75, 23);
             BookCancelBut.TabIndex = 7;
             BookCancelBut.Text = "Отмена";
             BookCancelBut.UseVisualStyleBackColor = true;
@@ -1212,19 +1194,17 @@
             // 
             // BookName
             // 
-            BookName.Location = new Point(7, 57);
-            BookName.Margin = new Padding(3, 4, 3, 4);
+            BookName.Location = new Point(6, 43);
             BookName.Name = "BookName";
-            BookName.Size = new Size(338, 27);
+            BookName.Size = new Size(296, 23);
             BookName.TabIndex = 0;
             // 
             // BookOKBut
             // 
             BookOKBut.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            BookOKBut.Location = new Point(530, 539);
-            BookOKBut.Margin = new Padding(3, 4, 3, 4);
+            BookOKBut.Location = new Point(464, 404);
             BookOKBut.Name = "BookOKBut";
-            BookOKBut.Size = new Size(86, 31);
+            BookOKBut.Size = new Size(75, 23);
             BookOKBut.TabIndex = 6;
             BookOKBut.Text = "ОК";
             BookOKBut.UseVisualStyleBackColor = true;
@@ -1233,29 +1213,167 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(7, 33);
+            label18.Location = new Point(6, 25);
             label18.Name = "label18";
-            label18.Size = new Size(83, 20);
+            label18.Size = new Size(64, 15);
             label18.TabIndex = 1;
             label18.Text = "Название*";
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(7, 92);
+            label19.Location = new Point(6, 69);
             label19.Name = "label19";
-            label19.Size = new Size(129, 20);
+            label19.Size = new Size(102, 15);
             label19.TabIndex = 3;
             label19.Text = "Дата публикации";
+            // 
+            // AddEntryWin
+            // 
+            AddEntryWin.Controls.Add(groupBox1);
+            AddEntryWin.Location = new Point(4, 24);
+            AddEntryWin.Name = "AddEntryWin";
+            AddEntryWin.Size = new Size(636, 439);
+            AddEntryWin.TabIndex = 8;
+            AddEntryWin.Text = "Entries";
+            AddEntryWin.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button4);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(comboBox3);
+            groupBox1.Controls.Add(label21);
+            groupBox1.Controls.Add(dateTimePicker3);
+            groupBox1.Controls.Add(label27);
+            groupBox1.Controls.Add(dateTimePicker2);
+            groupBox1.Controls.Add(label25);
+            groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(comboBox2);
+            groupBox1.Controls.Add(label22);
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(button5);
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label23);
+            groupBox1.Controls.Add(label24);
+            groupBox1.Controls.Add(button6);
+            groupBox1.Controls.Add(button7);
+            groupBox1.Controls.Add(label26);
+            groupBox1.Location = new Point(5, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(626, 433);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Добавление";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(379, 265);
+            button3.Name = "button3";
+            button3.Size = new Size(24, 23);
+            button3.TabIndex = 25;
+            button3.Text = "...";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(6, 266);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(367, 23);
+            comboBox2.TabIndex = 24;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(6, 248);
+            label22.Name = "label22";
+            label22.Size = new Size(146, 15);
+            label22.TabIndex = 23;
+            label22.Text = "Ответственный работник";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(6, 178);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(191, 23);
+            dateTimePicker1.TabIndex = 13;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(379, 46);
+            button5.Name = "button5";
+            button5.Size = new Size(24, 23);
+            button5.TabIndex = 12;
+            button5.Text = "...";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(6, 46);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(367, 23);
+            comboBox1.TabIndex = 11;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(6, 28);
+            label23.Name = "label23";
+            label23.Size = new Size(118, 15);
+            label23.TabIndex = 10;
+            label23.Text = "Читательский билет";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.ForeColor = Color.Red;
+            label24.Location = new Point(6, 408);
+            label24.Name = "label24";
+            label24.Size = new Size(32, 15);
+            label24.TabIndex = 8;
+            label24.Text = "error";
+            // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button6.Location = new Point(971, 737);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 7;
+            button6.Text = "Отмена";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button7.Location = new Point(890, 737);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 6;
+            button7.Text = "ОК";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new Point(6, 160);
+            label26.Name = "label26";
+            label26.Size = new Size(172, 15);
+            label26.TabIndex = 3;
+            label26.Text = "Планированная дата возврата";
             // 
             // label
             // 
             label.Anchor = AnchorStyles.Left;
             label.AutoSize = true;
-            label.Location = new Point(23, 10);
-            label.Margin = new Padding(23, 0, 3, 0);
+            label.Location = new Point(20, 7);
+            label.Margin = new Padding(20, 0, 3, 0);
             label.Name = "label";
-            label.Size = new Size(134, 20);
+            label.Size = new Size(106, 15);
             label.TabIndex = 8;
             label.Text = "Имя справочника";
             // 
@@ -1263,28 +1381,27 @@
             // 
             search_panel.Anchor = AnchorStyles.Right;
             search_panel.ColumnCount = 4;
-            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 343F));
-            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 91F));
-            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 91F));
+            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             search_panel.ColumnStyles.Add(new ColumnStyle());
             search_panel.Controls.Add(search_but, 1, 0);
             search_panel.Controls.Add(clear_search_but, 2, 0);
             search_panel.Controls.Add(search_bar, 0, 0);
-            search_panel.Location = new Point(218, 40);
+            search_panel.Location = new Point(191, 30);
             search_panel.Margin = new Padding(0);
             search_panel.Name = "search_panel";
             search_panel.RowCount = 1;
             search_panel.RowStyles.Add(new RowStyle());
-            search_panel.Size = new Size(529, 40);
+            search_panel.Size = new Size(463, 30);
             search_panel.TabIndex = 6;
             // 
             // search_but
             // 
             search_but.Anchor = AnchorStyles.Left;
-            search_but.Location = new Point(346, 4);
-            search_but.Margin = new Padding(3, 4, 3, 4);
+            search_but.Location = new Point(303, 3);
             search_but.Name = "search_but";
-            search_but.Size = new Size(85, 31);
+            search_but.Size = new Size(74, 23);
             search_but.TabIndex = 1;
             search_but.Text = "Найти";
             search_but.UseVisualStyleBackColor = true;
@@ -1292,10 +1409,9 @@
             // clear_search_but
             // 
             clear_search_but.Anchor = AnchorStyles.Left;
-            clear_search_but.Location = new Point(437, 4);
-            clear_search_but.Margin = new Padding(3, 4, 3, 4);
+            clear_search_but.Location = new Point(383, 3);
             clear_search_but.Name = "clear_search_but";
-            clear_search_but.Size = new Size(85, 31);
+            clear_search_but.Size = new Size(74, 23);
             clear_search_but.TabIndex = 2;
             clear_search_but.Text = "Очистить";
             clear_search_but.UseVisualStyleBackColor = true;
@@ -1303,10 +1419,9 @@
             // search_bar
             // 
             search_bar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            search_bar.Location = new Point(3, 6);
-            search_bar.Margin = new Padding(3, 4, 3, 4);
+            search_bar.Location = new Point(3, 3);
             search_bar.Name = "search_bar";
-            search_bar.Size = new Size(337, 27);
+            search_bar.Size = new Size(294, 23);
             search_bar.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -1315,19 +1430,96 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(6, 134);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(191, 23);
+            dateTimePicker2.TabIndex = 27;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(6, 116);
+            label25.Name = "label25";
+            label25.Size = new Size(76, 15);
+            label25.TabIndex = 26;
+            label25.Text = "Дата выдачи";
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Location = new Point(6, 222);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(191, 23);
+            dateTimePicker3.TabIndex = 29;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(6, 204);
+            label27.Name = "label27";
+            label27.Size = new Size(154, 15);
+            label27.TabIndex = 28;
+            label27.Text = "Фактическая дата возврата";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(513, 90);
+            button1.Name = "button1";
+            button1.Size = new Size(24, 23);
+            button1.TabIndex = 32;
+            button1.Text = "...";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(6, 90);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(501, 23);
+            comboBox3.TabIndex = 31;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(6, 72);
+            label21.Name = "label21";
+            label21.Size = new Size(39, 15);
+            label21.TabIndex = 30;
+            label21.Text = "Книга";
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button2.Location = new Point(543, 404);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 34;
+            button2.Text = "Отмена";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button4.Location = new Point(462, 404);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 33;
+            button4.Text = "ОК";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // main_form
             // 
             AllowDrop = true;
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 737);
+            ClientSize = new Size(784, 559);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 4, 3, 4);
-            MaximumSize = new Size(1369, 784);
-            MinimumSize = new Size(912, 784);
+            MaximumSize = new Size(1200, 598);
+            MinimumSize = new Size(800, 598);
             Name = "main_form";
             Text = "библиотека";
             Activated += main_form_Activated;
@@ -1362,6 +1554,9 @@
             AddBookGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)BookGenresView).EndInit();
             ((System.ComponentModel.ISupportInitialize)BookAuthorsView).EndInit();
+            AddEntryWin.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             search_panel.ResumeLayout(false);
             search_panel.PerformLayout();
             ResumeLayout(false);
@@ -1478,5 +1673,29 @@
         private DataGridView BookAuthorsView;
         private Label label17;
         private DataGridView BookGenresView;
+        private Label label16;
+        private TextBox UserContact;
+        private TabPage AddEntryWin;
+        private GroupBox groupBox1;
+        private DateTimePicker dateTimePicker1;
+        private Button button5;
+        private ComboBox comboBox1;
+        private Label label23;
+        private Label label24;
+        private Button button6;
+        private Button button7;
+        private Label label26;
+        private Button button3;
+        private ComboBox comboBox2;
+        private Label label22;
+        private DateTimePicker dateTimePicker2;
+        private Label label25;
+        private Button button1;
+        private ComboBox comboBox3;
+        private Label label21;
+        private DateTimePicker dateTimePicker3;
+        private Label label27;
+        private Button button2;
+        private Button button4;
     }
 }

@@ -9,8 +9,10 @@ namespace Library.Model
     internal class Entry
     {
         public int Id { get; set; }
-        public DateTime CaptureDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        public DateTime TakeDate { get; set; }
+        public DateTime PlanReturnDate { get; set; }
+
+        public DateTime FactReturnDate {  get; set; }
 
         public int UserId { get; set; }
         public User? User { get; set; } = new();
