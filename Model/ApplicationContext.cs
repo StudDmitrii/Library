@@ -8,10 +8,8 @@ namespace Library.Model
         public DbSet<Author> Author { get; set; }
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Position> Position { get; set; }
-        public DbSet<User> Users { get; set; }
 
         public DbSet<Genre> Genre { get; set; }
-        //public DbSet<Worker> Librarian { get; set; }
         public DbSet<Worker> Worker { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<Entry> Entry { get; set; }

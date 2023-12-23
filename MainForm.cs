@@ -122,8 +122,8 @@ namespace Library
                 var items = db.User.ToList();
                 dataView.DataSource = items;
                 //dataView.Columns[0].Visible = false;
-                dataView.Columns[1].HeaderText = "Фамилия";
-                dataView.Columns[2].HeaderText = "Имя";
+                dataView.Columns[1].HeaderText = "Имя";
+                dataView.Columns[2].HeaderText = "Фамилия";
                 dataView.Columns[3].HeaderText = "Отчество";
                 dataView.Columns[4].HeaderText = "Контактные данные";
             }
@@ -139,8 +139,8 @@ namespace Library
                     {
                         Id = p.Id,
                         Position = p.Position.Name,
-                        Name1 = p.Name1,
-                        Name2 = p.Name2,
+                        Name1 = p.Name2,
+                        Name2 = p.Name1,
                         Name3 = p.Name3
                     }).ToList();
                     dataView.DataSource = items;
@@ -198,7 +198,7 @@ namespace Library
                         PlanReturnDate = p.PlanReturnDate,
                         FactReturnDate = p.FactReturnDate,
                         Worker = p.Worker.Name1.ToString()[0] + "." + p.Worker.Name2.ToString()[0] + "." + p.Worker.Name3,
-                        
+
                     }).ToList();
                     dataView.DataSource = items;
                     //dataView.Columns[0].Visible = false;
@@ -325,6 +325,19 @@ namespace Library
                 var items2 = db.Publisher.Select(p =>
                 p.Name.ToString()).ToList();
                 BookPublisher.DataSource = items2;
+
+                //entry
+                var items3 = db.User.Select(p =>
+                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
+                EntryUser.DataSource = items3;
+
+                var items4 = db.Book.Select(p =>
+                p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
+                EntryBook.DataSource = items4;
+
+                var items5 = db.Worker.Select(p =>
+                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
+                EntryWorker.DataSource = items5;
             }
             //}
         }
@@ -507,6 +520,13 @@ namespace Library
                     LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     break;
                 case WinEnum.Entries:
+                    EntryTakeDate.Value = (DateTime)dataView.SelectedRows[0].Cells[3].Value;
+                    EntryPlanReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[4].Value;
+                    EntryFactReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[5].Value;
+                    window.SelectTab("AddEntryWin");
+                    EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
                     break;
             }
             control_panel.Enabled = !control_panel.Enabled;
@@ -843,6 +863,72 @@ namespace Library
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Publishers, true, this);
             if (rows == null) return;
             BookPublisher.SelectedItem = rows[0][1];
+        }
+
+        private void EntryUserAdd_Click(object sender, EventArgs e)
+        {
+            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Users, true, this);
+            if (rows == null) return;
+            EntryUser.SelectedItem = rows[0][1][0] + "." + rows[0][3][0] + "." + rows[0][2] + " - " + rows[0][4];
+        }
+
+        private void EntryBookAdd_Click(object sender, EventArgs e)
+        {
+            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Books, true, this);
+            if (rows == null) return;
+            EntryBook.SelectedItem = rows[0][1] + " " + rows[0][4].Split(' ')[1];
+        }
+
+        private void EntryWorkerAdd_Click(object sender, EventArgs e)
+        {
+            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Librarians, true, this);
+            if (rows == null) return;
+            EntryWorker.SelectedItem = rows[0][3][0] + "." + rows[0][4][0] + "." + rows[0][2] + " - " + rows[0][1];
+        }
+
+        private void EntryOKBut_Click(object sender, EventArgs e)
+        {
+            window.Enabled = !window.Enabled;
+
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                Model.Entry? newInst = db.Entry.Find(rowSource[0]);
+                var val = (User)db.User.Where(p => EntryUser.SelectedValue.ToString().Contains(p.Contact)).ToList()[0];
+                var val2 = (Book)db.Book.Where(p => EntryBook.SelectedValue.ToString().Contains(p.Name)).ToList()[0];
+                var val3 = (Worker)db.Worker.Where(p => EntryWorker.SelectedValue.ToString().Contains(p.Name2)).ToList()[0];
+                if (newInst != null)
+                {
+                    newInst.User = val;
+                    newInst.Book = val2;
+                    newInst.Worker = val3;
+                    newInst.TakeDate = EntryTakeDate.Value;
+                    newInst.PlanReturnDate = EntryPlanReturnDate.Value;
+                    newInst.FactReturnDate = EntryFactReturnDate.Value;
+                }
+                else
+                {
+                    newInst = new Model.Entry {
+                        User = val,
+                        Book = val2,
+                        Worker = val3,
+                        TakeDate = EntryTakeDate.Value,
+                        PlanReturnDate = EntryPlanReturnDate.Value,
+                        FactReturnDate = EntryFactReturnDate.Value
+                    };
+                    db.Entry.Add(newInst);
+                }
+                db.SaveChanges();
+                SetView(source);
+            }
+            EntryCancelBut_Click(sender, e);
+
+            window.Enabled = !window.Enabled;
+        }
+
+        private void EntryCancelBut_Click(object sender, EventArgs e)
+        {
+            ClearInputs(AddBookGroup);
+            BackToView();
         }
     }
 }

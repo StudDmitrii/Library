@@ -134,24 +134,24 @@
             label18 = new Label();
             label19 = new Label();
             AddEntryWin = new TabPage();
-            groupBox1 = new GroupBox();
-            button2 = new Button();
-            button4 = new Button();
-            button1 = new Button();
-            comboBox3 = new ComboBox();
+            AddEntryGroup = new GroupBox();
+            EntryCancelBut = new Button();
+            EntryOKBut = new Button();
+            EntryBookAdd = new Button();
+            EntryBook = new ComboBox();
             label21 = new Label();
-            dateTimePicker3 = new DateTimePicker();
+            EntryFactReturnDate = new DateTimePicker();
             label27 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            EntryTakeDate = new DateTimePicker();
             label25 = new Label();
-            button3 = new Button();
-            comboBox2 = new ComboBox();
+            EntryWorkerAdd = new Button();
+            EntryWorker = new ComboBox();
             label22 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            button5 = new Button();
-            comboBox1 = new ComboBox();
+            EntryPlanReturnDate = new DateTimePicker();
+            EntryUserAdd = new Button();
+            EntryUser = new ComboBox();
             label23 = new Label();
-            label24 = new Label();
+            EntryError = new Label();
             button6 = new Button();
             button7 = new Button();
             label26 = new Label();
@@ -184,7 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)BookGenresView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BookAuthorsView).BeginInit();
             AddEntryWin.SuspendLayout();
-            groupBox1.SuspendLayout();
+            AddEntryGroup.SuspendLayout();
             search_panel.SuspendLayout();
             SuspendLayout();
             // 
@@ -1230,7 +1230,7 @@
             // 
             // AddEntryWin
             // 
-            AddEntryWin.Controls.Add(groupBox1);
+            AddEntryWin.Controls.Add(AddEntryGroup);
             AddEntryWin.Location = new Point(4, 24);
             AddEntryWin.Name = "AddEntryWin";
             AddEntryWin.Size = new Size(636, 439);
@@ -1238,72 +1238,75 @@
             AddEntryWin.Text = "Entries";
             AddEntryWin.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // AddEntryGroup
             // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(comboBox3);
-            groupBox1.Controls.Add(label21);
-            groupBox1.Controls.Add(dateTimePicker3);
-            groupBox1.Controls.Add(label27);
-            groupBox1.Controls.Add(dateTimePicker2);
-            groupBox1.Controls.Add(label25);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(comboBox2);
-            groupBox1.Controls.Add(label22);
-            groupBox1.Controls.Add(dateTimePicker1);
-            groupBox1.Controls.Add(button5);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(label23);
-            groupBox1.Controls.Add(label24);
-            groupBox1.Controls.Add(button6);
-            groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(label26);
-            groupBox1.Location = new Point(5, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(626, 433);
-            groupBox1.TabIndex = 12;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Добавление";
+            AddEntryGroup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddEntryGroup.Controls.Add(EntryCancelBut);
+            AddEntryGroup.Controls.Add(EntryOKBut);
+            AddEntryGroup.Controls.Add(EntryBookAdd);
+            AddEntryGroup.Controls.Add(EntryBook);
+            AddEntryGroup.Controls.Add(label21);
+            AddEntryGroup.Controls.Add(EntryFactReturnDate);
+            AddEntryGroup.Controls.Add(label27);
+            AddEntryGroup.Controls.Add(EntryTakeDate);
+            AddEntryGroup.Controls.Add(label25);
+            AddEntryGroup.Controls.Add(EntryWorkerAdd);
+            AddEntryGroup.Controls.Add(EntryWorker);
+            AddEntryGroup.Controls.Add(label22);
+            AddEntryGroup.Controls.Add(EntryPlanReturnDate);
+            AddEntryGroup.Controls.Add(EntryUserAdd);
+            AddEntryGroup.Controls.Add(EntryUser);
+            AddEntryGroup.Controls.Add(label23);
+            AddEntryGroup.Controls.Add(EntryError);
+            AddEntryGroup.Controls.Add(button6);
+            AddEntryGroup.Controls.Add(button7);
+            AddEntryGroup.Controls.Add(label26);
+            AddEntryGroup.Location = new Point(5, 3);
+            AddEntryGroup.Name = "AddEntryGroup";
+            AddEntryGroup.Size = new Size(626, 433);
+            AddEntryGroup.TabIndex = 12;
+            AddEntryGroup.TabStop = false;
+            AddEntryGroup.Text = "Добавление";
             // 
-            // button2
+            // EntryCancelBut
             // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.Location = new Point(543, 404);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 34;
-            button2.Text = "Отмена";
-            button2.UseVisualStyleBackColor = true;
+            EntryCancelBut.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            EntryCancelBut.Location = new Point(543, 404);
+            EntryCancelBut.Name = "EntryCancelBut";
+            EntryCancelBut.Size = new Size(75, 23);
+            EntryCancelBut.TabIndex = 34;
+            EntryCancelBut.Text = "Отмена";
+            EntryCancelBut.UseVisualStyleBackColor = true;
+            EntryCancelBut.Click += EntryCancelBut_Click;
             // 
-            // button4
+            // EntryOKBut
             // 
-            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button4.Location = new Point(462, 404);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 33;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
+            EntryOKBut.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            EntryOKBut.Location = new Point(462, 404);
+            EntryOKBut.Name = "EntryOKBut";
+            EntryOKBut.Size = new Size(75, 23);
+            EntryOKBut.TabIndex = 33;
+            EntryOKBut.Text = "ОК";
+            EntryOKBut.UseVisualStyleBackColor = true;
+            EntryOKBut.Click += EntryOKBut_Click;
             // 
-            // button1
+            // EntryBookAdd
             // 
-            button1.Location = new Point(513, 90);
-            button1.Name = "button1";
-            button1.Size = new Size(24, 23);
-            button1.TabIndex = 32;
-            button1.Text = "...";
-            button1.UseVisualStyleBackColor = true;
+            EntryBookAdd.Location = new Point(513, 90);
+            EntryBookAdd.Name = "EntryBookAdd";
+            EntryBookAdd.Size = new Size(24, 23);
+            EntryBookAdd.TabIndex = 32;
+            EntryBookAdd.Text = "...";
+            EntryBookAdd.UseVisualStyleBackColor = true;
+            EntryBookAdd.Click += EntryBookAdd_Click;
             // 
-            // comboBox3
+            // EntryBook
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(6, 90);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(501, 23);
-            comboBox3.TabIndex = 31;
+            EntryBook.FormattingEnabled = true;
+            EntryBook.Location = new Point(6, 90);
+            EntryBook.Name = "EntryBook";
+            EntryBook.Size = new Size(501, 23);
+            EntryBook.TabIndex = 31;
             // 
             // label21
             // 
@@ -1314,12 +1317,12 @@
             label21.TabIndex = 30;
             label21.Text = "Книга";
             // 
-            // dateTimePicker3
+            // EntryFactReturnDate
             // 
-            dateTimePicker3.Location = new Point(6, 222);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(191, 23);
-            dateTimePicker3.TabIndex = 29;
+            EntryFactReturnDate.Location = new Point(6, 222);
+            EntryFactReturnDate.Name = "EntryFactReturnDate";
+            EntryFactReturnDate.Size = new Size(191, 23);
+            EntryFactReturnDate.TabIndex = 29;
             // 
             // label27
             // 
@@ -1330,12 +1333,12 @@
             label27.TabIndex = 28;
             label27.Text = "Фактическая дата возврата";
             // 
-            // dateTimePicker2
+            // EntryTakeDate
             // 
-            dateTimePicker2.Location = new Point(6, 134);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(191, 23);
-            dateTimePicker2.TabIndex = 27;
+            EntryTakeDate.Location = new Point(6, 134);
+            EntryTakeDate.Name = "EntryTakeDate";
+            EntryTakeDate.Size = new Size(191, 23);
+            EntryTakeDate.TabIndex = 27;
             // 
             // label25
             // 
@@ -1346,22 +1349,23 @@
             label25.TabIndex = 26;
             label25.Text = "Дата выдачи";
             // 
-            // button3
+            // EntryWorkerAdd
             // 
-            button3.Location = new Point(379, 265);
-            button3.Name = "button3";
-            button3.Size = new Size(24, 23);
-            button3.TabIndex = 25;
-            button3.Text = "...";
-            button3.UseVisualStyleBackColor = true;
+            EntryWorkerAdd.Location = new Point(379, 265);
+            EntryWorkerAdd.Name = "EntryWorkerAdd";
+            EntryWorkerAdd.Size = new Size(24, 23);
+            EntryWorkerAdd.TabIndex = 25;
+            EntryWorkerAdd.Text = "...";
+            EntryWorkerAdd.UseVisualStyleBackColor = true;
+            EntryWorkerAdd.Click += EntryWorkerAdd_Click;
             // 
-            // comboBox2
+            // EntryWorker
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(6, 266);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(367, 23);
-            comboBox2.TabIndex = 24;
+            EntryWorker.FormattingEnabled = true;
+            EntryWorker.Location = new Point(6, 266);
+            EntryWorker.Name = "EntryWorker";
+            EntryWorker.Size = new Size(367, 23);
+            EntryWorker.TabIndex = 24;
             // 
             // label22
             // 
@@ -1372,29 +1376,30 @@
             label22.TabIndex = 23;
             label22.Text = "Ответственный работник";
             // 
-            // dateTimePicker1
+            // EntryPlanReturnDate
             // 
-            dateTimePicker1.Location = new Point(6, 178);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(191, 23);
-            dateTimePicker1.TabIndex = 13;
+            EntryPlanReturnDate.Location = new Point(6, 178);
+            EntryPlanReturnDate.Name = "EntryPlanReturnDate";
+            EntryPlanReturnDate.Size = new Size(191, 23);
+            EntryPlanReturnDate.TabIndex = 13;
             // 
-            // button5
+            // EntryUserAdd
             // 
-            button5.Location = new Point(379, 46);
-            button5.Name = "button5";
-            button5.Size = new Size(24, 23);
-            button5.TabIndex = 12;
-            button5.Text = "...";
-            button5.UseVisualStyleBackColor = true;
+            EntryUserAdd.Location = new Point(379, 46);
+            EntryUserAdd.Name = "EntryUserAdd";
+            EntryUserAdd.Size = new Size(24, 23);
+            EntryUserAdd.TabIndex = 12;
+            EntryUserAdd.Text = "...";
+            EntryUserAdd.UseVisualStyleBackColor = true;
+            EntryUserAdd.Click += EntryUserAdd_Click;
             // 
-            // comboBox1
+            // EntryUser
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(6, 46);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(367, 23);
-            comboBox1.TabIndex = 11;
+            EntryUser.FormattingEnabled = true;
+            EntryUser.Location = new Point(6, 46);
+            EntryUser.Name = "EntryUser";
+            EntryUser.Size = new Size(367, 23);
+            EntryUser.TabIndex = 11;
             // 
             // label23
             // 
@@ -1405,15 +1410,15 @@
             label23.TabIndex = 10;
             label23.Text = "Читательский билет";
             // 
-            // label24
+            // EntryError
             // 
-            label24.AutoSize = true;
-            label24.ForeColor = Color.Red;
-            label24.Location = new Point(6, 408);
-            label24.Name = "label24";
-            label24.Size = new Size(32, 15);
-            label24.TabIndex = 8;
-            label24.Text = "error";
+            EntryError.AutoSize = true;
+            EntryError.ForeColor = Color.Red;
+            EntryError.Location = new Point(6, 408);
+            EntryError.Name = "EntryError";
+            EntryError.Size = new Size(32, 15);
+            EntryError.TabIndex = 8;
+            EntryError.Text = "error";
             // 
             // button6
             // 
@@ -1555,8 +1560,8 @@
             ((System.ComponentModel.ISupportInitialize)BookGenresView).EndInit();
             ((System.ComponentModel.ISupportInitialize)BookAuthorsView).EndInit();
             AddEntryWin.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            AddEntryGroup.ResumeLayout(false);
+            AddEntryGroup.PerformLayout();
             search_panel.ResumeLayout(false);
             search_panel.PerformLayout();
             ResumeLayout(false);
@@ -1676,26 +1681,26 @@
         private Label label16;
         private TextBox UserContact;
         private TabPage AddEntryWin;
-        private GroupBox groupBox1;
-        private DateTimePicker dateTimePicker1;
-        private Button button5;
-        private ComboBox comboBox1;
+        private GroupBox AddEntryGroup;
+        private DateTimePicker EntryPlanReturnDate;
+        private Button EntryUserAdd;
+        private ComboBox EntryUser;
         private Label label23;
-        private Label label24;
+        private Label EntryError;
         private Button button6;
         private Button button7;
         private Label label26;
-        private Button button3;
-        private ComboBox comboBox2;
+        private Button EntryWorkerAdd;
+        private ComboBox EntryWorker;
         private Label label22;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker EntryTakeDate;
         private Label label25;
-        private Button button1;
-        private ComboBox comboBox3;
+        private Button EntryBookAdd;
+        private ComboBox EntryBook;
         private Label label21;
-        private DateTimePicker dateTimePicker3;
+        private DateTimePicker EntryFactReturnDate;
         private Label label27;
-        private Button button2;
-        private Button button4;
+        private Button EntryCancelBut;
+        private Button EntryOKBut;
     }
 }
