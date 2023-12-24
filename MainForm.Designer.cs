@@ -454,7 +454,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(6, 113);
+            label3.Location = new Point(6, 107);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
             label3.TabIndex = 5;
@@ -472,7 +472,7 @@
             // 
             // authorName
             // 
-            authorName.Location = new Point(6, 43);
+            authorName.Location = new Point(6, 81);
             authorName.Name = "authorName";
             authorName.Size = new Size(191, 23);
             authorName.TabIndex = 0;
@@ -490,22 +490,22 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 25);
+            label1.Location = new Point(6, 63);
             label1.Name = "label1";
-            label1.Size = new Size(36, 15);
+            label1.Size = new Size(31, 15);
             label1.TabIndex = 1;
-            label1.Text = "Имя*";
+            label1.Text = "Имя";
             // 
             // authorName2
             // 
-            authorName2.Location = new Point(6, 87);
+            authorName2.Location = new Point(6, 37);
             authorName2.Name = "authorName2";
             authorName2.Size = new Size(191, 23);
             authorName2.TabIndex = 2;
             // 
             // authorName3
             // 
-            authorName3.Location = new Point(6, 131);
+            authorName3.Location = new Point(6, 125);
             authorName3.Name = "authorName3";
             authorName3.Size = new Size(191, 23);
             authorName3.TabIndex = 4;
@@ -513,11 +513,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 69);
+            label2.Location = new Point(6, 19);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(58, 15);
             label2.TabIndex = 3;
-            label2.Text = "Фамилия*";
+            label2.Text = "Фамилия";
             // 
             // AddPublisherWin
             // 
@@ -587,9 +587,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(6, 25);
             label6.Name = "label6";
-            label6.Size = new Size(95, 15);
+            label6.Size = new Size(90, 15);
             label6.TabIndex = 1;
-            label6.Text = "Наименование*";
+            label6.Text = "Наименование";
             // 
             // PublisherAddress
             // 
@@ -603,9 +603,9 @@
             label7.AutoSize = true;
             label7.Location = new Point(6, 69);
             label7.Name = "label7";
-            label7.Size = new Size(45, 15);
+            label7.Size = new Size(40, 15);
             label7.TabIndex = 3;
-            label7.Text = "Адрес*";
+            label7.Text = "Адрес";
             // 
             // AddGenreWin
             // 
@@ -674,9 +674,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(6, 25);
             label5.Name = "label5";
-            label5.Size = new Size(95, 15);
+            label5.Size = new Size(90, 15);
             label5.TabIndex = 1;
-            label5.Text = "Наименование*";
+            label5.Text = "Наименование";
             // 
             // AddPositionWin
             // 
@@ -745,9 +745,9 @@
             label8.AutoSize = true;
             label8.Location = new Point(6, 25);
             label8.Name = "label8";
-            label8.Size = new Size(95, 15);
+            label8.Size = new Size(90, 15);
             label8.TabIndex = 1;
-            label8.Text = "Наименование*";
+            label8.Text = "Наименование";
             // 
             // AddUserWin
             // 
@@ -806,6 +806,7 @@
             UserError.Size = new Size(32, 15);
             UserError.TabIndex = 8;
             UserError.Text = "error";
+            UserError.Visible = false;
             // 
             // label10
             // 
@@ -828,7 +829,7 @@
             // 
             // UserName
             // 
-            UserName.Location = new Point(6, 43);
+            UserName.Location = new Point(6, 87);
             UserName.Name = "UserName";
             UserName.Size = new Size(191, 23);
             UserName.TabIndex = 0;
@@ -846,15 +847,15 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(6, 25);
+            label11.Location = new Point(6, 69);
             label11.Name = "label11";
-            label11.Size = new Size(36, 15);
+            label11.Size = new Size(31, 15);
             label11.TabIndex = 1;
-            label11.Text = "Имя*";
+            label11.Text = "Имя";
             // 
             // UserName2
             // 
-            UserName2.Location = new Point(6, 87);
+            UserName2.Location = new Point(6, 43);
             UserName2.Name = "UserName2";
             UserName2.Size = new Size(191, 23);
             UserName2.TabIndex = 2;
@@ -869,11 +870,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(6, 69);
+            label12.Location = new Point(6, 25);
             label12.Name = "label12";
-            label12.Size = new Size(63, 15);
+            label12.Size = new Size(58, 15);
             label12.TabIndex = 3;
-            label12.Text = "Фамилия*";
+            label12.Text = "Фамилия";
             // 
             // AddLibrarianWin
             // 
@@ -939,11 +940,12 @@
             // 
             LibrarianError.AutoSize = true;
             LibrarianError.ForeColor = Color.Red;
-            LibrarianError.Location = new Point(6, 235);
+            LibrarianError.Location = new Point(6, 255);
             LibrarianError.Name = "LibrarianError";
             LibrarianError.Size = new Size(32, 15);
             LibrarianError.TabIndex = 8;
             LibrarianError.Text = "error";
+            LibrarianError.Visible = false;
             // 
             // label9
             // 
@@ -966,7 +968,7 @@
             // 
             // LibrarianName
             // 
-            LibrarianName.Location = new Point(6, 43);
+            LibrarianName.Location = new Point(6, 87);
             LibrarianName.Name = "LibrarianName";
             LibrarianName.Size = new Size(191, 23);
             LibrarianName.TabIndex = 0;
@@ -984,15 +986,15 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(6, 25);
+            label13.Location = new Point(6, 69);
             label13.Name = "label13";
-            label13.Size = new Size(36, 15);
+            label13.Size = new Size(31, 15);
             label13.TabIndex = 1;
-            label13.Text = "Имя*";
+            label13.Text = "Имя";
             // 
             // LibrarianName2
             // 
-            LibrarianName2.Location = new Point(6, 87);
+            LibrarianName2.Location = new Point(6, 43);
             LibrarianName2.Name = "LibrarianName2";
             LibrarianName2.Size = new Size(191, 23);
             LibrarianName2.TabIndex = 2;
@@ -1007,11 +1009,11 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(6, 69);
+            label14.Location = new Point(6, 25);
             label14.Name = "label14";
-            label14.Size = new Size(63, 15);
+            label14.Size = new Size(58, 15);
             label14.TabIndex = 3;
-            label14.Text = "Фамилия*";
+            label14.Text = "Фамилия";
             // 
             // AddBookWin
             // 
@@ -1215,9 +1217,9 @@
             label18.AutoSize = true;
             label18.Location = new Point(6, 25);
             label18.Name = "label18";
-            label18.Size = new Size(64, 15);
+            label18.Size = new Size(59, 15);
             label18.TabIndex = 1;
-            label18.Text = "Название*";
+            label18.Text = "Название";
             // 
             // label19
             // 
@@ -1419,6 +1421,7 @@
             EntryError.Size = new Size(32, 15);
             EntryError.TabIndex = 8;
             EntryError.Text = "error";
+            EntryError.Visible = false;
             // 
             // button6
             // 

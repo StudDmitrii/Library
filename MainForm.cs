@@ -2,6 +2,8 @@
 
 using Library.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 
 namespace Library
@@ -72,9 +74,15 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
-                var items = db.Author.ToList();
+                var items = db.Author.Select(p => new
+                {
+                    Id = p.Id,
+                    Name2 = p.Name2,
+                    Name1 = p.Name1,
+                    Name3 = p.Name3,
+                }).ToList();
                 dataView.DataSource = items;
-                //dataView.Columns[0].Visible = false;
+                dataView.Columns[0].Visible = false;
                 dataView.Columns[1].HeaderText = "Фамилия";
                 dataView.Columns[2].HeaderText = "Имя";
                 dataView.Columns[3].HeaderText = "Отчество";
@@ -87,7 +95,7 @@ namespace Library
             {
                 var items = db.Publisher.ToList();
                 dataView.DataSource = items;
-                //dataView.Columns[0].Visible = false;
+                dataView.Columns[0].Visible = false;
                 dataView.Columns[1].HeaderText = "Наименование";
                 dataView.Columns[2].HeaderText = "Адрес";
             }
@@ -99,7 +107,7 @@ namespace Library
             {
                 var items = db.Genre.ToList();
                 dataView.DataSource = items;
-                //dataView.Columns[0].Visible = false;
+                dataView.Columns[0].Visible = false;
                 dataView.Columns[1].HeaderText = "Наименование";
             }
         }
@@ -110,7 +118,7 @@ namespace Library
             {
                 var items = db.Position.ToList();
                 dataView.DataSource = items;
-                //dataView.Columns[0].Visible = false;
+                dataView.Columns[0].Visible = false;
                 dataView.Columns[1].HeaderText = "Наименование";
             }
         }
@@ -119,11 +127,18 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
-                var items = db.User.ToList();
+                var items = db.User.Select(p => new
+                {
+                    Id = p.Id,
+                    Name2 = p.Name2,
+                    Name1 = p.Name1,
+                    Name3 = p.Name3,
+                    Contact = p.Contact
+                }).ToList();
                 dataView.DataSource = items;
-                //dataView.Columns[0].Visible = false;
-                dataView.Columns[1].HeaderText = "Имя";
-                dataView.Columns[2].HeaderText = "Фамилия";
+                dataView.Columns[0].Visible = false;
+                dataView.Columns[1].HeaderText = "Фамилия";
+                dataView.Columns[2].HeaderText = "Имя";
                 dataView.Columns[3].HeaderText = "Отчество";
                 dataView.Columns[4].HeaderText = "Контактные данные";
             }
@@ -139,12 +154,12 @@ namespace Library
                     {
                         Id = p.Id,
                         Position = p.Position.Name,
-                        Name1 = p.Name2,
-                        Name2 = p.Name1,
+                        Name2 = p.Name2,
+                        Name1 = p.Name1,
                         Name3 = p.Name3
                     }).ToList();
                     dataView.DataSource = items;
-                    //dataView.Columns[0].Visible = false;
+                    dataView.Columns[0].Visible = false;
                     dataView.Columns[1].HeaderText = "Должность";
                     dataView.Columns[2].HeaderText = "Фамилия";
                     dataView.Columns[3].HeaderText = "Имя";
@@ -167,11 +182,11 @@ namespace Library
                         Name = p.Name,
                         PublicationDate = p.PublicationDate,
                         Publisher = p.Publisher.Name,
-                        Authors = p.Authors[0].Name1 + " " + p.Authors[0].Name2 + " " + p.Authors[0].Name3,
+                        Authors = p.Authors[0].Name1[0] + "." + p.Authors[0].Name3[0] + "." + p.Authors[0].Name2,
                         Genres = p.Genres[0].Name
                     }).ToList();
                     dataView.DataSource = items;
-                    //dataView.Columns[0].Visible = false;
+                    dataView.Columns[0].Visible = false;
                     dataView.Columns[1].HeaderText = "Название";
                     dataView.Columns[2].HeaderText = "Дата публикации";
                     dataView.Columns[3].HeaderText = "Издательство";
@@ -192,16 +207,16 @@ namespace Library
                     var items = db.Entry.Select(p => new
                     {
                         Id = p.Id,
-                        User = p.User.Name1.ToString()[0] + "." + p.User.Name2.ToString()[0] + "." + p.User.Name3 + "." + p.User.Contact,
+                        User = p.User.Name1.ToString()[0] + "." + p.User.Name3.ToString()[0] + "." + p.User.Name2 + " - " + p.User.Contact,
                         Book = p.Book.Name,
                         TakeDate = p.TakeDate,
                         PlanReturnDate = p.PlanReturnDate,
                         FactReturnDate = p.FactReturnDate,
-                        Worker = p.Worker.Name1.ToString()[0] + "." + p.Worker.Name2.ToString()[0] + "." + p.Worker.Name3,
+                        Worker = p.Worker.Name1.ToString()[0] + "." + p.Worker.Name3.ToString()[0] + "." + p.Worker.Name2,
 
                     }).ToList();
                     dataView.DataSource = items;
-                    //dataView.Columns[0].Visible = false;
+                    dataView.Columns[0].Visible = false;
                     dataView.Columns[1].HeaderText = "Читательский билет";
                     dataView.Columns[2].HeaderText = "Книга";
                     dataView.Columns[3].HeaderText = "Дата выдачи";
@@ -489,15 +504,26 @@ namespace Library
                     {
                         int instId = (int)dataView.SelectedRows[0].Cells[0].Value;
                         Model.Book inst = db.Book.Include("Authors").Include("Genres").First(p => p.Id == instId);
-                        BookAuthorsView.DataSource = inst.Authors;
+                        //BookAuthorsView.DataSource = inst.Authors;
+                        BookAuthorsView.ColumnCount = 4;
+                        foreach (Author item in inst.Authors)
+                        {
+                            BookAuthorsView.Rows.Add();ыыы
+                        }
                         BookAuthorsView.Columns[0].HeaderText = "id";
-                        BookAuthorsView.Columns[0].Visible = true;
+                        BookAuthorsView.Columns[0].Visible = false;
                         BookAuthorsView.Columns[1].HeaderText = "Фамилия";
                         BookAuthorsView.Columns[2].HeaderText = "Имя";
                         BookAuthorsView.Columns[3].HeaderText = "Отчество";
-                        BookGenresView.DataSource = inst.Genres;
+                        //BookGenresView.DataSource = inst.Genres;
+                        BookGenresView.ColumnCount = 2;
+                        foreach (Genre item in inst.Genres)
+                        {
+                            BookGenresView.Rows.Add(item);
+                        }
+                        BookGenresView.Rows.Add(inst.Genres.ToList());
                         BookGenresView.Columns[0].HeaderText = "id";
-                        BookGenresView.Columns[0].Visible = true;
+                        BookGenresView.Columns[0].Visible = false;
                         BookGenresView.Columns[1].HeaderText = "Наименование";
                     }
                     break;
@@ -772,13 +798,24 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Authors, true, this);
             if (rows == null) return;
-            BookAuthorsView.ColumnCount = 4;
+            if (BookAuthorsView.DataSource != null)
+            {
+                var v = (List<Author>)BookAuthorsView.DataSource;
+                v.Add(new Author() { Name1 = rows[0][1], Name2 = rows[0][2], Name3 = rows[0][3] });
+                BookAuthorsView.DataSource = null;
+                BookAuthorsView.DataSource = v;
+                rows = null;
+            }
+            else
+            {
+                BookAuthorsView.ColumnCount = 4;
+                BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
+            }
             BookAuthorsView.Columns[0].HeaderText = "id";
-            BookAuthorsView.Columns[0].Visible = true;
+            BookAuthorsView.Columns[0].Visible = false;
             BookAuthorsView.Columns[1].HeaderText = "Фамилия";
             BookAuthorsView.Columns[2].HeaderText = "Имя";
             BookAuthorsView.Columns[3].HeaderText = "Отчество";
-            BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
         }
 
         private void BookAuthorDelete_Click(object sender, EventArgs e)
@@ -795,7 +832,7 @@ namespace Library
             if (rows == null) return;
             BookGenresView.ColumnCount = 2;
             BookGenresView.Columns[0].HeaderText = "id";
-            BookGenresView.Columns[0].Visible = true;
+            BookGenresView.Columns[0].Visible = false;
             BookGenresView.Columns[1].HeaderText = "Наименование";
             BookGenresView.Rows.Add(rows[0][0], rows[0][1]);
         }
@@ -907,7 +944,8 @@ namespace Library
                 }
                 else
                 {
-                    newInst = new Model.Entry {
+                    newInst = new Model.Entry
+                    {
                         User = val,
                         Book = val2,
                         Worker = val3,
