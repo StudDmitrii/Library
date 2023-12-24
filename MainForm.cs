@@ -277,8 +277,11 @@ namespace Library
                 }
                 if (item is DataGridView)
                 {
-                    var item2 = item as DataGridView;
-                    item2.DataSource = null;
+                    (item as DataGridView).DataSource = null;
+                    foreach (var row in (item as DataGridView).Rows)
+                    {
+                        (item as DataGridView).Rows.Remove((DataGridViewRow)row);
+                    }
                 }
                 //if (item is ComboBox)
                 //{
@@ -474,10 +477,15 @@ namespace Library
 
         private void edit_but_Click(object sender, EventArgs e)
         {
-            rowSource = new List<int>
+            try
+            {
+                rowSource = new List<int>
                 {
                     Int32.Parse(dataView.SelectedRows[0].Cells[0].Value.ToString() ?? "0")
                 };
+            }
+            catch { }
+            
             switch (source)
             {
                 case WinEnum.Authors:
@@ -508,7 +516,7 @@ namespace Library
                         BookAuthorsView.ColumnCount = 4;
                         foreach (Author item in inst.Authors)
                         {
-                            BookAuthorsView.Rows.Add();ыыы
+                            BookAuthorsView.Rows.Add(item.Id, item.Name2, item.Name1, item.Name3);
                         }
                         BookAuthorsView.Columns[0].HeaderText = "id";
                         BookAuthorsView.Columns[0].Visible = false;
@@ -519,9 +527,8 @@ namespace Library
                         BookGenresView.ColumnCount = 2;
                         foreach (Genre item in inst.Genres)
                         {
-                            BookGenresView.Rows.Add(item);
+                            BookGenresView.Rows.Add(item.Id, item.Name);
                         }
-                        BookGenresView.Rows.Add(inst.Genres.ToList());
                         BookGenresView.Columns[0].HeaderText = "id";
                         BookGenresView.Columns[0].Visible = false;
                         BookGenresView.Columns[1].HeaderText = "Наименование";
@@ -593,6 +600,11 @@ namespace Library
                             break;
                         }
                     case WinEnum.Books:
+                        foreach (var i in rowSource)
+                        {
+                            Model.Book? newInst = db.Book.Find(i);
+                            if (newInst != null) db.Book.Remove(newInst);
+                        }
                         break;
                     case WinEnum.Users:
                         foreach (var i in rowSource)
@@ -616,6 +628,11 @@ namespace Library
                         }
                         break;
                     case WinEnum.Entries:
+                        foreach (var i in rowSource)
+                        {
+                            Model.Entry? newInst = db.Entry.Find(i);
+                            if (newInst != null) db.Entry.Remove(newInst);
+                        }
                         break;
                 }
                 db.SaveChanges();
@@ -798,19 +815,19 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Authors, true, this);
             if (rows == null) return;
-            if (BookAuthorsView.DataSource != null)
-            {
-                var v = (List<Author>)BookAuthorsView.DataSource;
-                v.Add(new Author() { Name1 = rows[0][1], Name2 = rows[0][2], Name3 = rows[0][3] });
-                BookAuthorsView.DataSource = null;
-                BookAuthorsView.DataSource = v;
-                rows = null;
-            }
-            else
-            {
+            //if (BookAuthorsView.DataSource != null)
+            //{
+            //    var v = (List<Author>)BookAuthorsView.DataSource;
+            //    v.Add(new Author() { Name1 = rows[0][1], Name2 = rows[0][2], Name3 = rows[0][3] });
+            //    BookAuthorsView.DataSource = null;
+            //    BookAuthorsView.DataSource = v;
+            //    rows = null;
+            //}
+            //else
+            //{
                 BookAuthorsView.ColumnCount = 4;
                 BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
-            }
+            //}
             BookAuthorsView.Columns[0].HeaderText = "id";
             BookAuthorsView.Columns[0].Visible = false;
             BookAuthorsView.Columns[1].HeaderText = "Фамилия";
@@ -859,7 +876,7 @@ namespace Library
                     string aa = BookAuthorsView.Rows[i].Cells[1].Value.ToString();
                     string bb = BookAuthorsView.Rows[i].Cells[2].Value.ToString();
                     string cc = BookAuthorsView.Rows[i].Cells[3].Value.ToString();
-                    Author dd = (Author)db.Author.Where(p => p.Name2 == bb && p.Name1 == aa && p.Name3 == cc).ToList()[0];
+                    Author dd = (Author)db.Author.Where(p => p.Name1 == bb && p.Name2 == aa && p.Name3 == cc).ToList()[0];
                     val2[i] = dd;
                 }
                 Genre[] val3 = new Genre[BookGenresView.RowCount];
@@ -867,14 +884,17 @@ namespace Library
                 {
                     val3[i] = (Genre)db.Genre.Where(p => p.Name == BookGenresView.Rows[i].Cells[1].Value.ToString()).ToList()[0];
                 }
-
                 if (newInst != null)
                 {
-                    newInst.Name = BookName.Text;
-                    newInst.PublicationDate = BookDate.Value;
-                    newInst.Publisher = val;
-                    newInst.Authors = val2.ToList();
-                    newInst.Genres = val3.ToList();
+                    db.Remove(newInst);
+                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
+                    //newInst.Name = BookName.Text;
+                    //newInst.PublicationDate = BookDate.Value;
+                    //newInst.Publisher = val;
+                    //newInst.Authors = val2.ToList();
+                    //newInst.Genres = val3.ToList();
+                    
+                    db.Update(newInst);
                 }
                 else
                 {
