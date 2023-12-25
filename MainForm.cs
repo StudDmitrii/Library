@@ -23,12 +23,33 @@ namespace Library
 
             formLabel = formLabelIn;
             source = sourceIn;
+
             this.fromAddForm = fromAddForm;
 
             formLabel = formLabelIn;
             label.Text = formLabel;
 
             SetView(source);
+
+            if (source == WinEnum.Entries)
+            {
+                Width = 1000;
+            }
+        }
+
+        public main_form(int width, string formLabelIn = "¬˚‰‡˜‡", WinEnum? sourceIn = WinEnum.Entries, bool fromAddForm = false)
+        {
+            InitializeComponent();
+
+            formLabel = formLabelIn;
+            source = sourceIn;
+            this.fromAddForm = fromAddForm;
+
+            formLabel = formLabelIn;
+            label.Text = formLabel;
+
+            SetView(source);
+            Width = width;
         }
 
         public void check_rows()
@@ -274,6 +295,7 @@ namespace Library
                     window.SelectTab("AddLibrarianWin");
                     break;
                 case WinEnum.Entries:
+                    EntryReturnGroup.Visible = false;
                     window.SelectTab("AddEntryWin");
                     break;
             }
@@ -421,7 +443,7 @@ namespace Library
 
         private void ‚˚‰‡˜‡ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Functions.OpenNewWin(sender, WinEnum.Entries);
+            Functions.OpenNewWin2(sender, 1000, WinEnum.Entries);
         }
 
         private void ˜ËÚ‡ÚÂÎËToolStripMenuItem_Click(object sender, EventArgs e)
@@ -436,7 +458,7 @@ namespace Library
 
         private void ÍÌË„‡ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Functions.OpenNewWin(sender, WinEnum.Books);
+            Functions.OpenNewWin2(sender, 1000, WinEnum.Books);
         }
 
         private void ‡·ÓÚÌËÍËToolStripMenuItem_Click(object sender, EventArgs e)
@@ -512,7 +534,7 @@ namespace Library
                 };
             }
             catch { }
-            
+
             switch (source)
             {
                 case WinEnum.Authors:
@@ -580,9 +602,18 @@ namespace Library
                     LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     break;
                 case WinEnum.Entries:
+                    EntryReturnGroup.Visible = true;
+                    EntryFactReturnDate.Value = DateTime.Now.Date;
                     EntryTakeDate.Value = (DateTime)dataView.SelectedRows[0].Cells[3].Value;
                     EntryPlanReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[4].Value;
-                    EntryFactReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[5].Value;
+                    try
+                    {
+                        EntryFactReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[5].Value;
+                    }
+                    catch
+                    {
+                        EntryFactReturnDate.Value = DateTime.Now.Date;
+                    }
                     window.SelectTab("AddEntryWin");
                     EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
@@ -833,14 +864,14 @@ namespace Library
 
         private void goToPositions_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Positions, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("ƒÓÎÊÌÓÒÚË", WinEnum.Positions, true, this);
             if (rows == null) return;
             LibrarianPosition.SelectedItem = rows[0][1];
         }
 
         private void BookAuthorAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Authors, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("¿‚ÚÓ˚", WinEnum.Authors, true, this);
             if (rows == null) return;
             //if (BookAuthorsView.DataSource != null)
             //{
@@ -852,8 +883,8 @@ namespace Library
             //}
             //else
             //{
-                BookAuthorsView.ColumnCount = 4;
-                BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
+            BookAuthorsView.ColumnCount = 4;
+            BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
             //}
             BookAuthorsView.Columns[0].HeaderText = "id";
             BookAuthorsView.Columns[0].Visible = false;
@@ -872,7 +903,7 @@ namespace Library
 
         private void BookGenreAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Genres, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("∆‡Ì˚", WinEnum.Genres, true, this);
             if (rows == null) return;
             BookGenresView.ColumnCount = 2;
             BookGenresView.Columns[0].HeaderText = "id";
@@ -914,18 +945,18 @@ namespace Library
                 if (newInst != null)
                 {
                     db.Remove(newInst);
-                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
+                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value.Date, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
                     //newInst.Name = BookName.Text;
                     //newInst.PublicationDate = BookDate.Value;
                     //newInst.Publisher = val;
                     //newInst.Authors = val2.ToList();
                     //newInst.Genres = val3.ToList();
-                    
+
                     db.Update(newInst);
                 }
                 else
                 {
-                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
+                    newInst = new Model.Book { Name = BookName.Text, PublicationDate = BookDate.Value.Date, Publisher = val, Authors = val2.ToList(), Genres = val3.ToList() };
                     db.Book.Add(newInst);
                 }
                 db.SaveChanges();
@@ -944,28 +975,28 @@ namespace Library
 
         private void BookPublisherAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Publishers, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("œÛ·ÎËÍ‡ˆËË", WinEnum.Publishers, true, this);
             if (rows == null) return;
             BookPublisher.SelectedItem = rows[0][1];
         }
 
         private void EntryUserAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Users, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("◊ËÚ‡ÚÂÎ¸ÒÍËÂ ·ËÎÂÚ˚", WinEnum.Users, true, this);
             if (rows == null) return;
             EntryUser.SelectedItem = rows[0][2][0] + "." + rows[0][3][0] + "." + rows[0][1] + " - " + rows[0][4];
         }
 
         private void EntryBookAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Books, true, this);
+            List<string[]>? rows = Functions.OpenNewWin(" ÌË„Ë", WinEnum.Books, true, this);
             if (rows == null) return;
             EntryBook.SelectedItem = rows[0][1] + " " + rows[0][4].Split('.')[2];
         }
 
         private void EntryWorkerAdd_Click(object sender, EventArgs e)
         {
-            List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Librarians, true, this);
+            List<string[]>? rows = Functions.OpenNewWin("–‡·ÓÚÌËÍË", WinEnum.Librarians, true, this);
             if (rows == null) return;
             EntryWorker.SelectedItem = rows[0][3][0] + "." + rows[0][4][0] + "." + rows[0][2] + " - " + rows[0][1];
         }
@@ -985,9 +1016,12 @@ namespace Library
                     newInst.User = val;
                     newInst.Book = val2;
                     newInst.Worker = val3;
-                    newInst.TakeDate = EntryTakeDate.Value;
-                    newInst.PlanReturnDate = EntryPlanReturnDate.Value;
-                    newInst.FactReturnDate = EntryFactReturnDate.Value;
+                    newInst.TakeDate = EntryTakeDate.Value.Date;
+                    newInst.PlanReturnDate = EntryPlanReturnDate.Value.Date;
+                    if (EntryReturnDateOn.Checked)
+                    {
+                        newInst.FactReturnDate = EntryFactReturnDate.Value.Date;
+                    }
                 }
                 else
                 {
@@ -996,9 +1030,9 @@ namespace Library
                         User = val,
                         Book = val2,
                         Worker = val3,
-                        TakeDate = EntryTakeDate.Value,
-                        PlanReturnDate = EntryPlanReturnDate.Value,
-                        FactReturnDate = EntryFactReturnDate.Value
+                        TakeDate = EntryTakeDate.Value.Date,
+                        PlanReturnDate = EntryPlanReturnDate.Value.Date,
+                        //FactReturnDate = EntryFactReturnDate.Value.Date
                     };
                     db.Entry.Add(newInst);
                 }
@@ -1014,6 +1048,12 @@ namespace Library
         {
             ClearInputs(AddBookGroup);
             BackToView();
+        }
+
+        private void Á‡‰ÓÎÊÂÌÌÓÒÚËœÓ¬ÓÁ‚‡ÚÛ ÌË„ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Report r = new Report();
+            r.Show();
         }
     }
 }

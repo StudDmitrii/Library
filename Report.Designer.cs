@@ -31,14 +31,16 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             ReportName = new Label();
             panel1 = new Panel();
+            ReportError = new Label();
             label2 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            EndPeriodDate = new DateTimePicker();
+            setReport = new Button();
+            StartPeriodDate = new DateTimePicker();
             label1 = new Label();
-            button1 = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
-            button2 = new Button();
             tableLayoutPanel3 = new TableLayoutPanel();
+            ExportMSWord = new Button();
+            ReportView = new DataGridView();
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             справочникиToolStripMenuItem = new ToolStripMenuItem();
@@ -47,6 +49,7 @@
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ReportView).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,10 +84,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(ReportError);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(dateTimePicker2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(EndPeriodDate);
+            panel1.Controls.Add(setReport);
+            panel1.Controls.Add(StartPeriodDate);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 50);
@@ -93,28 +97,50 @@
             panel1.Size = new Size(784, 60);
             panel1.TabIndex = 1;
             // 
+            // ReportError
+            // 
+            ReportError.AutoSize = true;
+            ReportError.ForeColor = Color.Red;
+            ReportError.Location = new Point(76, 11);
+            ReportError.Name = "ReportError";
+            ReportError.Size = new Size(32, 15);
+            ReportError.TabIndex = 4;
+            ReportError.Text = "error";
+            ReportError.Visible = false;
+            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(218, 55);
+            label2.Location = new Point(218, 35);
             label2.Name = "label2";
             label2.Size = new Size(12, 15);
             label2.TabIndex = 3;
             label2.Text = "-";
             // 
-            // dateTimePicker2
+            // EndPeriodDate
             // 
-            dateTimePicker2.Location = new Point(236, 29);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 2;
+            EndPeriodDate.Location = new Point(236, 29);
+            EndPeriodDate.Name = "EndPeriodDate";
+            EndPeriodDate.Size = new Size(200, 23);
+            EndPeriodDate.TabIndex = 2;
             // 
-            // dateTimePicker1
+            // setReport
             // 
-            dateTimePicker1.Location = new Point(12, 29);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 1;
+            setReport.Anchor = AnchorStyles.Left;
+            setReport.Location = new Point(459, 29);
+            setReport.Name = "setReport";
+            setReport.Size = new Size(128, 23);
+            setReport.TabIndex = 2;
+            setReport.Text = "Сформировать";
+            setReport.UseVisualStyleBackColor = true;
+            setReport.Click += setReport_Click;
+            // 
+            // StartPeriodDate
+            // 
+            StartPeriodDate.Location = new Point(12, 29);
+            StartPeriodDate.Name = "StartPeriodDate";
+            StartPeriodDate.Size = new Size(200, 23);
+            StartPeriodDate.TabIndex = 1;
             // 
             // label1
             // 
@@ -125,22 +151,13 @@
             label1.TabIndex = 0;
             label1.Text = "Период";
             // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Left;
-            button1.Location = new Point(459, 29);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Сформировать";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
+            tableLayoutPanel2.Controls.Add(ReportView, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 110);
             tableLayoutPanel2.Margin = new Padding(0);
@@ -151,22 +168,12 @@
             tableLayoutPanel2.Size = new Size(784, 427);
             tableLayoutPanel2.TabIndex = 2;
             // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Left;
-            button2.Location = new Point(3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(128, 23);
-            button2.TabIndex = 4;
-            button2.Text = "MS Word";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Controls.Add(button2, 0, 0);
+            tableLayoutPanel3.Controls.Add(ExportMSWord, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(627, 0);
             tableLayoutPanel3.Margin = new Padding(0);
@@ -177,6 +184,28 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Size = new Size(157, 427);
             tableLayoutPanel3.TabIndex = 5;
+            // 
+            // ExportMSWord
+            // 
+            ExportMSWord.Anchor = AnchorStyles.Left;
+            ExportMSWord.Location = new Point(3, 3);
+            ExportMSWord.Name = "ExportMSWord";
+            ExportMSWord.Size = new Size(128, 23);
+            ExportMSWord.TabIndex = 4;
+            ExportMSWord.Text = "MS Word";
+            ExportMSWord.UseVisualStyleBackColor = true;
+            ExportMSWord.Visible = false;
+            // 
+            // ReportView
+            // 
+            ReportView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ReportView.Dock = DockStyle.Fill;
+            ReportView.Location = new Point(3, 3);
+            ReportView.Name = "ReportView";
+            ReportView.RowTemplate.Height = 25;
+            ReportView.Size = new Size(621, 421);
+            ReportView.TabIndex = 6;
+            ReportView.Visible = false;
             // 
             // menuStrip1
             // 
@@ -220,6 +249,7 @@
             panel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ReportView).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -232,16 +262,18 @@
         private Label ReportName;
         private Panel panel1;
         private Label label2;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker EndPeriodDate;
+        private DateTimePicker StartPeriodDate;
         private Label label1;
-        private Button button1;
+        private Button setReport;
         private TableLayoutPanel tableLayoutPanel2;
-        private Button button2;
+        private Button ExportMSWord;
         private TableLayoutPanel tableLayoutPanel3;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem справочникиToolStripMenuItem;
         private ToolStripMenuItem отчётыToolStripMenuItem;
+        private DataGridView ReportView;
+        private Label ReportError;
     }
 }

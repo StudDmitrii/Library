@@ -5,6 +5,12 @@ namespace Library
 {
     internal class Functions
     {
+        public static void OpenNewWin2(object sender, int width, WinEnum source)
+        {
+            main_form MainForm = new main_form(width, sender.ToString(), source, false);
+            MainForm.Show();
+            MainForm.Width = width;
+        }
         public static List<string[]>? OpenNewWin(object sender, WinEnum? source = null, bool fromAddForm = false, Form? owner = null)
         {
             main_form MainForm = new main_form(sender.ToString(), source, fromAddForm);

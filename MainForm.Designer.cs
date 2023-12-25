@@ -44,6 +44,7 @@
             издательстваToolStripMenuItem = new ToolStripMenuItem();
             жанрыToolStripMenuItem = new ToolStripMenuItem();
             отчётыToolStripMenuItem = new ToolStripMenuItem();
+            задолженностиПоВозвратуКнигToolStripMenuItem = new ToolStripMenuItem();
             control_panel = new TableLayoutPanel();
             add_but = new Button();
             edit_but = new Button();
@@ -135,13 +136,15 @@
             label19 = new Label();
             AddEntryWin = new TabPage();
             AddEntryGroup = new GroupBox();
+            EntryReturnGroup = new GroupBox();
+            EntryReturnDateOn = new CheckBox();
+            label27 = new Label();
+            EntryFactReturnDate = new DateTimePicker();
             EntryCancelBut = new Button();
             EntryOKBut = new Button();
             EntryBookAdd = new Button();
             EntryBook = new ComboBox();
             label21 = new Label();
-            EntryFactReturnDate = new DateTimePicker();
-            label27 = new Label();
             EntryTakeDate = new DateTimePicker();
             label25 = new Label();
             EntryWorkerAdd = new Button();
@@ -161,7 +164,6 @@
             clear_search_but = new Button();
             search_bar = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            задолженностиПоВозвратуКнигToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             control_panel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -186,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)BookAuthorsView).BeginInit();
             AddEntryWin.SuspendLayout();
             AddEntryGroup.SuspendLayout();
+            EntryReturnGroup.SuspendLayout();
             search_panel.SuspendLayout();
             SuspendLayout();
             // 
@@ -289,6 +292,13 @@
             отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
             отчётыToolStripMenuItem.Size = new Size(60, 20);
             отчётыToolStripMenuItem.Text = "Отчёты";
+            // 
+            // задолженностиПоВозвратуКнигToolStripMenuItem
+            // 
+            задолженностиПоВозвратуКнигToolStripMenuItem.Name = "задолженностиПоВозвратуКнигToolStripMenuItem";
+            задолженностиПоВозвратуКнигToolStripMenuItem.Size = new Size(257, 22);
+            задолженностиПоВозвратуКнигToolStripMenuItem.Text = "Задолженности по возврату книг";
+            задолженностиПоВозвратуКнигToolStripMenuItem.Click += задолженностиПоВозвратуКнигToolStripMenuItem_Click;
             // 
             // control_panel
             // 
@@ -1245,13 +1255,12 @@
             // AddEntryGroup
             // 
             AddEntryGroup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddEntryGroup.Controls.Add(EntryReturnGroup);
             AddEntryGroup.Controls.Add(EntryCancelBut);
             AddEntryGroup.Controls.Add(EntryOKBut);
             AddEntryGroup.Controls.Add(EntryBookAdd);
             AddEntryGroup.Controls.Add(EntryBook);
             AddEntryGroup.Controls.Add(label21);
-            AddEntryGroup.Controls.Add(EntryFactReturnDate);
-            AddEntryGroup.Controls.Add(label27);
             AddEntryGroup.Controls.Add(EntryTakeDate);
             AddEntryGroup.Controls.Add(label25);
             AddEntryGroup.Controls.Add(EntryWorkerAdd);
@@ -1271,6 +1280,45 @@
             AddEntryGroup.TabIndex = 12;
             AddEntryGroup.TabStop = false;
             AddEntryGroup.Text = "Добавление";
+            // 
+            // EntryReturnGroup
+            // 
+            EntryReturnGroup.Controls.Add(EntryReturnDateOn);
+            EntryReturnGroup.Controls.Add(label27);
+            EntryReturnGroup.Controls.Add(EntryFactReturnDate);
+            EntryReturnGroup.Location = new Point(6, 248);
+            EntryReturnGroup.Margin = new Padding(0);
+            EntryReturnGroup.Name = "EntryReturnGroup";
+            EntryReturnGroup.Padding = new Padding(0);
+            EntryReturnGroup.Size = new Size(335, 95);
+            EntryReturnGroup.TabIndex = 36;
+            EntryReturnGroup.TabStop = false;
+            // 
+            // EntryReturnDateOn
+            // 
+            EntryReturnDateOn.AutoSize = true;
+            EntryReturnDateOn.Location = new Point(6, 19);
+            EntryReturnDateOn.Name = "EntryReturnDateOn";
+            EntryReturnDateOn.Size = new Size(128, 19);
+            EntryReturnDateOn.TabIndex = 35;
+            EntryReturnDateOn.Text = "Книга возвращена";
+            EntryReturnDateOn.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(3, 41);
+            label27.Name = "label27";
+            label27.Size = new Size(154, 15);
+            label27.TabIndex = 28;
+            label27.Text = "Фактическая дата возврата";
+            // 
+            // EntryFactReturnDate
+            // 
+            EntryFactReturnDate.Location = new Point(6, 62);
+            EntryFactReturnDate.Name = "EntryFactReturnDate";
+            EntryFactReturnDate.Size = new Size(191, 23);
+            EntryFactReturnDate.TabIndex = 29;
             // 
             // EntryCancelBut
             // 
@@ -1321,22 +1369,6 @@
             label21.TabIndex = 30;
             label21.Text = "Книга";
             // 
-            // EntryFactReturnDate
-            // 
-            EntryFactReturnDate.Location = new Point(6, 222);
-            EntryFactReturnDate.Name = "EntryFactReturnDate";
-            EntryFactReturnDate.Size = new Size(191, 23);
-            EntryFactReturnDate.TabIndex = 29;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Location = new Point(6, 204);
-            label27.Name = "label27";
-            label27.Size = new Size(154, 15);
-            label27.TabIndex = 28;
-            label27.Text = "Фактическая дата возврата";
-            // 
             // EntryTakeDate
             // 
             EntryTakeDate.Location = new Point(6, 134);
@@ -1355,7 +1387,7 @@
             // 
             // EntryWorkerAdd
             // 
-            EntryWorkerAdd.Location = new Point(379, 265);
+            EntryWorkerAdd.Location = new Point(379, 221);
             EntryWorkerAdd.Name = "EntryWorkerAdd";
             EntryWorkerAdd.Size = new Size(24, 23);
             EntryWorkerAdd.TabIndex = 25;
@@ -1366,7 +1398,7 @@
             // EntryWorker
             // 
             EntryWorker.FormattingEnabled = true;
-            EntryWorker.Location = new Point(6, 266);
+            EntryWorker.Location = new Point(6, 222);
             EntryWorker.Name = "EntryWorker";
             EntryWorker.Size = new Size(367, 23);
             EntryWorker.TabIndex = 24;
@@ -1374,7 +1406,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(6, 248);
+            label22.Location = new Point(6, 204);
             label22.Name = "label22";
             label22.Size = new Size(146, 15);
             label22.TabIndex = 23;
@@ -1519,12 +1551,6 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // задолженностиПоВозвратуКнигToolStripMenuItem
-            // 
-            задолженностиПоВозвратуКнигToolStripMenuItem.Name = "задолженностиПоВозвратуКнигToolStripMenuItem";
-            задолженностиПоВозвратуКнигToolStripMenuItem.Size = new Size(257, 22);
-            задолженностиПоВозвратуКнигToolStripMenuItem.Text = "Задолженности по возврату книг";
-            // 
             // main_form
             // 
             AllowDrop = true;
@@ -1574,6 +1600,8 @@
             AddEntryWin.ResumeLayout(false);
             AddEntryGroup.ResumeLayout(false);
             AddEntryGroup.PerformLayout();
+            EntryReturnGroup.ResumeLayout(false);
+            EntryReturnGroup.PerformLayout();
             search_panel.ResumeLayout(false);
             search_panel.PerformLayout();
             ResumeLayout(false);
@@ -1715,5 +1743,7 @@
         private Button EntryCancelBut;
         private Button EntryOKBut;
         private ToolStripMenuItem задолженностиПоВозвратуКнигToolStripMenuItem;
+        private CheckBox EntryReturnDateOn;
+        private GroupBox EntryReturnGroup;
     }
 }
