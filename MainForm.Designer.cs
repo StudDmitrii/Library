@@ -416,6 +416,7 @@
             dataView.Margin = new Padding(0);
             dataView.Name = "dataView";
             dataView.ReadOnly = true;
+            dataView.RowHeadersVisible = false;
             dataView.RowHeadersWidth = 51;
             dataView.RowTemplate.Height = 25;
             dataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -1073,6 +1074,7 @@
             BookGenresView.Location = new Point(6, 272);
             BookGenresView.Name = "BookGenresView";
             BookGenresView.ReadOnly = true;
+            BookGenresView.RowHeadersVisible = false;
             BookGenresView.RowHeadersWidth = 51;
             BookGenresView.RowTemplate.Height = 25;
             BookGenresView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -1136,6 +1138,7 @@
             BookAuthorsView.Location = new Point(6, 175);
             BookAuthorsView.Name = "BookAuthorsView";
             BookAuthorsView.ReadOnly = true;
+            BookAuthorsView.RowHeadersVisible = false;
             BookAuthorsView.RowHeadersWidth = 51;
             BookAuthorsView.RowTemplate.Height = 25;
             BookAuthorsView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

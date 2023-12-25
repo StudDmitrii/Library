@@ -1032,7 +1032,7 @@ namespace Library
                         Worker = val3,
                         TakeDate = EntryTakeDate.Value.Date,
                         PlanReturnDate = EntryPlanReturnDate.Value.Date,
-                        //FactReturnDate = EntryFactReturnDate.Value.Date
+                        //FactReturnDate = null
                     };
                     db.Entry.Add(newInst);
                 }

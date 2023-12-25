@@ -40,43 +40,53 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             ExportMSWord = new Button();
-            ReportView = new DataGridView();
+            ExportExcel = new Button();
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             справочникиToolStripMenuItem = new ToolStripMenuItem();
             отчётыToolStripMenuItem = new ToolStripMenuItem();
+            ReportView = new DataGridView();
+            panel2 = new Panel();
+            ReportOwnerAdd = new Button();
+            ReportOwner = new ComboBox();
+            label22 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ReportView).BeginInit();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ReportView).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(panel1, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 3);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 1);
             tableLayoutPanel1.Controls.Add(ReportName, 0, 0);
-            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 24);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(784, 537);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // ReportName
             // 
             ReportName.AutoSize = true;
-            ReportName.Location = new Point(10, 20);
-            ReportName.Margin = new Padding(10, 20, 3, 0);
+            ReportName.Location = new Point(10, 15);
+            ReportName.Margin = new Padding(10, 15, 3, 0);
             ReportName.Name = "ReportName";
             ReportName.Size = new Size(235, 15);
             ReportName.TabIndex = 0;
@@ -91,7 +101,7 @@
             panel1.Controls.Add(StartPeriodDate);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 50);
+            panel1.Location = new Point(0, 100);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Size = new Size(784, 60);
@@ -159,7 +169,7 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
             tableLayoutPanel2.Controls.Add(ReportView, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 110);
+            tableLayoutPanel2.Location = new Point(0, 160);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -174,6 +184,7 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Controls.Add(ExportMSWord, 0, 0);
+            tableLayoutPanel3.Controls.Add(ExportExcel, 0, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(627, 0);
             tableLayoutPanel3.Margin = new Padding(0);
@@ -196,16 +207,16 @@
             ExportMSWord.UseVisualStyleBackColor = true;
             ExportMSWord.Visible = false;
             // 
-            // ReportView
+            // ExportExcel
             // 
-            ReportView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReportView.Dock = DockStyle.Fill;
-            ReportView.Location = new Point(3, 3);
-            ReportView.Name = "ReportView";
-            ReportView.RowTemplate.Height = 25;
-            ReportView.Size = new Size(621, 421);
-            ReportView.TabIndex = 6;
-            ReportView.Visible = false;
+            ExportExcel.Anchor = AnchorStyles.Left;
+            ExportExcel.Location = new Point(3, 33);
+            ExportExcel.Name = "ExportExcel";
+            ExportExcel.Size = new Size(128, 23);
+            ExportExcel.TabIndex = 5;
+            ExportExcel.Text = "MS Excel";
+            ExportExcel.UseVisualStyleBackColor = true;
+            ExportExcel.Visible = false;
             // 
             // menuStrip1
             // 
@@ -234,6 +245,62 @@
             отчётыToolStripMenuItem.Size = new Size(60, 20);
             отчётыToolStripMenuItem.Text = "Отчёты";
             // 
+            // ReportView
+            // 
+            ReportView.AllowUserToAddRows = false;
+            ReportView.AllowUserToDeleteRows = false;
+            ReportView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ReportView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ReportView.Dock = DockStyle.Fill;
+            ReportView.Location = new Point(3, 3);
+            ReportView.Name = "ReportView";
+            ReportView.ReadOnly = true;
+            ReportView.RowHeadersVisible = false;
+            ReportView.RowTemplate.Height = 25;
+            ReportView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ReportView.Size = new Size(621, 421);
+            ReportView.TabIndex = 6;
+            ReportView.Visible = false;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(ReportOwnerAdd);
+            panel2.Controls.Add(ReportOwner);
+            panel2.Controls.Add(label22);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 50);
+            panel2.Margin = new Padding(0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(784, 50);
+            panel2.TabIndex = 3;
+            // 
+            // ReportOwnerAdd
+            // 
+            ReportOwnerAdd.Location = new Point(383, 17);
+            ReportOwnerAdd.Name = "ReportOwnerAdd";
+            ReportOwnerAdd.Size = new Size(24, 23);
+            ReportOwnerAdd.TabIndex = 28;
+            ReportOwnerAdd.Text = "...";
+            ReportOwnerAdd.UseVisualStyleBackColor = true;
+            ReportOwnerAdd.Click += ReportOwnerAdd_Click;
+            // 
+            // ReportOwner
+            // 
+            ReportOwner.FormattingEnabled = true;
+            ReportOwner.Location = new Point(10, 18);
+            ReportOwner.Name = "ReportOwner";
+            ReportOwner.Size = new Size(367, 23);
+            ReportOwner.TabIndex = 27;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(10, 0);
+            label22.Name = "label22";
+            label22.Size = new Size(146, 15);
+            label22.TabIndex = 26;
+            label22.Text = "Ответственный работник";
+            // 
             // Report
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,9 +316,11 @@
             panel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)ReportView).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ReportView).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -273,7 +342,12 @@
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem справочникиToolStripMenuItem;
         private ToolStripMenuItem отчётыToolStripMenuItem;
-        private DataGridView ReportView;
         private Label ReportError;
+        private Button ExportExcel;
+        private DataGridView ReportView;
+        private Panel panel2;
+        private Button ReportOwnerAdd;
+        private ComboBox ReportOwner;
+        private Label label22;
     }
 }

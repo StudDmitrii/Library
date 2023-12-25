@@ -12,7 +12,7 @@ namespace Library.Model
         public DateTime TakeDate { get; set; }
         public DateTime PlanReturnDate { get; set; }
 
-        public DateTime FactReturnDate {  get; set; }
+        public DateTime FactReturnDate { get; set; }
 
         public int UserId { get; set; }
         public User? User { get; set; } = new();
