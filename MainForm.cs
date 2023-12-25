@@ -31,6 +31,20 @@ namespace Library
             SetView(source);
         }
 
+        public void check_rows()
+        {
+            if (dataView.RowCount == 0)
+            {
+                edit_but.Enabled = false;
+                del_but.Enabled = false;
+            }
+            else
+            {
+                edit_but.Enabled = true;
+                del_but.Enabled = true;
+            }
+        }
+
         public void SetView(WinEnum? source)
         {
             switch (source)
@@ -60,6 +74,7 @@ namespace Library
                     displayEntries();
                     break;
             }
+            check_rows();
             try
             {
                 rowSource = new List<int>
@@ -282,6 +297,14 @@ namespace Library
                     {
                         (item as DataGridView).Rows.Remove((DataGridViewRow)row);
                     }
+                    try
+                    {
+                        foreach (var row in (item as DataGridView).Rows)
+                        {
+                            (item as DataGridView).Rows.Remove((DataGridViewRow)row);
+                        }
+                    }
+                    catch { }
                 }
                 //if (item is ComboBox)
                 //{
@@ -345,17 +368,21 @@ namespace Library
                 BookPublisher.DataSource = items2;
 
                 //entry
-                var items3 = db.User.Select(p =>
-                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
-                EntryUser.DataSource = items3;
+                try
+                {
+                    var items3 = db.User.Select(p =>
+                    p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
+                    EntryUser.DataSource = items3;
 
-                var items4 = db.Book.Select(p =>
-                p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
-                EntryBook.DataSource = items4;
+                    var items4 = db.Book.Select(p =>
+                    p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
+                    EntryBook.DataSource = items4;
 
-                var items5 = db.Worker.Select(p =>
-                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
-                EntryWorker.DataSource = items5;
+                    var items5 = db.Worker.Select(p =>
+                    p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
+                    EntryWorker.DataSource = items5;
+                }
+                catch { }
             }
             //}
         }
@@ -519,7 +546,7 @@ namespace Library
                             BookAuthorsView.Rows.Add(item.Id, item.Name2, item.Name1, item.Name3);
                         }
                         BookAuthorsView.Columns[0].HeaderText = "id";
-                        BookAuthorsView.Columns[0].Visible = false;
+                        //BookAuthorsView.Columns[0].Visible = false;
                         BookAuthorsView.Columns[1].HeaderText = "Фамилия";
                         BookAuthorsView.Columns[2].HeaderText = "Имя";
                         BookAuthorsView.Columns[3].HeaderText = "Отчество";
@@ -535,8 +562,8 @@ namespace Library
                     }
                     break;
                 case WinEnum.Users:
-                    UserName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
-                    UserName2.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    UserName2.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    UserName.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
                     UserName3.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
                     UserContact.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();
                     window.SelectTab("AddUserWin");
@@ -926,14 +953,14 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Users, true, this);
             if (rows == null) return;
-            EntryUser.SelectedItem = rows[0][1][0] + "." + rows[0][3][0] + "." + rows[0][2] + " - " + rows[0][4];
+            EntryUser.SelectedItem = rows[0][2][0] + "." + rows[0][3][0] + "." + rows[0][1] + " - " + rows[0][4];
         }
 
         private void EntryBookAdd_Click(object sender, EventArgs e)
         {
             List<string[]>? rows = Functions.OpenNewWin(sender, WinEnum.Books, true, this);
             if (rows == null) return;
-            EntryBook.SelectedItem = rows[0][1] + " " + rows[0][4].Split(' ')[1];
+            EntryBook.SelectedItem = rows[0][1] + " " + rows[0][4].Split('.')[2];
         }
 
         private void EntryWorkerAdd_Click(object sender, EventArgs e)

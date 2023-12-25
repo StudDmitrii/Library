@@ -161,6 +161,7 @@
             clear_search_but = new Button();
             search_bar = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            задолженностиПоВозвратуКнигToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             control_panel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -284,6 +285,7 @@
             // 
             // отчётыToolStripMenuItem
             // 
+            отчётыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { задолженностиПоВозвратуКнигToolStripMenuItem });
             отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
             отчётыToolStripMenuItem.Size = new Size(60, 20);
             отчётыToolStripMenuItem.Text = "Отчёты";
@@ -1465,27 +1467,27 @@
             // 
             // search_panel
             // 
-            search_panel.Anchor = AnchorStyles.Right;
             search_panel.ColumnCount = 4;
-            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             search_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             search_panel.ColumnStyles.Add(new ColumnStyle());
             search_panel.Controls.Add(search_but, 1, 0);
             search_panel.Controls.Add(clear_search_but, 2, 0);
             search_panel.Controls.Add(search_bar, 0, 0);
-            search_panel.Location = new Point(191, 30);
+            search_panel.Dock = DockStyle.Fill;
+            search_panel.Location = new Point(0, 30);
             search_panel.Margin = new Padding(0);
             search_panel.Name = "search_panel";
             search_panel.RowCount = 1;
             search_panel.RowStyles.Add(new RowStyle());
-            search_panel.Size = new Size(463, 30);
+            search_panel.Size = new Size(654, 30);
             search_panel.TabIndex = 6;
             // 
             // search_but
             // 
             search_but.Anchor = AnchorStyles.Left;
-            search_but.Location = new Point(303, 3);
+            search_but.Location = new Point(497, 3);
             search_but.Name = "search_but";
             search_but.Size = new Size(74, 23);
             search_but.TabIndex = 1;
@@ -1495,7 +1497,7 @@
             // clear_search_but
             // 
             clear_search_but.Anchor = AnchorStyles.Left;
-            clear_search_but.Location = new Point(383, 3);
+            clear_search_but.Location = new Point(577, 3);
             clear_search_but.Name = "clear_search_but";
             clear_search_but.Size = new Size(74, 23);
             clear_search_but.TabIndex = 2;
@@ -1505,9 +1507,10 @@
             // search_bar
             // 
             search_bar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            search_bar.Location = new Point(3, 3);
+            search_bar.Location = new Point(15, 3);
+            search_bar.Margin = new Padding(15, 3, 3, 3);
             search_bar.Name = "search_bar";
-            search_bar.Size = new Size(294, 23);
+            search_bar.Size = new Size(476, 23);
             search_bar.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -1515,6 +1518,12 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // задолженностиПоВозвратуКнигToolStripMenuItem
+            // 
+            задолженностиПоВозвратуКнигToolStripMenuItem.Name = "задолженностиПоВозвратуКнигToolStripMenuItem";
+            задолженностиПоВозвратуКнигToolStripMenuItem.Size = new Size(257, 22);
+            задолженностиПоВозвратуКнигToolStripMenuItem.Text = "Задолженности по возврату книг";
             // 
             // main_form
             // 
@@ -1705,5 +1714,6 @@
         private Label label27;
         private Button EntryCancelBut;
         private Button EntryOKBut;
+        private ToolStripMenuItem задолженностиПоВозвратуКнигToolStripMenuItem;
     }
 }
