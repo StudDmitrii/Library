@@ -83,5 +83,35 @@ namespace Library
 
             return null;
         }
+
+        public static string? CheckNewBook(string name, int rows1, int rows2)
+        {
+            if (name == "") return "Введите название книги"; //error
+            if (rows1 == 0) return "Заполните авторов"; //error
+            if (rows2 == 0) return "Заполните жанры"; //error
+
+            return null;
+        }
+
+        public static string? CheckNewUser(string name1, string name2, string name3, string contact)
+        {
+            if (name1 == "") return "Введите имя"; //error
+            //name1 = PrepareName(name1);
+            if (!Regex.IsMatch(name1, @"^[A-ЯЁ][а-яё]+$")) return "Имя: минимум 2 русские буквы (без пробелов)"; //error
+
+            if (name2 == "") return "Введите фамилию"; //error
+            //name2 = PrepareName(name2);
+            if (!Regex.IsMatch(name2, @"^[A-ЯЁ][а-яё]+$")) return "Фамилия: минимум 2 русских буквы (без пробелов)"; //error
+
+            if (name3 != "")
+            {
+                //name3 = PrepareName(name3);
+                if (!Regex.IsMatch(name3, @"^[A-ЯЁ][а-яё]{0,}$")) return "Отчество: минимум 2 русских буквы (без пробелов)"; //error
+            }
+
+            if (contact == "") return "Добавитье контактные данные для пользователя"; //error
+
+            return null;
+        }
     }
 }

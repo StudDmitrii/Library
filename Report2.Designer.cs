@@ -1,6 +1,6 @@
 ﻿namespace Library
 {
-    partial class Report
+    partial class Report2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            menuStrip1 = new MenuStrip();
+            файлToolStripMenuItem = new ToolStripMenuItem();
+            справочникиToolStripMenuItem = new ToolStripMenuItem();
+            отчётыToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             ReportError = new Label();
@@ -46,18 +50,41 @@
             ReportOwner = new ComboBox();
             label22 = new Label();
             ReportName = new Label();
-            menuStrip1 = new MenuStrip();
-            файлToolStripMenuItem = new ToolStripMenuItem();
-            справочникиToolStripMenuItem = new ToolStripMenuItem();
-            отчётыToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportView).BeginInit();
             panel2.SuspendLayout();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, справочникиToolStripMenuItem, отчётыToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(784, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            файлToolStripMenuItem.Size = new Size(48, 20);
+            файлToolStripMenuItem.Text = "Файл";
+            // 
+            // справочникиToolStripMenuItem
+            // 
+            справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
+            справочникиToolStripMenuItem.Size = new Size(94, 20);
+            справочникиToolStripMenuItem.Text = "Справочники";
+            // 
+            // отчётыToolStripMenuItem
+            // 
+            отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
+            отчётыToolStripMenuItem.Size = new Size(60, 20);
+            отчётыToolStripMenuItem.Text = "Отчёты";
             // 
             // tableLayoutPanel1
             // 
@@ -80,7 +107,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(784, 537);
-            tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.TabIndex = 3;
             // 
             // panel1
             // 
@@ -127,7 +154,7 @@
             // setReport
             // 
             setReport.Anchor = AnchorStyles.Left;
-            setReport.Location = new Point(459, 29);
+            setReport.Location = new Point(461, 29);
             setReport.Name = "setReport";
             setReport.Size = new Size(128, 23);
             setReport.TabIndex = 2;
@@ -246,7 +273,6 @@
             ReportOwnerAdd.TabIndex = 28;
             ReportOwnerAdd.Text = "...";
             ReportOwnerAdd.UseVisualStyleBackColor = true;
-            ReportOwnerAdd.Click += ReportOwnerAdd_Click;
             // 
             // ReportOwner
             // 
@@ -275,43 +301,18 @@
             ReportName.TabIndex = 0;
             ReportName.Text = "Отчёт \"Задолженности по возврату книг\"";
             // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem, справочникиToolStripMenuItem, отчётыToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(784, 24);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // файлToolStripMenuItem
-            // 
-            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(48, 20);
-            файлToolStripMenuItem.Text = "Файл";
-            // 
-            // справочникиToolStripMenuItem
-            // 
-            справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            справочникиToolStripMenuItem.Size = new Size(94, 20);
-            справочникиToolStripMenuItem.Text = "Справочники";
-            // 
-            // отчётыToolStripMenuItem
-            // 
-            отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            отчётыToolStripMenuItem.Size = new Size(60, 20);
-            отчётыToolStripMenuItem.Text = "Отчёты";
-            // 
-            // Report
+            // Report2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 561);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(menuStrip1);
-            Name = "Report";
+            Name = "Report2";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Report";
+            Text = "Report2";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
@@ -321,35 +322,33 @@
             ((System.ComponentModel.ISupportInitialize)ReportView).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label ReportName;
-        private Panel panel1;
-        private Label label2;
-        private DateTimePicker EndPeriodDate;
-        private DateTimePicker StartPeriodDate;
-        private Label label1;
-        private Button setReport;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Button ExportMSWord;
-        private TableLayoutPanel tableLayoutPanel3;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem справочникиToolStripMenuItem;
         private ToolStripMenuItem отчётыToolStripMenuItem;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel1;
         private Label ReportError;
+        private Label label2;
+        private DateTimePicker EndPeriodDate;
+        private Button setReport;
+        private DateTimePicker StartPeriodDate;
+        private Label label1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Button ExportMSWord;
         private Button ExportExcel;
         private DataGridView ReportView;
         private Panel panel2;
         private Button ReportOwnerAdd;
         private ComboBox ReportOwner;
         private Label label22;
+        private Label ReportName;
     }
 }

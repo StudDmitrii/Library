@@ -1,6 +1,6 @@
-﻿using Library.Model;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
+﻿using OfficeOpenXml.Style;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,19 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using OfficeOpenXml;
-using System;
-using System.Security.Cryptography.X509Certificates;
-using OfficeOpenXml.Style;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library
 {
-    public partial class Report : Form
+    public partial class Report2 : Form
     {
         DateTime nullDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified);
-        string reportName = "Отчёт \"Задолженности по возврату книг\"";
-        public Report()
+        string reportName = "Отчёт \"Популярные жанры\"";
+
+        public Report2()
         {
             InitializeComponent();
 
@@ -37,10 +34,6 @@ namespace Library
 
         private void setReport_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in ReportView.Rows)
-            {
-                ReportView.Rows.Remove(row);
-            }
             DateTime date1 = StartPeriodDate.Value.Date;
             DateTime date2 = EndPeriodDate.Value.Date;
 
@@ -58,21 +51,12 @@ namespace Library
 
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
-                var rep = db.Entry.Include("User").Include("Book").Where(p =>
-                p.PlanReturnDate.Date >= date1 &&
-                p.PlanReturnDate.Date < date2 &&
-                p.PlanReturnDate.Date < DateTime.Now.Date &&
-                p.FactReturnDate == nullDate
-                ).ToList();
+                var rep = db.Entry.Include("Book").GroupBy(p => p.Book.Genres).ToList();
                 ReportView.ColumnCount = 5;
                 foreach (var item in rep)
                 {
                     ReportView.Rows.Add(
-                        item.User.Name1[0] + "." + item.User.Name3[0] + "." + item.User.Name2,
-                        item.Book.Name,
-                        item.TakeDate.Date.ToString().Split(' ')[0],
-                        item.PlanReturnDate.Date.ToString().Split(' ')[0],
-                        item.User.Contact
+                        
                         );
                 }
                 ReportView.Columns[0].HeaderText = "ФИО должника";
@@ -224,13 +208,6 @@ namespace Library
             }
         }
 
-        private void ReportOwnerAdd_Click(object sender, EventArgs e)
-        {
-            List<string[]>? rows = Functions.OpenNewWin("Работники", WinEnum.Librarians, true, this);
-            if (rows == null) return;
-            ReportOwner.SelectedItem = rows[0][3][0] + "." + rows[0][4][0] + "." + rows[0][2] + " - " + rows[0][1];
-        }
-
         private void ExportExcel_Click(object sender, EventArgs e)
         {
             DateTime date1 = StartPeriodDate.Value.Date;
@@ -238,45 +215,5 @@ namespace Library
 
             exportExcel(reportName, date1, date2, ReportView, ReportOwner.SelectedItem.ToString());
         }
-
-        //private void exportWord(DateTime date1, DateTime date2)
-        //{
-        //    Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-        //    Document document = app.Documents.Add();
-
-        //    // Добавляем заголовок
-        //    Paragraph headerParagraph = document.Content.Paragraphs.Add();
-        //    headerParagraph.Range.Font.Size = 16;
-        //    headerParagraph.Range.Text = reportName;
-
-        //    // Добавляем период
-        //    Paragraph headerParagraph2 = document.Content.Paragraphs.Add();
-        //    headerParagraph2.Range.Font.Size = 16;
-        //    headerParagraph2.Range.Text = "С" + date1.Date.ToString().Split(' ')[0] + " по " + date2.Date.ToString().Split(' ')[0];
-
-        //    // Создаем таблицу
-        //    Table table = document.Tables.Add(headerParagraph2.Range, ReportView.RowCount, ReportView.ColumnCount);
-        //    table.Borders.Enable = 1;
-        //    for (int i = 0; i < table.Rows.Count; i++)
-        //    {
-        //        for (int j = 0; j < table.Columns.Count; j++)
-        //        {
-        //            table.Cell(i, j).FitText = true;
-        //            table.Cell(i, j).Range.Text = ReportView[j,i].Value.ToString();
-        //        }
-        //    }
-
-        //    // добавляем место для подписи
-        //    Microsoft.Office.Interop.Word.Range signatureRange = document.Sections.Last.Footers[0].Range;
-        //    signatureRange.InsertParagraphAfter();
-        //    signatureRange.Font.Name = "Arial";
-        //    signatureRange.Font.Bold = 1;
-        //    signatureRange.Font.Size = 8;
-        //    signatureRange.Text = "Signature:";
-
-        //    //save
-        //    document.SaveAs2("Report.docx", WdSaveFormat.wdFormatXMLDocument);
-        //    app.Visible = true;
-        //}
     }
 }

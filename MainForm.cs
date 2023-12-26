@@ -228,8 +228,9 @@ namespace Library
                     dataView.Columns[3].HeaderText = "Издательство";
                     dataView.Columns[4].HeaderText = "Авторы";
                     dataView.Columns[5].HeaderText = "Жанры";
+                    
                 }
-                catch { }
+                catch { MessageBox.Show("error books"); }
 
             }
         }
@@ -538,8 +539,8 @@ namespace Library
             switch (source)
             {
                 case WinEnum.Authors:
-                    authorName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
-                    authorName2.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    authorName2.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    authorName.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
                     authorName3.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
                     window.SelectTab("AddAuthorWin");
                     break;
@@ -595,8 +596,8 @@ namespace Library
                     window.SelectTab("AddPositionWin");
                     break;
                 case WinEnum.Librarians:
-                    LibrarianName.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
-                    LibrarianName2.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
+                    LibrarianName2.Text = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    LibrarianName.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
                     LibrarianName3.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();
                     window.SelectTab("AddLibrarianWin");
                     LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
@@ -785,7 +786,7 @@ namespace Library
             UserName2.Text = Functions.PrepareName(UserName2.Text);
             UserName3.Text = Functions.PrepareName(UserName3.Text);
 
-            string? error = Functions.CheckNewAuthor(UserName.Text, UserName2.Text, UserName3.Text);
+            string? error = Functions.CheckNewUser(UserName.Text, UserName2.Text, UserName3.Text, UserContact.Text);
             UserError.Text = error ?? "";
             if (error != null) return;
 
@@ -922,6 +923,10 @@ namespace Library
 
         private void BookOKBut_Click(object sender, EventArgs e)
         {
+            string? error = Functions.CheckNewBook(BookName.Text, BookAuthorsView.RowCount, BookGenresView.RowCount);
+            BookError.Text = error ?? "";
+            if (error != null) return;
+
             window.Enabled = !window.Enabled;
 
             using (Model.ApplicationContext db = new Model.ApplicationContext())

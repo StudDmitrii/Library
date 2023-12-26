@@ -33,18 +33,19 @@
             файлToolStripMenuItem = new ToolStripMenuItem();
             dictSelect = new ToolStripMenuItem();
             выдачаToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripSeparator();
             читателиToolStripMenuItem = new ToolStripMenuItem();
-            книгаToolStripMenuItem = new ToolStripMenuItem();
-            авторToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripSeparator();
+            книгаToolStripMenuItem = new ToolStripMenuItem();
             работникиToolStripMenuItem = new ToolStripMenuItem();
-            должностиToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripSeparator();
+            toolStripMenuItem2 = new ToolStripSeparator();
+            авторToolStripMenuItem = new ToolStripMenuItem();
             издательстваToolStripMenuItem = new ToolStripMenuItem();
+            должностиToolStripMenuItem = new ToolStripMenuItem();
             жанрыToolStripMenuItem = new ToolStripMenuItem();
             отчётыToolStripMenuItem = new ToolStripMenuItem();
             задолженностиПоВозвратуКнигToolStripMenuItem = new ToolStripMenuItem();
+            популярныеЖанрыToolStripMenuItem = new ToolStripMenuItem();
+            популярныеАвторыToolStripMenuItem = new ToolStripMenuItem();
             control_panel = new TableLayoutPanel();
             add_but = new Button();
             edit_but = new Button();
@@ -210,7 +211,7 @@
             // 
             // dictSelect
             // 
-            dictSelect.DropDownItems.AddRange(new ToolStripItem[] { выдачаToolStripMenuItem, toolStripMenuItem2, читателиToolStripMenuItem, книгаToolStripMenuItem, авторToolStripMenuItem, toolStripMenuItem1, работникиToolStripMenuItem, должностиToolStripMenuItem, toolStripMenuItem3, издательстваToolStripMenuItem, жанрыToolStripMenuItem });
+            dictSelect.DropDownItems.AddRange(new ToolStripItem[] { выдачаToolStripMenuItem, читателиToolStripMenuItem, toolStripMenuItem1, книгаToolStripMenuItem, работникиToolStripMenuItem, toolStripMenuItem2, авторToolStripMenuItem, издательстваToolStripMenuItem, должностиToolStripMenuItem, жанрыToolStripMenuItem });
             dictSelect.Name = "dictSelect";
             dictSelect.Size = new Size(94, 20);
             dictSelect.Text = "Справочники";
@@ -222,17 +223,17 @@
             выдачаToolStripMenuItem.Text = "Выдача";
             выдачаToolStripMenuItem.Click += выдачаToolStripMenuItem_Click;
             // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(190, 6);
-            // 
             // читателиToolStripMenuItem
             // 
             читателиToolStripMenuItem.Name = "читателиToolStripMenuItem";
             читателиToolStripMenuItem.Size = new Size(193, 22);
             читателиToolStripMenuItem.Text = "Читательские билеты";
             читателиToolStripMenuItem.Click += читателиToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(190, 6);
             // 
             // книгаToolStripMenuItem
             // 
@@ -241,18 +242,6 @@
             книгаToolStripMenuItem.Text = "Книги";
             книгаToolStripMenuItem.Click += книгаToolStripMenuItem_Click;
             // 
-            // авторToolStripMenuItem
-            // 
-            авторToolStripMenuItem.Name = "авторToolStripMenuItem";
-            авторToolStripMenuItem.Size = new Size(193, 22);
-            авторToolStripMenuItem.Text = "Авторы";
-            авторToolStripMenuItem.Click += авторToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(190, 6);
-            // 
             // работникиToolStripMenuItem
             // 
             работникиToolStripMenuItem.Name = "работникиToolStripMenuItem";
@@ -260,17 +249,17 @@
             работникиToolStripMenuItem.Text = "Работники";
             работникиToolStripMenuItem.Click += работникиToolStripMenuItem_Click;
             // 
-            // должностиToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            должностиToolStripMenuItem.Name = "должностиToolStripMenuItem";
-            должностиToolStripMenuItem.Size = new Size(193, 22);
-            должностиToolStripMenuItem.Text = "Должности";
-            должностиToolStripMenuItem.Click += должностиToolStripMenuItem_Click;
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(190, 6);
             // 
-            // toolStripMenuItem3
+            // авторToolStripMenuItem
             // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(190, 6);
+            авторToolStripMenuItem.Name = "авторToolStripMenuItem";
+            авторToolStripMenuItem.Size = new Size(193, 22);
+            авторToolStripMenuItem.Text = "Авторы";
+            авторToolStripMenuItem.Click += авторToolStripMenuItem_Click;
             // 
             // издательстваToolStripMenuItem
             // 
@@ -278,6 +267,13 @@
             издательстваToolStripMenuItem.Size = new Size(193, 22);
             издательстваToolStripMenuItem.Text = "Издательства";
             издательстваToolStripMenuItem.Click += издательстваToolStripMenuItem_Click;
+            // 
+            // должностиToolStripMenuItem
+            // 
+            должностиToolStripMenuItem.Name = "должностиToolStripMenuItem";
+            должностиToolStripMenuItem.Size = new Size(193, 22);
+            должностиToolStripMenuItem.Text = "Должности";
+            должностиToolStripMenuItem.Click += должностиToolStripMenuItem_Click;
             // 
             // жанрыToolStripMenuItem
             // 
@@ -288,7 +284,7 @@
             // 
             // отчётыToolStripMenuItem
             // 
-            отчётыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { задолженностиПоВозвратуКнигToolStripMenuItem });
+            отчётыToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { задолженностиПоВозвратуКнигToolStripMenuItem, популярныеЖанрыToolStripMenuItem, популярныеАвторыToolStripMenuItem });
             отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
             отчётыToolStripMenuItem.Size = new Size(60, 20);
             отчётыToolStripMenuItem.Text = "Отчёты";
@@ -300,6 +296,18 @@
             задолженностиПоВозвратуКнигToolStripMenuItem.Text = "Задолженности по возврату книг";
             задолженностиПоВозвратуКнигToolStripMenuItem.Click += задолженностиПоВозвратуКнигToolStripMenuItem_Click;
             // 
+            // популярныеЖанрыToolStripMenuItem
+            // 
+            популярныеЖанрыToolStripMenuItem.Name = "популярныеЖанрыToolStripMenuItem";
+            популярныеЖанрыToolStripMenuItem.Size = new Size(257, 22);
+            популярныеЖанрыToolStripMenuItem.Text = "Популярные жанры";
+            // 
+            // популярныеАвторыToolStripMenuItem
+            // 
+            популярныеАвторыToolStripMenuItem.Name = "популярныеАвторыToolStripMenuItem";
+            популярныеАвторыToolStripMenuItem.Size = new Size(257, 22);
+            популярныеАвторыToolStripMenuItem.Text = "Популярные авторы";
+            // 
             // control_panel
             // 
             control_panel.ColumnCount = 1;
@@ -308,8 +316,8 @@
             control_panel.Controls.Add(edit_but, 0, 1);
             control_panel.Controls.Add(del_but, 0, 3);
             control_panel.Dock = DockStyle.Fill;
-            control_panel.Location = new Point(657, 70);
-            control_panel.Margin = new Padding(3, 10, 3, 3);
+            control_panel.Location = new Point(657, 72);
+            control_panel.Margin = new Padding(3, 12, 3, 3);
             control_panel.Name = "control_panel";
             control_panel.RowCount = 5;
             control_panel.RowStyles.Add(new RowStyle());
@@ -375,6 +383,7 @@
             // window
             // 
             window.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            window.Appearance = TabAppearance.FlatButtons;
             window.Controls.Add(MainWin);
             window.Controls.Add(AddAuthorWin);
             window.Controls.Add(AddPublisherWin);
@@ -384,21 +393,22 @@
             window.Controls.Add(AddLibrarianWin);
             window.Controls.Add(AddBookWin);
             window.Controls.Add(AddEntryWin);
+            window.ItemSize = new Size(10, 11);
             window.Location = new Point(10, 70);
             window.Margin = new Padding(10, 10, 0, 10);
             window.Name = "window";
             window.Padding = new Point(0, 0);
             window.SelectedIndex = 0;
-            window.Size = new Size(644, 467);
+            window.Size = new Size(644, 469);
             window.TabIndex = 7;
             // 
             // MainWin
             // 
             MainWin.Controls.Add(dataView);
-            MainWin.Location = new Point(4, 24);
+            MainWin.Location = new Point(4, 15);
             MainWin.Margin = new Padding(0);
             MainWin.Name = "MainWin";
-            MainWin.Size = new Size(636, 439);
+            MainWin.Size = new Size(636, 450);
             MainWin.TabIndex = 0;
             MainWin.Text = "Main";
             MainWin.UseVisualStyleBackColor = true;
@@ -420,7 +430,7 @@
             dataView.RowHeadersWidth = 51;
             dataView.RowTemplate.Height = 25;
             dataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataView.Size = new Size(636, 439);
+            dataView.Size = new Size(636, 450);
             dataView.TabIndex = 0;
             dataView.CellDoubleClick += dataView_CellDoubleClick;
             dataView.SelectionChanged += dataView_SelectionChanged;
@@ -428,10 +438,10 @@
             // AddAuthorWin
             // 
             AddAuthorWin.Controls.Add(AddAuthorGroup);
-            AddAuthorWin.Location = new Point(4, 24);
+            AddAuthorWin.Location = new Point(4, 15);
             AddAuthorWin.Name = "AddAuthorWin";
             AddAuthorWin.Padding = new Padding(3);
-            AddAuthorWin.Size = new Size(636, 439);
+            AddAuthorWin.Size = new Size(636, 450);
             AddAuthorWin.TabIndex = 1;
             AddAuthorWin.Text = "Author";
             AddAuthorWin.UseVisualStyleBackColor = true;
@@ -535,9 +545,9 @@
             // AddPublisherWin
             // 
             AddPublisherWin.Controls.Add(AddPublisherGroup);
-            AddPublisherWin.Location = new Point(4, 24);
+            AddPublisherWin.Location = new Point(4, 15);
             AddPublisherWin.Name = "AddPublisherWin";
-            AddPublisherWin.Size = new Size(636, 439);
+            AddPublisherWin.Size = new Size(636, 450);
             AddPublisherWin.TabIndex = 2;
             AddPublisherWin.Text = "Publisher";
             AddPublisherWin.UseVisualStyleBackColor = true;
@@ -623,10 +633,10 @@
             // AddGenreWin
             // 
             AddGenreWin.Controls.Add(AddGenreGroup);
-            AddGenreWin.Location = new Point(4, 24);
+            AddGenreWin.Location = new Point(4, 15);
             AddGenreWin.Name = "AddGenreWin";
             AddGenreWin.Padding = new Padding(3);
-            AddGenreWin.Size = new Size(636, 439);
+            AddGenreWin.Size = new Size(636, 450);
             AddGenreWin.TabIndex = 3;
             AddGenreWin.Text = "Genres";
             AddGenreWin.UseVisualStyleBackColor = true;
@@ -694,10 +704,10 @@
             // AddPositionWin
             // 
             AddPositionWin.Controls.Add(AddPositionGroup);
-            AddPositionWin.Location = new Point(4, 24);
+            AddPositionWin.Location = new Point(4, 15);
             AddPositionWin.Name = "AddPositionWin";
             AddPositionWin.Padding = new Padding(3);
-            AddPositionWin.Size = new Size(636, 439);
+            AddPositionWin.Size = new Size(636, 450);
             AddPositionWin.TabIndex = 4;
             AddPositionWin.Text = "Positions";
             AddPositionWin.UseVisualStyleBackColor = true;
@@ -765,10 +775,10 @@
             // AddUserWin
             // 
             AddUserWin.Controls.Add(AddUserGroup);
-            AddUserWin.Location = new Point(4, 24);
+            AddUserWin.Location = new Point(4, 15);
             AddUserWin.Name = "AddUserWin";
             AddUserWin.Padding = new Padding(3);
-            AddUserWin.Size = new Size(636, 439);
+            AddUserWin.Size = new Size(636, 450);
             AddUserWin.TabIndex = 5;
             AddUserWin.Text = "Users";
             AddUserWin.UseVisualStyleBackColor = true;
@@ -816,10 +826,8 @@
             UserError.ForeColor = Color.Red;
             UserError.Location = new Point(6, 226);
             UserError.Name = "UserError";
-            UserError.Size = new Size(32, 15);
+            UserError.Size = new Size(0, 15);
             UserError.TabIndex = 8;
-            UserError.Text = "error";
-            UserError.Visible = false;
             // 
             // label10
             // 
@@ -892,10 +900,10 @@
             // AddLibrarianWin
             // 
             AddLibrarianWin.Controls.Add(AddLibrarianGroup);
-            AddLibrarianWin.Location = new Point(4, 24);
+            AddLibrarianWin.Location = new Point(4, 15);
             AddLibrarianWin.Name = "AddLibrarianWin";
             AddLibrarianWin.Padding = new Padding(3);
-            AddLibrarianWin.Size = new Size(636, 439);
+            AddLibrarianWin.Size = new Size(636, 450);
             AddLibrarianWin.TabIndex = 6;
             AddLibrarianWin.Text = "Librarians";
             AddLibrarianWin.UseVisualStyleBackColor = true;
@@ -955,10 +963,8 @@
             LibrarianError.ForeColor = Color.Red;
             LibrarianError.Location = new Point(6, 255);
             LibrarianError.Name = "LibrarianError";
-            LibrarianError.Size = new Size(32, 15);
+            LibrarianError.Size = new Size(0, 15);
             LibrarianError.TabIndex = 8;
-            LibrarianError.Text = "error";
-            LibrarianError.Visible = false;
             // 
             // label9
             // 
@@ -1031,9 +1037,9 @@
             // AddBookWin
             // 
             AddBookWin.Controls.Add(AddBookGroup);
-            AddBookWin.Location = new Point(4, 24);
+            AddBookWin.Location = new Point(4, 15);
             AddBookWin.Name = "AddBookWin";
-            AddBookWin.Size = new Size(636, 439);
+            AddBookWin.Size = new Size(636, 450);
             AddBookWin.TabIndex = 7;
             AddBookWin.Text = "Books";
             AddBookWin.UseVisualStyleBackColor = true;
@@ -1194,9 +1200,8 @@
             BookError.ForeColor = Color.Red;
             BookError.Location = new Point(6, 408);
             BookError.Name = "BookError";
-            BookError.Size = new Size(32, 15);
+            BookError.Size = new Size(0, 15);
             BookError.TabIndex = 8;
-            BookError.Text = "error";
             // 
             // BookCancelBut
             // 
@@ -1248,9 +1253,9 @@
             // AddEntryWin
             // 
             AddEntryWin.Controls.Add(AddEntryGroup);
-            AddEntryWin.Location = new Point(4, 24);
+            AddEntryWin.Location = new Point(4, 15);
             AddEntryWin.Name = "AddEntryWin";
-            AddEntryWin.Size = new Size(636, 439);
+            AddEntryWin.Size = new Size(636, 450);
             AddEntryWin.TabIndex = 8;
             AddEntryWin.Text = "Entries";
             AddEntryWin.UseVisualStyleBackColor = true;
@@ -1455,10 +1460,8 @@
             EntryError.ForeColor = Color.Red;
             EntryError.Location = new Point(6, 408);
             EntryError.Name = "EntryError";
-            EntryError.Size = new Size(32, 15);
+            EntryError.Size = new Size(0, 15);
             EntryError.TabIndex = 8;
-            EntryError.Text = "error";
-            EntryError.Visible = false;
             // 
             // button6
             // 
@@ -1567,6 +1570,7 @@
             MaximumSize = new Size(1200, 598);
             MinimumSize = new Size(800, 598);
             Name = "main_form";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "библиотека";
             Activated += main_form_Activated;
             menuStrip1.ResumeLayout(false);
@@ -1631,14 +1635,12 @@
         private Label label;
         private DataGridView dataView;
         private ToolStripMenuItem выдачаToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem2;
         private ToolStripMenuItem книгаToolStripMenuItem;
         private ToolStripMenuItem авторToolStripMenuItem;
         private ToolStripMenuItem читателиToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem работникиToolStripMenuItem;
         private ToolStripMenuItem должностиToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem3;
         private ToolStripMenuItem издательстваToolStripMenuItem;
         private ToolStripMenuItem жанрыToolStripMenuItem;
         private Button AuthorCancelBut;
@@ -1748,5 +1750,8 @@
         private ToolStripMenuItem задолженностиПоВозвратуКнигToolStripMenuItem;
         private CheckBox EntryReturnDateOn;
         private GroupBox EntryReturnGroup;
+        private ToolStripSeparator toolStripMenuItem2;
+        private ToolStripMenuItem популярныеЖанрыToolStripMenuItem;
+        private ToolStripMenuItem популярныеАвторыToolStripMenuItem;
     }
 }
