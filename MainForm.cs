@@ -373,6 +373,7 @@ namespace Library
             }
             CancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -509,6 +510,7 @@ namespace Library
             }
             PublisherCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -737,6 +739,7 @@ namespace Library
             }
             GenreCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -771,6 +774,7 @@ namespace Library
             }
             PositionCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -812,6 +816,7 @@ namespace Library
             }
             UserCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -854,6 +859,7 @@ namespace Library
             }
             LibrarianCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -969,6 +975,7 @@ namespace Library
             }
             BookCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 
@@ -1046,6 +1053,7 @@ namespace Library
             }
             EntryCancelBut_Click(sender, e);
 
+            dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
             window.Enabled = !window.Enabled;
         }
 

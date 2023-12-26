@@ -400,6 +400,7 @@
             window.Padding = new Point(0, 0);
             window.SelectedIndex = 0;
             window.Size = new Size(644, 469);
+            window.SizeMode = TabSizeMode.Fixed;
             window.TabIndex = 7;
             // 
             // MainWin
