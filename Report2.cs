@@ -51,19 +51,22 @@ namespace Library
 
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
-                var rep = db.Entry.Include("Book").GroupBy(p => p.Book.Genres).ToList();
-                ReportView.ColumnCount = 5;
-                foreach (var item in rep)
-                {
-                    ReportView.Rows.Add(
-                        
-                        );
-                }
-                ReportView.Columns[0].HeaderText = "ФИО должника";
-                ReportView.Columns[1].HeaderText = "книга";
-                ReportView.Columns[2].HeaderText = "дата выдачи";
-                ReportView.Columns[3].HeaderText = "дата возврата";
-                ReportView.Columns[4].HeaderText = "контакт для связи";
+                //var query = from photo in db.Set<PersonPhoto>()
+                //            join person in context.Set<Person>()
+                //                on photo.PersonPhotoId equals person.PhotoId
+                //            select new { person, photo };
+                //ReportView.ColumnCount = 5;
+                //foreach (var item in rep)
+                //{
+                //    ReportView.Rows.Add(
+
+                //        );
+                //}
+                //ReportView.Columns[0].HeaderText = "ФИО должника";
+                //ReportView.Columns[1].HeaderText = "книга";
+                //ReportView.Columns[2].HeaderText = "дата выдачи";
+                //ReportView.Columns[3].HeaderText = "дата возврата";
+                //ReportView.Columns[4].HeaderText = "контакт для связи";
                 //фио, книга, когда взял, когда должен был вернуть, контактные данные
             }
         }

@@ -84,13 +84,13 @@ namespace Library
             return null;
         }
 
-        public static string? CheckNewBook(string name, int rows1, int rows2, string publisher, DateTime date)
+        public static string? CheckNewBook(string name, int rows1, int rows2, int publisher, DateTime date)
         {
             if (name == "") return "Введите название книги"; //error
             if (rows1 == 0) return "Заполните авторов"; //error
             if (rows2 == 0) return "Заполните жанры"; //error
             if (rows2 == 0) return "Заполните жанры"; //error
-            if (publisher == "") return "Выберите публикацию"; //error
+            if (publisher == -1) return "Выберите издательство"; //error
             if (date > DateTime.Now.Date) return "Проверьте даты"; //error
 
             return null;

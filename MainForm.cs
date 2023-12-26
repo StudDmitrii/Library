@@ -218,8 +218,8 @@ namespace Library
                         Name = p.Name,
                         PublicationDate = p.PublicationDate,
                         Publisher = p.Publisher.Name,
-                        Authors = p.Authors[0].Name1[0] + "." + p.Authors[0].Name3[0] + "." + p.Authors[0].Name2,
-                        Genres = p.Genres[0].Name
+                        Authors = p.Authors[0].Name1[0] + "." + p.Authors[0].Name3[0] + "." + p.Authors[0].Name2 + "...",
+                        Genres = p.Genres[0].Name + "..."
                     }).ToList();
                     dataView.DataSource = items;
                     dataView.Columns[0].Visible = false;
@@ -857,6 +857,14 @@ namespace Library
             List<string[]>? rows = Functions.OpenNewWin("Авторы", WinEnum.Authors, true, this);
             if (rows == null) return;
             BookAuthorsView.ColumnCount = 4;
+            foreach (DataGridViewRow row in BookAuthorsView.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == rows[0][0])
+                {
+                    MessageBox.Show("Такая строка уже есть в таблице");
+                    return;
+                }
+            }
             BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
             BookAuthorsView.Columns[0].HeaderText = "id";
             BookAuthorsView.Columns[0].Visible = false;
@@ -878,6 +886,14 @@ namespace Library
             List<string[]>? rows = Functions.OpenNewWin("Жанры", WinEnum.Genres, true, this);
             if (rows == null) return;
             BookGenresView.ColumnCount = 2;
+            foreach (DataGridViewRow row in BookGenresView.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == rows[0][0])
+                {
+                    MessageBox.Show("Такая строка уже есть в таблице");
+                    return;
+                }
+            }
             BookGenresView.Columns[0].HeaderText = "id";
             BookGenresView.Columns[0].Visible = false;
             BookGenresView.Columns[1].HeaderText = "Наименование";
@@ -894,7 +910,7 @@ namespace Library
 
         private void BookOKBut_Click(object sender, EventArgs e)
         {
-            string? error = Functions.CheckNewBook(BookName.Text, BookAuthorsView.RowCount, BookGenresView.RowCount, BookPublisher.SelectedItem.ToString(), BookDate.Value.Date);
+            string? error = Functions.CheckNewBook(BookName.Text, BookAuthorsView.RowCount, BookGenresView.RowCount, BookPublisher.SelectedIndex, BookDate.Value.Date);
             BookError.Text = error ?? "";
             if (error != null) return;
 
