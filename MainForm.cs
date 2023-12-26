@@ -228,7 +228,7 @@ namespace Library
                     dataView.Columns[3].HeaderText = "Издательство";
                     dataView.Columns[4].HeaderText = "Авторы";
                     dataView.Columns[5].HeaderText = "Жанры";
-                    
+
                 }
                 catch { MessageBox.Show("error books"); }
 
@@ -329,6 +329,10 @@ namespace Library
                     }
                     catch { }
                 }
+                if (item is ComboBox)
+                {
+                    (item as ComboBox).SelectedIndex = -1;
+                }
                 //if (item is ComboBox)
                 //{
                 //    item.ResetText();
@@ -379,36 +383,7 @@ namespace Library
 
         private void main_form_Activated(object sender, EventArgs e)
         {
-            //if (window.SelectedTab == window.TabPages[6])
-            //{
-            using (Model.ApplicationContext db = new Model.ApplicationContext())
-            {
-                var items = db.Position.Select(p =>
-                p.Name.ToString()).ToList();
-                LibrarianPosition.DataSource = items;
-
-                var items2 = db.Publisher.Select(p =>
-                p.Name.ToString()).ToList();
-                BookPublisher.DataSource = items2;
-
-                //entry
-                try
-                {
-                    var items3 = db.User.Select(p =>
-                    p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
-                    EntryUser.DataSource = items3;
-
-                    var items4 = db.Book.Select(p =>
-                    p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
-                    EntryBook.DataSource = items4;
-
-                    var items5 = db.Worker.Select(p =>
-                    p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
-                    EntryWorker.DataSource = items5;
-                }
-                catch { }
-            }
-            //}
+            SetView(source);
         }
 
         private void dataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -832,7 +807,7 @@ namespace Library
             LibrarianName2.Text = Functions.PrepareName(LibrarianName2.Text);
             LibrarianName3.Text = Functions.PrepareName(LibrarianName3.Text);
 
-            string? error = Functions.CheckNewAuthor(LibrarianName.Text, LibrarianName2.Text, LibrarianName3.Text);
+            string? error = Functions.CheckNewLibrarian(LibrarianName.Text, LibrarianName2.Text, LibrarianName3.Text, LibrarianPosition.SelectedIndex);
             LibrarianError.Text = error ?? "";
             if (error != null) return;
 
@@ -873,6 +848,7 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Должности", WinEnum.Positions, true, this);
             if (rows == null) return;
+            LibrarianPosition_DropDown(sender, e);
             LibrarianPosition.SelectedItem = rows[0][1];
         }
 
@@ -880,19 +856,8 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Авторы", WinEnum.Authors, true, this);
             if (rows == null) return;
-            //if (BookAuthorsView.DataSource != null)
-            //{
-            //    var v = (List<Author>)BookAuthorsView.DataSource;
-            //    v.Add(new Author() { Name1 = rows[0][1], Name2 = rows[0][2], Name3 = rows[0][3] });
-            //    BookAuthorsView.DataSource = null;
-            //    BookAuthorsView.DataSource = v;
-            //    rows = null;
-            //}
-            //else
-            //{
             BookAuthorsView.ColumnCount = 4;
             BookAuthorsView.Rows.Add(rows[0][0], rows[0][1], rows[0][2], rows[0][3]);
-            //}
             BookAuthorsView.Columns[0].HeaderText = "id";
             BookAuthorsView.Columns[0].Visible = false;
             BookAuthorsView.Columns[1].HeaderText = "Фамилия";
@@ -929,7 +894,7 @@ namespace Library
 
         private void BookOKBut_Click(object sender, EventArgs e)
         {
-            string? error = Functions.CheckNewBook(BookName.Text, BookAuthorsView.RowCount, BookGenresView.RowCount);
+            string? error = Functions.CheckNewBook(BookName.Text, BookAuthorsView.RowCount, BookGenresView.RowCount, BookPublisher.SelectedItem.ToString(), BookDate.Value.Date);
             BookError.Text = error ?? "";
             if (error != null) return;
 
@@ -989,6 +954,7 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Публикации", WinEnum.Publishers, true, this);
             if (rows == null) return;
+            BookPublisher_DropDown(sender, e);
             BookPublisher.SelectedItem = rows[0][1];
         }
 
@@ -996,6 +962,7 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Читательские билеты", WinEnum.Users, true, this);
             if (rows == null) return;
+            EntryUser_DropDown(sender, e);
             EntryUser.SelectedItem = rows[0][2][0] + "." + rows[0][3][0] + "." + rows[0][1] + " - " + rows[0][4];
         }
 
@@ -1003,6 +970,7 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Книги", WinEnum.Books, true, this);
             if (rows == null) return;
+            EntryBook_DropDown(sender, e);
             EntryBook.SelectedItem = rows[0][1] + " " + rows[0][4].Split('.')[2];
         }
 
@@ -1010,11 +978,16 @@ namespace Library
         {
             List<string[]>? rows = Functions.OpenNewWin("Работники", WinEnum.Librarians, true, this);
             if (rows == null) return;
+            EntryWorker_DropDown(sender, e);
             EntryWorker.SelectedItem = rows[0][3][0] + "." + rows[0][4][0] + "." + rows[0][2] + " - " + rows[0][1];
         }
 
         private void EntryOKBut_Click(object sender, EventArgs e)
         {
+            string? error = Functions.CheckNewEntry(EntryUser.SelectedIndex, EntryBook.SelectedIndex, EntryTakeDate.Value.Date, EntryPlanReturnDate.Value.Date, EntryFactReturnDate.Value.Date, EntryWorker.SelectedIndex);
+            EntryError.Text = error ?? "";
+            if (error != null) return;
+
             window.Enabled = !window.Enabled;
 
             using (Model.ApplicationContext db = new Model.ApplicationContext())
@@ -1067,6 +1040,56 @@ namespace Library
         {
             Report r = new Report();
             r.Show();
+        }
+
+        private void LibrarianPosition_DropDown(object sender, EventArgs e)
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items = db.Position.Select(p =>
+                p.Name.ToString()).ToList();
+                LibrarianPosition.DataSource = items;
+            }
+        }
+
+        private void BookPublisher_DropDown(object sender, EventArgs e)
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items2 = db.Publisher.Select(p =>
+                p.Name.ToString()).ToList();
+                BookPublisher.DataSource = items2;
+            }
+        }
+
+        private void EntryUser_DropDown(object sender, EventArgs e)
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items3 = db.User.Select(p =>
+                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
+                EntryUser.DataSource = items3;
+            }
+        }
+
+        private void EntryBook_DropDown(object sender, EventArgs e)
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items4 = db.Book.Select(p =>
+                p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
+                EntryBook.DataSource = items4;
+            }
+        }
+
+        private void EntryWorker_DropDown(object sender, EventArgs e)
+        {
+            using (Model.ApplicationContext db = new Model.ApplicationContext())
+            {
+                var items5 = db.Worker.Select(p =>
+                p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
+                EntryWorker.DataSource = items5;
+            }
         }
     }
 }

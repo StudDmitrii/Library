@@ -948,6 +948,7 @@
             LibrarianPosition.Name = "LibrarianPosition";
             LibrarianPosition.Size = new Size(231, 23);
             LibrarianPosition.TabIndex = 11;
+            LibrarianPosition.DropDown += LibrarianPosition_DropDown;
             // 
             // label15
             // 
@@ -1185,6 +1186,7 @@
             BookPublisher.Name = "BookPublisher";
             BookPublisher.Size = new Size(231, 23);
             BookPublisher.TabIndex = 11;
+            BookPublisher.DropDown += BookPublisher_DropDown;
             // 
             // label4
             // 
@@ -1368,6 +1370,7 @@
             EntryBook.Name = "EntryBook";
             EntryBook.Size = new Size(501, 23);
             EntryBook.TabIndex = 31;
+            EntryBook.DropDown += EntryBook_DropDown;
             // 
             // label21
             // 
@@ -1411,6 +1414,7 @@
             EntryWorker.Name = "EntryWorker";
             EntryWorker.Size = new Size(367, 23);
             EntryWorker.TabIndex = 24;
+            EntryWorker.DropDown += EntryWorker_DropDown;
             // 
             // label22
             // 
@@ -1445,6 +1449,7 @@
             EntryUser.Name = "EntryUser";
             EntryUser.Size = new Size(367, 23);
             EntryUser.TabIndex = 11;
+            EntryUser.DropDown += EntryUser_DropDown;
             // 
             // label23
             // 
