@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
+using Library.Model;
 
 namespace Library
 {
@@ -51,17 +52,32 @@ namespace Library
 
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
-                //var query = from photo in db.Set<PersonPhoto>()
-                //            join person in context.Set<Person>()
-                //                on photo.PersonPhotoId equals person.PhotoId
-                //            select new { person, photo };
-                //ReportView.ColumnCount = 5;
-                //foreach (var item in rep)
-                //{
-                //    ReportView.Rows.Add(
-
-                //        );
-                //}
+                var rep = from entry in db.Entry
+                          join book in db.Book on entry.BookId equals book.Id
+                          from author in book.Authors
+                          group author by new
+                          {
+                              author.Id,
+                              author.Name2,
+                              author.Name1,
+                              author.Name3,
+                          } into authorGroup
+                          select new
+                          {
+                              authorGroup.Key.Id,
+                              authorGroup.Key.Name2,
+                              authorGroup.Key.Name1,
+                              authorGroup.Key.Name3,
+                              Count = authorGroup.Count()
+                          };
+                ReportView.ColumnCount = 2;
+                foreach (var item in rep)
+                {
+                    ReportView.Rows.Add(
+                        item.Name1[0] + "." + item.Name3[0] + "." + item.Name2,
+                        item.Count
+                        );
+                }
                 //ReportView.Columns[0].HeaderText = "ФИО должника";
                 //ReportView.Columns[1].HeaderText = "книга";
                 //ReportView.Columns[2].HeaderText = "дата выдачи";

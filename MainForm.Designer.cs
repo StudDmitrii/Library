@@ -434,6 +434,7 @@
             dataView.Size = new Size(636, 450);
             dataView.TabIndex = 0;
             dataView.CellDoubleClick += dataView_CellDoubleClick;
+            dataView.CellMouseClick += dataView_CellMouseClick;
             dataView.SelectionChanged += dataView_SelectionChanged;
             // 
             // AddAuthorWin
@@ -943,6 +944,7 @@
             // 
             // LibrarianPosition
             // 
+            LibrarianPosition.AutoCompleteSource = AutoCompleteSource.ListItems;
             LibrarianPosition.FormattingEnabled = true;
             LibrarianPosition.Location = new Point(6, 175);
             LibrarianPosition.Name = "LibrarianPosition";
@@ -1181,6 +1183,7 @@
             // 
             // BookPublisher
             // 
+            BookPublisher.AutoCompleteSource = AutoCompleteSource.ListItems;
             BookPublisher.FormattingEnabled = true;
             BookPublisher.Location = new Point(6, 131);
             BookPublisher.Name = "BookPublisher";
@@ -1365,6 +1368,7 @@
             // 
             // EntryBook
             // 
+            EntryBook.AutoCompleteSource = AutoCompleteSource.ListItems;
             EntryBook.FormattingEnabled = true;
             EntryBook.Location = new Point(6, 90);
             EntryBook.Name = "EntryBook";
@@ -1409,6 +1413,7 @@
             // 
             // EntryWorker
             // 
+            EntryWorker.AutoCompleteSource = AutoCompleteSource.ListItems;
             EntryWorker.FormattingEnabled = true;
             EntryWorker.Location = new Point(6, 222);
             EntryWorker.Name = "EntryWorker";
@@ -1444,6 +1449,7 @@
             // 
             // EntryUser
             // 
+            EntryUser.AutoCompleteSource = AutoCompleteSource.ListItems;
             EntryUser.FormattingEnabled = true;
             EntryUser.Location = new Point(6, 46);
             EntryUser.Name = "EntryUser";

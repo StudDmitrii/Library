@@ -333,10 +333,14 @@ namespace Library
                 {
                     (item as ComboBox).SelectedIndex = -1;
                 }
-                //if (item is ComboBox)
-                //{
-                //    item.ResetText();
-                //}
+                if (item is CheckBox)
+                {
+                    (item as CheckBox).Checked = false;
+                }
+                if (item is DateTimePicker)
+                {
+                    (item as DateTimePicker).Value = DateTime.Now.Date;
+                }
             }
         }
 
@@ -378,12 +382,13 @@ namespace Library
             CancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
         private void main_form_Activated(object sender, EventArgs e)
         {
-            SetView(source);
+            //SetView(source);
         }
 
         private void dataView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -486,6 +491,7 @@ namespace Library
             PublisherCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -534,7 +540,7 @@ namespace Library
                     BookName.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     BookDate.Value = (DateTime)dataView.SelectedRows[0].Cells[2].Value;
                     window.SelectTab("AddBookWin");
-                    BookPublisher.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    BookPublisher.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
                     using (Model.ApplicationContext db = new Model.ApplicationContext())
                     {
                         int instId = (int)dataView.SelectedRows[0].Cells[0].Value;
@@ -577,11 +583,21 @@ namespace Library
                     LibrarianName.Text = dataView.SelectedRows[0].Cells[3].Value.ToString();
                     LibrarianName3.Text = dataView.SelectedRows[0].Cells[4].Value.ToString();
                     window.SelectTab("AddLibrarianWin");
-                    LibrarianPosition.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    LibrarianPosition.Text = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     break;
                 case WinEnum.Entries:
                     EntryReturnGroup.Visible = true;
-                    EntryFactReturnDate.Value = DateTime.Now.Date;
+                    try
+                    {
+                        EntryReturnDateOn.Checked = true;
+                        EntryFactReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[5].Value;
+                    }
+                    catch
+                    {
+                        EntryReturnDateOn.Checked = false;
+                        EntryFactReturnDate.Value = DateTime.Now.Date;
+                    }
+                    
                     EntryTakeDate.Value = (DateTime)dataView.SelectedRows[0].Cells[3].Value;
                     EntryPlanReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[4].Value;
                     try
@@ -593,9 +609,26 @@ namespace Library
                         EntryFactReturnDate.Value = DateTime.Now.Date;
                     }
                     window.SelectTab("AddEntryWin");
-                    EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
-                    EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
-                    EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
+                    using (Model.ApplicationContext db = new Model.ApplicationContext())
+                    {
+                        var items3 = db.User.Select(p =>
+                            p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
+                        EntryUser.DataSource = items3;
+                        EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+
+                        var items4 = db.Book.Select(p =>
+                            p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
+                        EntryBook.DataSource = items4;
+                        EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
+
+                        var items5 = db.Worker.Select(p =>
+                            p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
+                        EntryWorker.DataSource = items5;
+                        EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
+                    }
+                    //EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
+                    //EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                    //EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
                     break;
             }
             control_panel.Enabled = !control_panel.Enabled;
@@ -678,8 +711,23 @@ namespace Library
 
         private void dataView_SelectionChanged(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    //MessageBox.Show("rowSource added");
+            //    rowSource = new List<int>();
+            //    foreach (DataGridViewRow item in dataView.SelectedRows)
+            //    {
+            //        rowSource.Add(int.Parse(item.Cells[0].Value.ToString()));
+            //    }
+            //}
+            //catch { }
+        }
+
+        private void dataView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
             try
             {
+                
                 rowSource = new List<int>();
                 foreach (DataGridViewRow item in dataView.SelectedRows)
                 {
@@ -715,6 +763,7 @@ namespace Library
             GenreCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -750,6 +799,7 @@ namespace Library
             PositionCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -792,6 +842,7 @@ namespace Library
             UserCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -835,6 +886,7 @@ namespace Library
             LibrarianCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -957,6 +1009,7 @@ namespace Library
             BookCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -1023,6 +1076,10 @@ namespace Library
                     {
                         newInst.FactReturnDate = EntryFactReturnDate.Value.Date;
                     }
+                    else
+                    {
+                        newInst.FactReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified);
+                    }
                 }
                 else
                 {
@@ -1043,6 +1100,7 @@ namespace Library
             EntryCancelBut_Click(sender, e);
 
             dataView.CurrentCell = dataView.Rows[dataView.Rows.Count - 1].Cells[1];
+            rowSource = new List<int> { Int32.Parse(dataView.CurrentRow.Cells[0].Value.ToString()) };
             window.Enabled = !window.Enabled;
         }
 
@@ -1062,9 +1120,11 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
+                var rem = LibrarianPosition.SelectedItem;
                 var items = db.Position.Select(p =>
                 p.Name.ToString()).ToList();
                 LibrarianPosition.DataSource = items;
+                LibrarianPosition.SelectedItem = rem;
             }
         }
 
@@ -1072,9 +1132,11 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
+                var rem = BookPublisher.SelectedItem;
                 var items2 = db.Publisher.Select(p =>
                 p.Name.ToString()).ToList();
                 BookPublisher.DataSource = items2;
+                BookPublisher.SelectedItem = rem;
             }
         }
 
@@ -1082,9 +1144,11 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
+                var rem = EntryUser.SelectedItem;
                 var items3 = db.User.Select(p =>
                 p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Contact.ToString()).ToList();
                 EntryUser.DataSource = items3;
+                EntryUser.SelectedItem = rem;
             }
         }
 
@@ -1092,9 +1156,11 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
+                var rem = EntryBook.SelectedItem;
                 var items4 = db.Book.Select(p =>
                 p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
                 EntryBook.DataSource = items4;
+                EntryBook.SelectedItem = rem;
             }
         }
 
@@ -1102,10 +1168,14 @@ namespace Library
         {
             using (Model.ApplicationContext db = new Model.ApplicationContext())
             {
+                var rem = EntryWorker.SelectedItem;
                 var items5 = db.Worker.Select(p =>
                 p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
                 EntryWorker.DataSource = items5;
+                EntryWorker.SelectedItem = rem;
             }
         }
+
+        
     }
 }

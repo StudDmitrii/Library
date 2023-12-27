@@ -145,7 +145,7 @@ namespace Library
             if (worker == -1) return "Выберите ответственного";
             if (takeDate > DateTime.Now.Date) return "Проверьте дату выдачи";
             if (planReturnDate < takeDate || factReturnDate < takeDate) return "Проверьте даты. Дата возврата должна быть больше или равно даты выдачи";
-            if (factReturnDate < DateTime.Now.Date) return "Вы можете подтвердить возврат заранее";
+            if (factReturnDate > DateTime.Now.Date) return "Вы не можете подтвердить возврат заранее";
             return null;
         }
     }
