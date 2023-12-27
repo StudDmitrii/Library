@@ -300,13 +300,15 @@
             // 
             популярныеЖанрыToolStripMenuItem.Name = "популярныеЖанрыToolStripMenuItem";
             популярныеЖанрыToolStripMenuItem.Size = new Size(257, 22);
-            популярныеЖанрыToolStripMenuItem.Text = "Популярные жанры";
+            популярныеЖанрыToolStripMenuItem.Text = "Популярные авторы";
+            популярныеЖанрыToolStripMenuItem.Click += популярныеЖанрыToolStripMenuItem_Click;
             // 
             // популярныеАвторыToolStripMenuItem
             // 
             популярныеАвторыToolStripMenuItem.Name = "популярныеАвторыToolStripMenuItem";
             популярныеАвторыToolStripMenuItem.Size = new Size(257, 22);
-            популярныеАвторыToolStripMenuItem.Text = "Популярные авторы";
+            популярныеАвторыToolStripMenuItem.Text = "Популярные жанры";
+            популярныеАвторыToolStripMenuItem.Click += популярныеАвторыToolStripMenuItem_Click;
             // 
             // control_panel
             // 

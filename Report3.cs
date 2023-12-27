@@ -9,17 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
 using Library.Model;
 
 namespace Library
 {
-    public partial class Report2 : Form
+    public partial class Report3 : Form
     {
         DateTime nullDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified);
-        string reportName = "Отчёт \"Популярные авторы\"";
-
-        public Report2()
+        string reportName = "Отчёт \"Популярные жанры\"";
+        public Report3()
         {
             InitializeComponent();
 
@@ -66,32 +64,26 @@ namespace Library
             {
                 var rep = (from entry in db.Entry
                            join book in db.Book on entry.BookId equals book.Id
-                           from author in book.Authors
+                           from genre in book.Genres
                            where entry.PlanReturnDate.Date >= date1 &&
                                  entry.PlanReturnDate.Date < date2 &&
                                  entry.PlanReturnDate.Date < DateTime.Now.Date &&
                                  entry.FactReturnDate == nullDate
-                           group author by new
+                           group genre by new
                            {
-                               author.Id,
-                               author.Name2,
-                               author.Name1,
-                               author.Name3,
-                           } into authorGroup
-                           orderby authorGroup.Count() descending
+                               genre.Name,
+                           } into genreGroup
+                           orderby genreGroup.Count() descending
                            select new
                            {
-                               authorGroup.Key.Id,
-                               authorGroup.Key.Name2,
-                               authorGroup.Key.Name1,
-                               authorGroup.Key.Name3,
-                               Count = authorGroup.Count()
+                               genreGroup.Key.Name,
+                               Count = genreGroup.Count()
                            }).Take(10);
                 ReportView.ColumnCount = 2;
                 foreach (var item in rep)
                 {
                     ReportView.Rows.Add(
-                        item.Name1[0] + "." + item.Name3[0] + "." + item.Name2,
+                        item.Name,
                         item.Count
                         );
                 }
@@ -158,13 +150,10 @@ namespace Library
 
                     }
                 }
-                worksheet.Cells[4, 1, tableEndRow, 5].AutoFitColumns();
 
                 // итого
                 int row = tableEndRow + 1;
                 cells = worksheet.Cells[tableEndRow + 1, 1, tableEndRow + 1, 2];
-
-                
 
                 cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
@@ -209,19 +198,27 @@ namespace Library
                 row = tableEndRow + 4;
                 cells = worksheet.Cells[row, 1, row, 2];
 
+                worksheet.Columns[1].Width = 15;
+                worksheet.Columns[3].Width = 50;
+
+
                 cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                 cells.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                cells.Merge = true;
                 cells.Value = "ФИО / Должность:";
+                cells.Merge = true;
+                
 
                 cells = worksheet.Cells[row, 3, row, 5];
+                
 
                 cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                 cells.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                cells.Merge = true;
                 cells.Value = owner.Split(" - ")[0] + " / " + owner.Split(" - ")[1];
+                worksheet.Cells[tableEndRow + 4, 3].AutoFitColumns();
+                cells.Merge = true;
+                
 
                 //подпись
                 row = tableEndRow + 5;
@@ -244,9 +241,6 @@ namespace Library
                 for (int i = 1; i <= worksheet.Dimension.End.Column; i++)
                     worksheet.Column(i).Style.WrapText = false;
                 worksheet.Row(row).Height = 50;
-
-                worksheet.Columns[1].Width = 15;
-                worksheet.Columns[3].Width = 50;
 
                 // Сохранение файла Excel
                 var fileInfo = new FileInfo("ReportBadPeoples.xlsx");

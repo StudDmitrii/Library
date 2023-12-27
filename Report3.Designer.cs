@@ -1,6 +1,6 @@
 ﻿namespace Library
 {
-    partial class Report2
+    partial class Report3
     {
         /// <summary>
         /// Required designer variable.
@@ -65,7 +65,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(784, 24);
-            menuStrip1.TabIndex = 2;
+            menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
@@ -107,7 +107,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(784, 537);
-            tableLayoutPanel1.TabIndex = 3;
+            tableLayoutPanel1.TabIndex = 4;
             // 
             // panel1
             // 
@@ -154,7 +154,7 @@
             // setReport
             // 
             setReport.Anchor = AnchorStyles.Left;
-            setReport.Location = new Point(461, 29);
+            setReport.Location = new Point(459, 29);
             setReport.Name = "setReport";
             setReport.Size = new Size(128, 23);
             setReport.TabIndex = 2;
@@ -302,16 +302,15 @@
             ReportName.TabIndex = 0;
             ReportName.Text = "Отчёт \"Задолженности по возврату книг\"";
             // 
-            // Report2
+            // Report3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 561);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(menuStrip1);
-            Name = "Report2";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Report2";
+            Name = "Report3";
+            Text = "Report3";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);

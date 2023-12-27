@@ -597,7 +597,7 @@ namespace Library
                         EntryReturnDateOn.Checked = false;
                         EntryFactReturnDate.Value = DateTime.Now.Date;
                     }
-                    
+
                     EntryTakeDate.Value = (DateTime)dataView.SelectedRows[0].Cells[3].Value;
                     EntryPlanReturnDate.Value = (DateTime)dataView.SelectedRows[0].Cells[4].Value;
                     try
@@ -619,12 +619,12 @@ namespace Library
                         var items4 = db.Book.Select(p =>
                             p.Name.ToString() + " " + p.Authors[0].Name2.ToString()).ToList();
                         EntryBook.DataSource = items4;
-                        EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
+                        //EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
 
                         var items5 = db.Worker.Select(p =>
                             p.Name1.ToString()[0] + "." + p.Name3.ToString()[0] + "." + p.Name2.ToString() + " - " + p.Position.Name.ToString()).ToList();
                         EntryWorker.DataSource = items5;
-                        EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
+                        //EntryWorker.SelectedItem = dataView.SelectedRows[0].Cells[6].Value.ToString();
                     }
                     //EntryUser.SelectedItem = dataView.SelectedRows[0].Cells[1].Value.ToString();
                     //EntryBook.SelectedItem = dataView.SelectedRows[0].Cells[2].Value.ToString();
@@ -727,7 +727,7 @@ namespace Library
         {
             try
             {
-                
+
                 rowSource = new List<int>();
                 foreach (DataGridViewRow item in dataView.SelectedRows)
                 {
@@ -1176,6 +1176,16 @@ namespace Library
             }
         }
 
-        
+        private void ïîïóëÿðíûåÆàíðûToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Report2 r = new Report2();
+            r.Show();
+        }
+
+        private void ïîïóëÿðíûåÀâòîðûToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Report3 r = new Report3();
+            r.Show();
+        }
     }
 }
